@@ -27,7 +27,6 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
         'setuptools',
-        'five.grok',
         ],
       extras_require={
         'test': ['plone.app.testing'],
