@@ -15,12 +15,4 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <genericsetup:registerProfile
-        name="uninstall"
-        title="collective.upload uninstall"
-        directory="profiles/uninstall"
-        description="Uninstall profile for the collective.upload package."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
 </configure>
