@@ -1,0 +1,7 @@
+collective.upload contributors
+==================================
+
+- Joaquín Rosales (globojorro@gmail.com)
+
+- Héctor Velarde (hector.velarde@gmail.com)
+
