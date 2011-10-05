@@ -18,6 +18,7 @@ IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
 grok.templatedir('templates')
 
 
+# TODO: implement drag&drop here
 class Folder_Contents(grok.View):
     grok.context(Interface)
     grok.layer(IUploadBrowserLayer)
@@ -32,6 +33,7 @@ class Organize(dexterity.DisplayForm):
 
 
 # XXX: do we really need dexterity.DisplayForm?
+# TODO: convert into a folder action: Upload files and images
 class Media_Uploader(dexterity.DisplayForm):
     grok.context(IUploadBrowserLayer)
     grok.require('cmf.ModifyPortalContent')
