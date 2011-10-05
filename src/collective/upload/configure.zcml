@@ -2,16 +2,26 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.upload">
 
     <includeDependencies package="." />
+    <grok:grok package="." />
 
     <genericsetup:registerProfile
         name="default"
         title="collective.upload"
         description="An implementation of the jQuery File Upload Plugin for Plone."
         directory="profiles/default"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="collective.upload uninstall"
+        directory="profiles/uninstall"
+        description="Uninstall profile for the collective.upload package."
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 

@@ -27,6 +27,8 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
         'setuptools',
+        #'five.grok>=1.2.0',
+        'plone.app.dexterity>=1.0.3',  # XXX: do we really need dexterity.DisplayForm?
         ],
       extras_require={
         'test': ['plone.app.testing'],

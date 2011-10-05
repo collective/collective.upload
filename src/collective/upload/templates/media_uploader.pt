@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<!--
+/*
+* jQuery File Upload Plugin HTML Example 5.0.5
+* https://github.com/blueimp/jQuery-File-Upload
+*
+* Copyright 2010, Sebastian Tschan
+* https://blueimp.net
+*
+* Licensed under the MIT license:
+* http://creativecommons.org/licenses/MIT/
+*/
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    i18n:domain="collective.nitf"
+    metal:use-macro="context/main_template/macros/master"
+    tal:define="portal_state context/@@plone_portal_state;
+    portal_url portal_state/portal_url;">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery File Upload Example</title>
+        <metal:styleslot fill-slot="style_slot">
+            <!-- link rel="stylesheet" type="text/css" media="screen" href=""
+                tal:attributes="href string:${portal_url}/++resource++collective.nitf/styles.css" /-->
+            <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
+            <link rel="stylesheet" href="style.css" 
+                tal:attributes="href string:${portal_url}/++resource++collective.nitf/style.css" />
+            <link rel="stylesheet" type="text/css" media="screen" href=""
+                tal:attributes="href string:${portal_url}/++resource++collective.nitf/jquery.fileupload-ui.css" />
+        </metal:styleslot>
+    </head>
+    <body tal:define="errors options/state/getErrors">
+        <metal:main fill-slot="main">
+        <tal:protect
+            tal:condition="python: not checkPermission('List folder contents', here)"
+            tal:replace="here/raiseUnauthorized" />
+            <metal:main_macro define-macro="main">
+            <metal:uploader define-macro="file_uploader">
+            <div id="fileupload" class="ui-widget">
+                <form action="." tal:attributes="action string:${context/absolute_url}/media_uploader" method="POST" enctype="multipart/form-data">
+                    <div class="fileupload-buttonbar ui-widget-header ui-corner-top" i18n:domain="collective.nitf">
+                        <label class="fileinput-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                            <span class="ui-button-icon-primary ui-icon ui-icon-plusthick"></span>
+                            <span class="ui-button-text" i18n:translate="">Add files...</span>
+                            <input type="file" name="files[]" id="uploaderfiles" multiple="true">
+                        </label>
+                        <button type="submit" class="start ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                            <span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-e"></span>
+                            <span class="ui-button-text" i18n:translate="">Start upload</span>
+                        </button>
+                        <button type="reset" class="cancel ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                            <span class="ui-button-icon-primary ui-icon ui-icon-cancel"></span>
+                            <span class="ui-button-text" i18n:translate="">Cancel upload</span>
+                        </button>
+                        <!--button type="button" class="delete ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">
+                            <span class="ui-button-icon-primary ui-icon ui-icon-trash"></span>
+                            <span class="ui-button-text" i18n:translate="">Delete files</span>
+                        </button-->
+                    </div>
+                </form>
+                <div class="fileupload-content">
+                    <table class="files"></table>
+                    <div class="fileupload-progressbar"></div>
+                </div>
+            </div>
+            <script type="text/x-jquery-tmpl" id="template-upload"></script>
+            <script type="text/x-jquery-tmpl" id="template-download"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+            <script src="../jquery.tmpl.min.js"
+                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.tmpl.min.js"></script>
+            <script src="../jquery.iframe-transport.js"
+                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.iframe-transport.js"></script>
+            <script src="../jquery.fileupload.js"
+                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.fileupload.js"></script>
+            <script src="../jquery.fileupload-ui.js"
+                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.fileupload-ui.js"></script>
+            <script src="application.js"
+                tal:attributes="src string:${portal_url}/++resource++collective.nitf/application.js"></script>
+            </metal:uploader>
+            </metal:main_macro>
+        </metal:main>
+    </body> 
+</html>
