@@ -8,14 +8,7 @@
 
 <head tal:define="portal_state context/@@plone_portal_state;
                   portal_url portal_state/portal_url;">
-    <metal:styleslot fill-slot="style_slot">
-        <!-- link rel="stylesheet" type="text/css" media="screen" href=""
-            tal:attributes="href string:${portal_url}/++resource++collective.nitf/styles.css" /-->
-    </metal:styleslot>
-
     <metal:javascriptslot fill-slot="javascript_head_slot">
-        <script type="text/javascript" src=""
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery-ui-1.8.14.custom.min.js"></script>
 	    <script type="text/javascript">
 	    $(function() {
             $("#sortable").sortable({
@@ -57,10 +50,8 @@
                     msg2 += "\n" + prev_msg;
                     $.post(move_url, { delta: delta, item_id: a_id});
                     $("#sortable").sortable("refresh");
-                    //return alert(msg + msg2);
                 }
             });
-		    //$("#sortable").disableSelection();
 	    });
 	    </script>
     </metal:javascriptslot>

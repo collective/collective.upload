@@ -27,6 +27,7 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
         'setuptools',
+        'collective.js.jqueryui',
         #'five.grok',
         'plone.app.dexterity>=1.0.3',  # XXX: do we really need dexterity.DisplayForm?
         ],

@@ -19,18 +19,13 @@
     i18n:domain="collective.nitf"
     metal:use-macro="context/main_template/macros/master"
     tal:define="portal_state context/@@plone_portal_state;
-    portal_url portal_state/portal_url;">
+                portal_url portal_state/portal_url;">
     <head>
         <meta charset="utf-8">
         <title>jQuery File Upload Example</title>
         <metal:styleslot fill-slot="style_slot">
-            <!-- link rel="stylesheet" type="text/css" media="screen" href=""
-                tal:attributes="href string:${portal_url}/++resource++collective.nitf/styles.css" /-->
-            <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" id="theme">
-            <link rel="stylesheet" href="style.css" 
-                tal:attributes="href string:${portal_url}/++resource++collective.nitf/style.css" />
-            <link rel="stylesheet" type="text/css" media="screen" href=""
-                tal:attributes="href string:${portal_url}/++resource++collective.nitf/jquery.fileupload-ui.css" />
+            <link rel="stylesheet" type="text/css" media="screen" href="++resource++collective.nitf/style.css" />
+            <link rel="stylesheet" type="text/css" media="screen" href="++resource++collective.nitf/jquery.fileupload-ui.css" />
         </metal:styleslot>
     </head>
     <body tal:define="errors options/state/getErrors">
@@ -69,20 +64,16 @@
             </div>
             <script type="text/x-jquery-tmpl" id="template-upload"></script>
             <script type="text/x-jquery-tmpl" id="template-download"></script>
+            <!-- FIXME: we want to use collective.js.jqueryui -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
             <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-            <script src="../jquery.tmpl.min.js"
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.tmpl.min.js"></script>
-            <script src="../jquery.iframe-transport.js"
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.iframe-transport.js"></script>
-            <script src="../jquery.fileupload.js"
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.fileupload.js"></script>
-            <script src="../jquery.fileupload-ui.js"
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/jquery.fileupload-ui.js"></script>
-            <script src="application.js"
-                tal:attributes="src string:${portal_url}/++resource++collective.nitf/application.js"></script>
+            <script src="++resource++collective.nitf/jquery.tmpl.min.js"></script>
+            <script src="++resource++collective.nitf/jquery.iframe-transport.js"></script>
+            <script src="++resource++collective.nitf/jquery.fileupload.js"></script>
+            <script src="++resource++collective.nitf/jquery.fileupload-ui.js"></script>
+            <script src="++resource++collective.nitf/application.js"></script>
             </metal:uploader>
             </metal:main_macro>
         </metal:main>
-    </body> 
+    </body>
 </html>
