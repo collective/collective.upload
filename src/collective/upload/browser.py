@@ -13,13 +13,15 @@ from plone.directives import dexterity
 
 from collective.upload.interfaces import IUploadBrowserLayer
 
+from plone.app.content.browser.foldercontents import FolderContentsView
+
 IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
 
 grok.templatedir('templates')
 
 
 # TODO: implement drag&drop here
-class Folder_Contents(grok.View):
+class Folder_Contents(grok.View, FolderContentsView):
     grok.context(Interface)
     grok.layer(IUploadBrowserLayer)
     grok.require('cmf.ModifyPortalContent')
@@ -32,10 +34,9 @@ class Organize(dexterity.DisplayForm):
     grok.require('cmf.ModifyPortalContent')
 
 
-# XXX: do we really need dexterity.DisplayForm?
 # TODO: convert into a folder action: Upload files and images
-class Media_Uploader(dexterity.DisplayForm):
-    grok.context(IUploadBrowserLayer)
+class Media_Uploader(grok.View):
+    grok.context(Interface)    
     grok.require('cmf.ModifyPortalContent')
 
     files = []
@@ -81,7 +82,7 @@ class Media_Uploader(dexterity.DisplayForm):
 
 
 class JSON_View(grok.View):
-    grok.context(IUploadBrowserLayer)
+    grok.context(Interface)
     grok.name('api')
     grok.require('cmf.ModifyPortalContent')
 
@@ -108,26 +109,29 @@ class JSON_View(grok.View):
             context = self.context
         context = aq_inner(context)
 
-        context_state = queryMultiAdapter((context, self.request),
-                                        name=u'plone_context_state')
-        context_name = context_state.object_title()
-        context_url = context_state.object_url()
-        del_url = context_url
-        info = {'name': context_name,
-                'url':  context_url,
-                'size': context.size(),
-                'delete_url':  del_url,
-                'delete_type': 'DELETE',
-                }
-        if context.Type() == 'Image':
-            info['thumbnail_url'] = context_url + '/image_thumb'
+        info = ''
+        if hasattr(context, 'size'):
+            context_state = queryMultiAdapter((context, self.request),
+                                            name=u'plone_context_state')
+            context_name = context_state.object_title()
+            context_url = context_state.object_url()
+            del_url = context_url
+            info = {'name': context_name,
+                    'url':  context_url,
+                    'size': context.size(),
+                    'delete_url':  del_url,
+                    'delete_type': 'DELETE',
+                    }
+            if context.Type() == 'Image':
+                info['thumbnail_url'] = context_url + '/image_thumb'
         return info
 
     def getContainerInfo(self):
         contents = []
         for item in self.context.objectIds():
             item_info = self.getContextInfo(self.context[item])
-            contents.append(item_info)
+            if item_info:
+                contents.append(item_info)
         return contents
 
     def render(self):

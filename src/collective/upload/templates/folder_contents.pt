@@ -52,6 +52,7 @@
           Up one level
       </a>
 
+      <tal:uploader metal:use-macro="context/@@media_uploader/macros/file_uploader"></tal:uploader>
       <form name="folderContentsForm"
             method="post"
             action="folder_object"

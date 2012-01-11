@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    i18n_domain="collective.upload">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <grok:grok package=".behaviors" />
+
+    <plone:behavior
+        title="Multiple file and image upload"
+        description="Add a new action in the add new menu, allowing the multiple upload of files or images"
+        provides=".behaviors.IMultipleUpload"
+        />
+
+</configure>

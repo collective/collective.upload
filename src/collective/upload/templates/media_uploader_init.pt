@@ -1,0 +1,9 @@
+<script src="++resource++collective.upload/media-upload-init-behavior.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="++resource++collective.upload/jquery.ui.widget.js"></script>
+<script src="++resource++collective.upload/load-image.min.js"></script>
+        
+<script src="++resource++collective.upload/jquery.iframe-transport.js"></script>
+<script src="++resource++collective.upload/jquery.fileupload.js"></script>
+<script src="++resource++collective.upload/jquery.fileupload-ui.js"></script>
+<script src="++resource++collective.upload/application.js"></script>

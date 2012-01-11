@@ -86,7 +86,9 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
 });
 
 
-$(function () {
+$(document).ready(function() {
+  // Handler for .ready() called.
+    config_upload_form  = function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
@@ -94,7 +96,6 @@ $(function () {
         {
             'sequentialUploads':true,
             dragover: function (e, data) {
-                console.log('darg');
             }
         }
     )
@@ -143,4 +144,6 @@ $(function () {
         }
     );
 
+};
+config_upload_form();
 });
