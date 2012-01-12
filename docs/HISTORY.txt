@@ -1,7 +1,7 @@
 Changelog
-=========
+---------
 
-1.0devdev (unreleased)
-----------------------
+1.0 (unreleased)
+^^^^^^^^^^^^^^^^
 
-- Initial release
+- Initial release.
