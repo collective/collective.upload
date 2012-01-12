@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object>
-  <order manager=" plone.portalfooter" skinname="*" purge="False">
+  <order manager="plone.portalfooter" skinname="*" purge="False">
     <viewlet name="upload.init"
              insert-after="plone.analytics" />
   </order>
