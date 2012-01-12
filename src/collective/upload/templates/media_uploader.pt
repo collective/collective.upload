@@ -42,8 +42,8 @@
                                     <span  i18n:translate="">Add files or images...</span>
                                     <input type="file" name="files[]" multiple>
                                 </span>
-                                <button type="submit" class="btn primary start"><span class="" i18n:translate="">Start upload</span></button>
-                                <button type="reset" class="btn info cancel"><span class="" i18n:translate="">Cancel upload</span></button>
+                                <button type="submit" class="btn start"><span class="" i18n:translate="">Start upload</span></button>
+                                <button type="reset" class="btn cancel"><span class="" i18n:translate="">Cancel upload</span></button>
                                 <button type="reset" class="btn danger delete"><span class="" i18n:translate="">Delete selected</span></button>                                
                                 <input type="checkbox" class="toggle">
                             </div>
