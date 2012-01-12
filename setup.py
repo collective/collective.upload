@@ -36,6 +36,7 @@ setup(name='collective.upload',
         'setuptools',
         'collective.js.jqueryui',
         'five.grok>=1.2.0',
+        'plone.behavior',
         ],
       extras_require={
         'test': ['plone.app.testing'],
