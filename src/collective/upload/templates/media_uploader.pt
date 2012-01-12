@@ -72,7 +72,6 @@
                     </div>
                 </form>
             </div>        
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
             <script src="++resource++collective.upload/jquery.ui.widget.js"></script>
             <script src="++resource++collective.upload/load-image.min.js"></script>
                     
