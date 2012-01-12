@@ -9,8 +9,6 @@ from zope.container.interfaces import INameChooser
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
 
-from plone.directives import dexterity
-
 from collective.upload.interfaces import IUploadBrowserLayer
 
 from plone.app.content.browser.foldercontents import FolderContentsView
@@ -27,16 +25,9 @@ class Folder_Contents(grok.View, FolderContentsView):
     grok.require('cmf.ModifyPortalContent')
 
 
-# XXX: do we really need dexterity.DisplayForm?
-# TODO: rename view
-class Organize(dexterity.DisplayForm):
-    grok.context(IUploadBrowserLayer)
-    grok.require('cmf.ModifyPortalContent')
-
-
 # TODO: convert into a folder action: Upload files and images
 class Media_Uploader(grok.View):
-    grok.context(Interface)    
+    grok.context(Interface)
     grok.require('cmf.ModifyPortalContent')
 
     files = []
