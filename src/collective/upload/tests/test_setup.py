@@ -20,11 +20,11 @@ class InstallTest(unittest.TestCase):
 
     def test_installed(self):
         qi = getattr(self.portal, 'portal_quickinstaller')
-        self.failUnless(qi.isProductInstalled(PROJECTNAME))
+        self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
     def test_browserlayer_installed(self):
         layers = [l.getName() for l in registered_layers()]
-        self.failUnless('IUploadBrowserLayer' in layers)
+        self.assertTrue('IUploadBrowserLayer' in layers)
 
 
 class UninstallTest(unittest.TestCase):
@@ -38,7 +38,11 @@ class UninstallTest(unittest.TestCase):
     def test_uninstalled(self):
         qi = getattr(self.portal, 'portal_quickinstaller')
         qi.uninstallProducts(products=[PROJECTNAME])
-        self.failIf(qi.isProductInstalled(PROJECTNAME))
+        self.assertFalse(qi.isProductInstalled(PROJECTNAME))
+
+    def test_browserlayer_uninstalled(self):
+        layers = [l.getName() for l in registered_layers()]
+        self.assertFalse('IUploadBrowserLayer' in layers)
 
 
 def test_suite():
