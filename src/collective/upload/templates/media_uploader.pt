@@ -16,12 +16,12 @@
     xmlns:metal="http://xml.zope.org/namespaces/metal"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     lang="en"
-    i18n:domain="collective.nitf"
+    i18n:domain="collective.upload"
     metal:use-macro="context/main_template/macros/master"
     tal:define="portal_state context/@@plone_portal_state;
                 portal_url portal_state/portal_url;">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>jQuery File Upload Example</title>
     </head>
     <body tal:define="errors options/state/getErrors">
@@ -33,21 +33,21 @@
             <metal:uploader define-macro="file_uploader">
             <link rel="stylesheet" type="text/css" media="screen" href="++resource++collective.upload/jquery.fileupload-ui.css" />
             <div>
-            
+
                 <form id="fileupload" action="." tal:attributes="action string:${context/absolute_url}/media_uploader" method="POST" enctype="multipart/form-data">
-                    <div class="row">    
+                    <div class="row">
                         <div class="cell position-0 width-full fileupload-buttonbar">
                             <div class="controls">
                                 <span class="btn success fileinput-button">
-                                    <span  i18n:translate="">Add files or images...</span>
+                                    <span i18n:translate="">Add files or images…</span>
                                     <input type="file" name="files[]" multiple>
                                 </span>
                                 <button type="submit" class="btn start"><span class="" i18n:translate="">Start upload</span></button>
                                 <button type="reset" class="btn cancel"><span class="" i18n:translate="">Cancel upload</span></button>
-                                <button type="reset" class="btn danger delete"><span class="" i18n:translate="">Delete selected</span></button>                                
+                                <button type="reset" class="btn danger delete"><span class="" i18n:translate="">Delete selected</span></button>
                                 <input type="checkbox" class="toggle">
                             </div>
-                        </div>                                
+                        </div>
                     </div>
                     <div class="row">
                         <div class="cell position-0 width-full">
@@ -61,20 +61,20 @@
                                             </div>
                                         </th>
                                     </tr>
-                                </thead>                            
+                                </thead>
                                 <tbody class="files">
                                     <tr>
                                         <td colspan="6"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>                    
+                        </div>
                     </div>
                 </form>
-            </div>        
+            </div>
             <script src="++resource++collective.upload/jquery.ui.widget.js"></script>
             <script src="++resource++collective.upload/load-image.min.js"></script>
-                    
+
             <script src="++resource++collective.upload/jquery.iframe-transport.js"></script>
             <script src="++resource++collective.upload/jquery.fileupload.js"></script>
             <script src="++resource++collective.upload/jquery.fileupload-ui.js"></script>
