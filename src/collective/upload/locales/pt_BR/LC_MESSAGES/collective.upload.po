@@ -1,0 +1,33 @@
+# Héctor Velarde <hector.velarde@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.upload\n"
+"POT-Creation-Date: 2012-01-13 06:55+0000\n"
+"PO-Revision-Date: 2012-01-13 00:52-0600\n"
+"Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <https://github.com/collective>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.upload\n"
+
+#: collective/upload/templates/media_uploader.pt:42
+msgid "Add files or images…"
+msgstr "Adicionar arquivos ou imagens…"
+
+#: collective/upload/templates/media_uploader.pt:46
+msgid "Cancel upload"
+msgstr "Cancelar upload"
+
+#: collective/upload/templates/media_uploader.pt:47
+msgid "Delete selected"
+msgstr "Excluir selecionados"
+
+#: collective/upload/templates/media_uploader.pt:45
+msgid "Start upload"
+msgstr "Iniciar upload"
+
