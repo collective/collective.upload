@@ -1,6 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:i18n="http://namespaces.zope.org/i18n"
@@ -11,12 +12,6 @@
     <i18n:registerTranslations directory="locales" />
     <include file="behaviors.zcml" />
 
-    <browser:viewlet
-        name="upload.init"
-        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-        for=".behaviors.IMultipleUpload"
-        template="templates/media_uploader_init.pt"
-        permission="zope2.View" />
 
     <genericsetup:registerProfile
         name="default"
