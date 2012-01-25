@@ -9,10 +9,10 @@
  * http://www.opensource.org/licenses/MIT
  */
 
-/*jslint nomen: true, unparam: true, regexp: true */
+
 /*global $, window, document */
 (function ($) {
-jQuery.widget('blueimpUIX.fileupload', jQuery.blueimpUI.fileupload, {
+$.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
 
     _renderTemplate: function (func, files) {
         return func({
@@ -84,74 +84,74 @@ jQuery.widget('blueimpUIX.fileupload', jQuery.blueimpUI.fileupload, {
     }
 
 });
-}(jQuery));
+}(j$));
 
 
-jQuery(document).ready(function() {
-    var $ = jQuery;
+j$(document).ready(function() {
+    var $ = j$;
   // Handler for .ready() called.
     config_upload_form  = function () {
     'use strict';
 
-    //we have to check if the fileupload element existing
-    
-    if ($('#fileupload')[0] != undefined) {
-        // Initialize the jQuery File Upload widget:
+        //we have to check if the fileupload element existing
         
-        $('#fileupload').fileupload(
-            {
-                'sequentialUploads':true,
-                dragover: function (e, data) {
+        if ($('#fileupload')[0] !== undefined) {
+            // Initialize the jQuery File Upload widget:
+            
+            $('#fileupload').fileupload(
+                {
+                    'sequentialUploads':true,
+                    dragover: function (e, data) {
+                    }
                 }
-            }
-        )
+            );
 
-        // Load existing files:
-        $.getJSON($('#fileupload').prop('action'), function (files) {
-            var fu = $('#fileupload').data('fileupload'),
-                template;
-            fu._adjustMaxNumberOfFiles(-files.length);
-            template = fu._renderDownload(files)
-                .appendTo($('#fileupload .files'));
-            // Force reflow:
-            fu._reflow = fu._transition && template.length &&
-                template[0].offsetWidth;
-            template.addClass('in');
-        });
+            // Load existing files:
+            $.getJSON($('#fileupload').prop('action'), function (files) {
+                var fu = $('#fileupload').data('fileupload'),
+                    template;
+                fu._adjustMaxNumberOfFiles(-files.length);
+                template = fu._renderDownload(files)
+                    .appendTo($('#fileupload .files'));
+                // Force reflow:
+                fu._reflow = fu._transition && template.length &&
+                    template[0].offsetWidth;
+                template.addClass('in');
+            });
 
 
-        // Enable iframe cross-domain access via redirect page:
-        var redirectPage = window.location.href.replace(
-            /\/[^\/]*$/,
-            '/result.html?%s'
-        );
-        $('#fileupload').bind('fileuploadsend', function (e, data) {
-            if (data.dataType.substr(0, 6) === 'iframe') {
-                var target = $('<a/>').prop('href', data.url)[0];
-                if (window.location.host !== target.host) {
-                    data.formData.push({
-                        name: 'redirect',
-                        value: redirectPage
-                    });
+            // Enable iframe cross-domain access via redirect page:
+            var redirectPage = window.location.href.replace(
+                /\/[^\/]*$/,
+                '/result.html?%s'
+            );
+            $('#fileupload').bind('fileuploadsend', function (e, data) {
+                if (data.dataType.substr(0, 6) === 'iframe') {
+                    var target = $('<a/>').prop('href', data.url)[0];
+                    if (window.location.host !== target.host) {
+                        data.formData.push({
+                            name: 'redirect',
+                            value: redirectPage
+                        });
+                    }
                 }
-            }
-        });
+            });
 
-        // Open download dialogs via iframes,
-        // to prevent aborting current uploads:
-        $('#fileupload .files').delegate(
-            'a:not([rel^=gallery])',
-            'click',
-            function (e) {
-                e.preventDefault();
-                $('<iframe style="display:none;"></iframe>')
-                    .prop('src', this.href)
-                    .appendTo(document.body);
-            }
-        );
-        
+            // Open download dialogs via iframes,
+            // to prevent aborting current uploads:
+            $('#fileupload .files').delegate(
+                'a:not([rel^=gallery])',
+                'click',
+                function (e) {
+                    e.preventDefault();
+                    $('<iframe style="display:none;"></iframe>')
+                        .prop('src', this.href)
+                        .appendTo(document.body);
+                }
+            );
+            
+        }
+
     };
-
-};
-config_upload_form();
+    config_upload_form();
 });

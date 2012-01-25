@@ -72,13 +72,18 @@
                     </div>
                 </form>
             </div>
+            <script src="++resource++collective.upload/jquery.1.7.1.js"></script>            
+            <script>
+                j$ = jQuery.noConflict();
+                jQuery = $;
+            </script>            
             <script src="++resource++collective.upload/jquery.ui.widget.js"></script>
             <script src="++resource++collective.upload/load-image.min.js"></script>
 
             <script src="++resource++collective.upload/jquery.iframe-transport.js"></script>
             <script src="++resource++collective.upload/jquery.fileupload.js"></script>
             <script src="++resource++collective.upload/jquery.fileupload-ui.js"></script>
-            <script src="++resource++collective.upload/application.js"></script>
+            <script src="++resource++collective.upload/application.js"></script>          
             </metal:uploader>
             </metal:main_macro>
         </metal:main>

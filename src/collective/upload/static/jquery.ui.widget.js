@@ -269,4 +269,4 @@ $.Widget.prototype = {
 	}
 };
 
-})( jQuery );
+})( j$ );
