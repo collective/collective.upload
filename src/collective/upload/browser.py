@@ -39,7 +39,9 @@ class Media_Uploader(grok.View):
             if self.request["REQUEST_METHOD"] == "POST":
                 if getattr(self.request, "files[]", None) is not None:
                     files = self.request['files[]']
-                    uploaded = self.upload([files])
+                    title = self.request['title[]']
+                    description = self.request['description[]']
+                    uploaded = self.upload([files], [title], [description])
                     if uploaded and json_view:
                         upped = []
                         for item in uploaded:
@@ -48,20 +50,26 @@ class Media_Uploader(grok.View):
                 return json_view()
         return super(Media_Uploader, self).__call__(*args, **kwargs)
 
-    def upload(self, files):
+    def upload(self, files, title='', description=''):
         loaded = []
         namechooser = INameChooser(self.context)
         if not isinstance(files, list):
             files = [files]
+
         for item in files:
             if item.filename:
                 content_type = item.headers.get('Content-Type')
-                id_name = namechooser.chooseName(item.filename, self.context)
+                id_name = ''
+                if title:
+                    id_name = namechooser.chooseName(title[0], self.context)
+                else:
+                    id_name = namechooser.chooseName(item.filename, self.context)
                 portal_type = 'File'
                 if content_type in IMAGE_MIMETYPES:
                     portal_type = 'Image'
                 try:
-                    self.context.invokeFactory(portal_type, id=id_name, file=item)
+                    self.context.invokeFactory(portal_type, id=id_name, file=item, 
+                        description=description[0])
                     self.context[id_name].reindexObject()
                     newfile = self.context[id_name]
                     loaded.append(newfile)
@@ -78,6 +86,8 @@ class JSON_View(grok.View):
     grok.require('cmf.ModifyPortalContent')
 
     json_var = {'name': 'File-Name.jpg',
+                'title':'',
+                'description':'',
                 'size': 999999,
                 'url': '\/\/nohost.org',
                 'thumbnail_url': '//nohost.org',
@@ -106,8 +116,11 @@ class JSON_View(grok.View):
                                             name=u'plone_context_state')
             context_name = context_state.object_title()
             context_url = context_state.object_url()
+
             del_url = context_url
             info = {'name': context_name,
+                    'title': context_name,
+                    'description':context.Description(),
                     'url':  context_url,
                     'size': context.size(),
                     'delete_url':  del_url,

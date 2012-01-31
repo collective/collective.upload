@@ -35,7 +35,7 @@
 
 .progressbar,
 .progressbar div {
-  width: 200px;
+  width: 100px;
   height: 20px;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;

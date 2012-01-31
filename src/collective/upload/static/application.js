@@ -28,14 +28,14 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
             $.each(o.files, function (index, file) {
                 var row = $('<tr class="template-upload">' +
                     '<td class="preview"><span class="fade"></span></td>' +
-                    '<td class="name"></td>' +
+                    '<td class="name"><input name="title[]" type="text" required/><br/><label for="description">Descripción</label><textarea name="description[]" cols="10" rows="3"></textarea></td>' +
                     '<td class="size"></td>' +
                     (file.error ? '<td class="error" colspan="2"></td>' :
                             '<td class="progress"><div class="progressbar">' +
                                 '<div style="width:0%;"></div></div></td>' +
                                 '<td class="start"><button class="btn primary">Start</button></td>'
                     ) + '<td class="cancel"><button class="btn info">Cancel</button></td></tr>');
-                row.find('.name').text(file.name);
+                row.find('.name input').val(file.name);
                 row.find('.size').text(o.formatFileSize(file.size));
                 if (file.error) {
                     row.addClass('ui-state-error');
@@ -54,19 +54,20 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
                     (file.error ? '<td></td><td class="name"></td>' +
                         '<td class="size"></td><td class="error" colspan="2"></td>' :
                             '<td class="preview"></td>' +
-                                '<td class="name"><a></a></td>' +
+                                '<td class="name"><a></a><br/><p></p></td>' +
                                 '<td class="size"></td><td colspan="2"></td>'
                     ) + '<td class="delete"><button class="btn danger">Delete</button> ' +
                         '<input type="checkbox" name="delete" value="1"></td></tr>');
                 row.find('.size').text(o.formatFileSize(file.size));
                 if (file.error) {
-                    row.find('.name').text(file.name);
+                    row.find('.name').text(file.title);
                     row.addClass('ui-state-error');
                     row.find('.error').text(
                         fileUploadErrors[file.error] || file.error
                     );
                 } else {
-                    row.find('.name a').text(file.name);
+                    row.find('.name a').text(file.title);
+                    row.find('.name p').text(file.description);
                     if (file.thumbnail_url) {
                         row.find('.preview').append('<a><img></a>')
                             .find('img').prop('src', file.thumbnail_url);
@@ -149,6 +150,14 @@ j$(document).ready(function() {
                         .appendTo(document.body);
                 }
             );
+
+            $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+                var inputs = data.context.find(':input');
+                if (inputs.filter('[required][value=""]').first().focus().length) {
+                    return false;
+                }
+                data.formData = inputs.serializeArray();
+            });            
             
         }
 
