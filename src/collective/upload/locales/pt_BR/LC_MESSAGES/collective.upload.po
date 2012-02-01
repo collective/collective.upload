@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.upload\n"
 "POT-Creation-Date: 2012-01-13 06:55+0000\n"
-"PO-Revision-Date: 2012-01-13 00:52-0600\n"
+"PO-Revision-Date: 2012-01-31 22:21-0400\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <https://github.com/collective>\n"
 "MIME-Version: 1.0\n"
@@ -33,5 +33,5 @@ msgstr "Iniciar upload"
 
 #: collective/upload/templates/media_uploader.pt:60
 msgid "Progress bar"
-msgstr ""
+msgstr "Barra de progresso"
 
