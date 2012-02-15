@@ -33,8 +33,8 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
                     (file.error ? '<td class="error" colspan="2"></td>' :
                             '<td class="progress"><div class="progressbar">' +
                                 '<div style="width:0%;"></div></div></td>' +
-                                '<td class="start"><button class="btn primary">Comenzar</button></td>'
-                    ) + '<td class="cancel"><button class="btn info">Cancelar</button></td></tr>');
+                                '<td class="start"><button class="btn primary">Start</button></td>'
+                    ) + '<td class="cancel"><button class="btn info">Cancel</button></td></tr>');
                 row.find('.name input').val(file.name);
                 row.find('.size').text(o.formatFileSize(file.size));
                 if (file.error) {
@@ -56,7 +56,7 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
                             '<td class="preview"></td>' +
                                 '<td class="name"><a></a><br/><p></p></td>' +
                                 '<td class="size"></td><td colspan="2"></td>'
-                    ) + '<td class="delete"><button class="btn danger">Eliminar</button> ' +
+                    ) + '<td class="delete"><button class="btn danger">Delete</button> ' +
                         '<input type="checkbox" name="delete" value="1"></td></tr>');
                 row.find('.size').text(o.formatFileSize(file.size));
                 if (file.error) {
