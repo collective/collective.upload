@@ -28,7 +28,7 @@ class Folder_Contents(grok.View, FolderContentsView):
 # TODO: convert into a folder action: Upload files and images
 class Media_Uploader(grok.View):
     grok.context(Interface)
-    grok.require('cmf.ModifyPortalContent')
+    grok.require('cmf.AddPortalContent')
 
     files = []
 
@@ -83,7 +83,7 @@ class Media_Uploader(grok.View):
 class JSON_View(grok.View):
     grok.context(Interface)
     grok.name('api')
-    grok.require('cmf.ModifyPortalContent')
+    grok.require('cmf.AddPortalContent')
 
     json_var = {'name': 'File-Name.jpg',
                 'title':'',

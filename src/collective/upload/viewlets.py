@@ -15,6 +15,6 @@ grok.templatedir("viewlets")
 class MediaUploaderInit(grok.Viewlet):
     grok.context(IMultipleUpload)
     grok.name(u"upload.init")    
-    grok.require("zope2.View")
+    grok.require("cmf.AddPortalContent")
     grok.template("media_uploader_init")
     grok.viewletmanager(IPortalFooter)    

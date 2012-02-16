@@ -31,6 +31,8 @@
             tal:replace="here/raiseUnauthorized" />
             <metal:main_macro define-macro="main">
             <metal:uploader define-macro="file_uploader">
+            <tal:protect
+                tal:condition="python: checkPermission('List folder contents', here)">
             <link rel="stylesheet" type="text/css" media="screen" href="++resource++collective.upload/jquery.fileupload-ui.css" />
             <div>
 
@@ -71,7 +73,8 @@
                         </div>
                     </div>
                 </form>
-            </div>         
+            </div>
+            </tal:protect>
             </metal:uploader>
             </metal:main_macro>
         </metal:main>
