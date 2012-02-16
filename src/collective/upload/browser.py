@@ -10,6 +10,7 @@ from zope.component import queryMultiAdapter
 from zope.interface import Interface
 
 from collective.upload.interfaces import IUploadBrowserLayer
+from collective.upload.behaviors import  IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 
@@ -20,14 +21,14 @@ grok.templatedir('templates')
 
 # TODO: implement drag&drop here
 class Folder_Contents(grok.View, FolderContentsView):
-    grok.context(Interface)
+    grok.context(IMultipleUpload)
     grok.layer(IUploadBrowserLayer)
     grok.require('cmf.ModifyPortalContent')
 
 
 # TODO: convert into a folder action: Upload files and images
 class Media_Uploader(grok.View):
-    grok.context(Interface)
+    grok.context(IMultipleUpload)
     grok.require('cmf.AddPortalContent')
 
     files = []
