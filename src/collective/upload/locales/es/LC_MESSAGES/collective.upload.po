@@ -31,3 +31,7 @@ msgstr "Eliminar seleccionados"
 msgid "Start upload"
 msgstr "Comenzar la carga"
 
+#: collective/upload/templates/media_uploader.pt:60
+msgid "Progress bar"
+msgstr "Barra de proceso"
+

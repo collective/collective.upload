@@ -56,7 +56,7 @@
                                     <tr>
                                         <th colspan="6" class="nosort">
                                             <div class="progress-bar-container">
-                                                <span>Progress bar</span>
+                                                <span i18n:translate="">Progress bar</span>
                                                 <div class="progressbar fileupload-progressbar"><div style="width:0%;"></div></div>
                                             </div>
                                         </th>
