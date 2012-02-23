@@ -8,11 +8,14 @@ from five import grok
 from zope.container.interfaces import INameChooser
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
+from zope.i18n import translate
 
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.behaviors import  IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
+
+from collective.upload import _
 
 IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
 
@@ -37,6 +40,8 @@ class Media_Uploader(grok.View):
         if hasattr(self.request, "REQUEST_METHOD"):
             json_view = queryMultiAdapter((self.context, self.request),
                                           name=u"api")
+            #TODO we should check errors in the creation process, and broadcast 
+            #those to the error template in js                                          
             if self.request["REQUEST_METHOD"] == "POST":
                 if getattr(self.request, "files[]", None) is not None:
                     files = self.request['files[]']
@@ -119,6 +124,8 @@ class JSON_View(grok.View):
             context_url = context_state.object_url()
 
             del_url = context_url
+            #TODO we should check errors in the delete process, and broadcast 
+            #those to the error template in js
             info = {'name': context_name,
                     'title': context_name,
                     'description':context.Description(),
@@ -141,3 +148,28 @@ class JSON_View(grok.View):
 
     def render(self):
         return self.dumps(self.getContainerInfo())
+
+
+messages = {
+    'DELETE_MSG' : _(u'delete', default=u'Delete'),
+    'START_MSG' : _(u'start', default=u'Start'),    
+}
+
+messageTemplate = "jupload={};jupload.messages = {\n%s}\n"
+
+class JSVariables(grok.View):
+    grok.context(Interface)
+    grok.name('jsvariables')
+    
+    def render(self):
+        response = self.request.response
+        response.setHeader('content-type','text/javascript;;charset=utf-8')
+
+        template = ''
+        
+        for key in messages:
+            msg = translate(messages[key], context=self.request).replace("'", "\\'")
+            template = "%s%s: '%s',\n" % (template, key, msg)
+
+        # note trimming of last comma
+        return messageTemplate % template[:-2]

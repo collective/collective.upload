@@ -12,6 +12,7 @@
 
 /*global $, window, document */
 (function ($) {
+var fileUploadErrors = {};
 $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
 
     _renderTemplate: function (func, files) {
@@ -33,7 +34,7 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
                     (file.error ? '<td class="error" colspan="2"></td>' :
                             '<td class="progress"><div class="progressbar">' +
                                 '<div style="width:0%;"></div></div></td>' +
-                                '<td class="start"><button class="btn primary">Start</button></td>'
+                                '<td class="start"><button class="btn primary">'+jupload.messages['START_MSG']+'</button></td>'
                     ) + '<td class="cancel"><button class="btn info">Cancel</button></td></tr>');
                 row.find('.name input').val(file.name);
                 row.find('.size').text(o.formatFileSize(file.size));
@@ -56,7 +57,7 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
                             '<td class="preview"></td>' +
                                 '<td class="name"><a></a><br/><p></p></td>' +
                                 '<td class="size"></td><td colspan="2"></td>'
-                    ) + '<td class="delete"><button class="btn danger">Delete</button> ' +
+                    ) + '<td class="delete"><button class="btn danger">'+jupload.messages['DELETE_MSG']+'</button> ' +
                         '<input type="checkbox" name="delete" value="1"></td></tr>');
                 row.find('.size').text(o.formatFileSize(file.size));
                 if (file.error) {

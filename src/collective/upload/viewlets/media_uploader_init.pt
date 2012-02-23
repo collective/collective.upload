@@ -2,6 +2,9 @@
     <script>
         var $_original = jQuery.noConflict();
     </script>
+    <script src="jsvariables"
+        type="text/javascript">
+    </script> 
     <script src="++resource++collective.upload/jquery.1.7.1.js"></script>
     <script>
         var j$ = $;
