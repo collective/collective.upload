@@ -13,7 +13,7 @@ An implementation of the `jQuery File Upload
 Requirements
 ------------
 
-* Plone >= 4.1.x (http://plone.org/products/plone)
+* Plone >= 4.1 (http://plone.org/products/plone)
 * five.grok >= 1.2 (http://pypi.python.org/pypi/five.grok)
 
 Features
@@ -35,14 +35,14 @@ Features
 * Integrates smoothly with Plone's UI
 * New behavior for Dexterity content types available
 
-Browser Support (tested versions)
----------------------------------
+Browsers supported
+------------------
 
-* Google Chrome - 7.0+
-* Mozilla Firefox - 3.0+
+* Google Chrome 7.0+
+* Mozilla Firefox 3.0+
 * Microsoft Internet Explorer 6.0+
-* Opera - 10.0+
-* Apple Safari - 4.0+
+* Opera 10.0+
+* Apple Safari 4.0+
 
 Drag & Drop is only supported on Google Chrome, Firefox 4.0+ and Safari 5.0+.
 
