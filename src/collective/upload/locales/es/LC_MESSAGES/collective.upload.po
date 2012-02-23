@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.upload\n"
-"POT-Creation-Date: 2012-01-13 06:55+0000\n"
-"PO-Revision-Date: 2012-01-31 22:20-0400\n"
+"POT-Creation-Date: 2012-02-23 17:42+0000\n"
+"PO-Revision-Date: 2012-02-23 15:43-0300\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: Spanish <https://github.com/collective>\n"
 "MIME-Version: 1.0\n"
@@ -15,23 +15,33 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.upload\n"
 
-#: collective/upload/templates/media_uploader.pt:42
+#: collective/upload/templates/media_uploader.pt:31
 msgid "Add files or images…"
 msgstr "Agregar archivos o imágenes…"
 
-#: collective/upload/templates/media_uploader.pt:46
+#: collective/upload/templates/media_uploader.pt:35
 msgid "Cancel upload"
 msgstr "Cancelar la carga"
 
-#: collective/upload/templates/media_uploader.pt:47
+#: collective/upload/templates/media_uploader.pt:36
 msgid "Delete selected"
 msgstr "Eliminar seleccionados"
 
-#: collective/upload/templates/media_uploader.pt:45
+#: collective/upload/templates/media_uploader.pt:48
+msgid "Progress bar"
+msgstr "Barra de progreso"
+
+#: collective/upload/templates/media_uploader.pt:34
 msgid "Start upload"
 msgstr "Comenzar la carga"
 
-#: collective/upload/templates/media_uploader.pt:60
-msgid "Progress bar"
-msgstr "Barra de progreso"
+#. Default: "Delete"
+#: collective/upload/browser.py:154
+msgid "delete"
+msgstr "Eliminar"
+
+#. Default: "Start"
+#: collective/upload/browser.py:155
+msgid "start"
+msgstr "Comenzar"
 

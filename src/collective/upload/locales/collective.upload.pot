@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-01-13 06:55+0000\n"
+"POT-Creation-Date: 2012-02-23 17:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,33 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.upload\n"
 
-#: collective/upload/templates/media_uploader.pt:42
+#: collective/upload/templates/media_uploader.pt:31
 msgid "Add files or images…"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:46
+#: collective/upload/templates/media_uploader.pt:35
 msgid "Cancel upload"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:47
+#: collective/upload/templates/media_uploader.pt:36
 msgid "Delete selected"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:45
+#: collective/upload/templates/media_uploader.pt:48
+msgid "Progress bar"
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:34
 msgid "Start upload"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:60
-msgid "Progress bar"
+#. Default: "Delete"
+#: collective/upload/browser.py:154
+msgid "delete"
+msgstr ""
+
+#. Default: "Start"
+#: collective/upload/browser.py:155
+msgid "start"
 msgstr ""
 

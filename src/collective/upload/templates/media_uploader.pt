@@ -28,7 +28,7 @@
                         <div class="cell position-0 width-full fileupload-buttonbar">
                             <div class="controls">
                                 <span class="btn success fileinput-button">
-                                    <span i18n:translate="">Add files or images</span>
+                                    <span i18n:translate="">Add files or images…</span>
                                     <input type="file" name="files[]" multiple />
                                 </span>
                                 <button type="submit" class="btn start"><span class="" i18n:translate="">Start upload</span></button>
