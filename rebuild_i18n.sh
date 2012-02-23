@@ -1,5 +1,6 @@
 #! /bin/sh
 
+PATH=bin:$PATH
 I18NDOMAIN="collective.upload"
 BASE_DIRECTORY="src/collective/upload"
 
