@@ -9,6 +9,7 @@
     <script>
         var j$ = $;
         $ = $_original;
+        jQuery = $_original;
     </script>
     <script src="++resource++collective.upload/jquery.ui.widget.js"></script>
     <script src="++resource++collective.upload/load-image.min.js"></script>
