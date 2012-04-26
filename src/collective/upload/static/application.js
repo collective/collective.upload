@@ -112,11 +112,12 @@ j$(document).ready(function() {
             );
 
             // main settings:
+            var files_re = new RegExp('(\\.|\/)('+jupload.config['extensions']+')$', 'i');
             $('#fileupload').fileupload('option', {
-                maxFileSize: 5000000,
-                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-                resizeMaxWidth: 100,
-                resizeMaxHeight: 100
+                maxFileSize: jupload.config['max_file_size'],
+                acceptFileTypes: files_re,
+                resizeMaxWidth: jupload.config['resize_max_width'],
+                resizeMaxHeight: jupload.config['resize_max_height']
             });
             // Upload server status check for browsers with CORS support:
             if ($.support.cors) {

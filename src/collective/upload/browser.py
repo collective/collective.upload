@@ -9,11 +9,13 @@ from zope.container.interfaces import INameChooser
 from zope.component import queryMultiAdapter
 from zope.interface import Interface
 from zope.i18n import translate
+from zope.component import getUtility
 
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.behaviors import  IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
+from plone.registry.interfaces import IRegistry
 
 from collective.upload import _
 
@@ -40,8 +42,8 @@ class Media_Uploader(grok.View):
         if hasattr(self.request, "REQUEST_METHOD"):
             json_view = queryMultiAdapter((self.context, self.request),
                                           name=u"api")
-            #TODO we should check errors in the creation process, and broadcast 
-            #those to the error template in js                                          
+            #TODO we should check errors in the creation process, and broadcast
+            #those to the error template in js
             if self.request["REQUEST_METHOD"] == "POST":
                 if getattr(self.request, "files[]", None) is not None:
                     files = self.request['files[]']
@@ -73,14 +75,19 @@ class Media_Uploader(grok.View):
                 portal_type = 'File'
                 if content_type in IMAGE_MIMETYPES:
                     portal_type = 'Image'
-                try:
-                    self.context.invokeFactory(portal_type, id=id_name, file=item, 
-                        description=description[0])
-                    self.context[id_name].reindexObject()
-                    newfile = self.context[id_name]
-                    loaded.append(newfile)
-                except:
-                    pass
+                name_index = 0
+                while name_index < 100:
+                    try:
+                        self.context.invokeFactory(portal_type, id=id_name, file=item,
+                            description=description[0])
+                        self.context[id_name].reindexObject()
+                        newfile = self.context[id_name]
+                        loaded.append(newfile)
+                        name_index = 100
+                    except:
+                        pass
+                    name_index = name_index + 1
+                    id_name = id_name + '-' + str(name_index)
             if loaded:
                 return loaded
             return False
@@ -92,8 +99,8 @@ class JSON_View(grok.View):
     grok.require('cmf.AddPortalContent')
 
     json_var = {'name': 'File-Name.jpg',
-                'title':'',
-                'description':'',
+                'title': '',
+                'description': '',
                 'size': 999999,
                 'url': '\/\/nohost.org',
                 'thumbnail_url': '//nohost.org',
@@ -124,14 +131,14 @@ class JSON_View(grok.View):
             context_url = context_state.object_url()
 
             del_url = context_url
-            #TODO we should check errors in the delete process, and broadcast 
+            #TODO we should check errors in the delete process, and broadcast
             #those to the error template in js
             info = {'name': context_name,
                     'title': context_name,
-                    'description':context.Description(),
-                    'url':  context_url,
+                    'description': context.Description(),
+                    'url': context_url,
                     'size': context.size(),
-                    'delete_url':  del_url,
+                    'delete_url': del_url,
                     'delete_type': 'DELETE',
                     }
             if context.Type() == 'Image':
@@ -151,25 +158,37 @@ class JSON_View(grok.View):
 
 
 messages = {
-    'DELETE_MSG' : _(u'delete', default=u'Delete'),
-    'START_MSG' : _(u'start', default=u'Start'),    
+    'DELETE_MSG': _(u'delete', default=u'Delete'),
+    'START_MSG': _(u'start', default=u'Start'),
 }
 
-messageTemplate = "jupload={};jupload.messages = {\n%s}\n"
+messageTemplate = "jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n"
+
 
 class JSVariables(grok.View):
     grok.context(Interface)
     grok.name('jsvariables')
-    
+
     def render(self):
         response = self.request.response
-        response.setHeader('content-type','text/javascript;;charset=utf-8')
+        response.setHeader('content-type', 'text/javascript;;charset=utf-8')
 
         template = ''
-        
+
         for key in messages:
             msg = translate(messages[key], context=self.request).replace("'", "\\'")
             template = "%s%s: '%s',\n" % (template, key, msg)
 
         # note trimming of last comma
-        return messageTemplate % template[:-2]
+        return messageTemplate % (template[:-2], self.registry_config())
+
+    def registry_config(self):
+        config = {}
+        registry = getUtility(IRegistry)
+        ext = registry['collective.upload.interfaces.IUploadSettings.upload_extensions']
+        config['extensions'] = str(ext.replace(' ', '').replace(',', '|'))
+        config['max_file_size'] = registry['collective.upload.interfaces.IUploadSettings.max_file_size']
+        config['resize_max_width'] = registry['collective.upload.interfaces.IUploadSettings.resize_max_width']
+        config['resize_max_height'] = registry['collective.upload.interfaces.IUploadSettings.resize_max_height']
+
+        return str(config)
