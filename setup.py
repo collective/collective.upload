@@ -14,7 +14,7 @@ setup(name='collective.upload',
       description="An implementation of the jQuery File Upload Plugin for Plone.",
       long_description=long_description,
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.1",
