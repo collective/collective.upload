@@ -11,8 +11,6 @@
     <grok:grok package="." />
     <i18n:registerTranslations directory="locales" />
     <include file="behaviors.zcml" />
-    <include package="plone.app.registry" />    
-
 
     <genericsetup:registerProfile
         name="default"
@@ -36,6 +34,6 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.UploadSettingsControlPanel"
         permission="cmf.ManagePortal"
-        />        
+        />
 
 </configure>

@@ -6,7 +6,7 @@
     purge="False">
 
     <configlet
-        title="Upload"
+        title="Upload Settings"
         action_id="upload"
         appId="collective.upload"
         category="Products"
