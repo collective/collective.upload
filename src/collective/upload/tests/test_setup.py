@@ -43,7 +43,3 @@ class UninstallTest(unittest.TestCase):
     def test_browserlayer_uninstalled(self):
         layers = [l.getName() for l in registered_layers()]
         self.assertFalse('IUploadBrowserLayer' in layers)
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

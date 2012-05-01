@@ -46,7 +46,3 @@ class ViewletTest(unittest.TestCase):
         manager.update()
         my_viewlet = [v for v in manager.viewlets if v.__name__ == 'upload.init']
         self.assertEqual(len(my_viewlet), 1)
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
