@@ -11,7 +11,9 @@ long_description = open("README.rst").read() + "\n" + \
 
 setup(name='collective.upload',
       version=version,
-      description="An implementation of the jQuery File Upload Plugin for Plone.",
+      description="File upload widget with multiple file selection, "
+                  "drag&drop support, progress bars, client-side image "
+                  "resizing and preview images.",
       long_description=long_description,
       classifiers=[
         "Development Status :: 4 - Beta",
@@ -27,7 +29,7 @@ setup(name='collective.upload',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='plone jquery upload',
-      author='Silvestre Huens, Joaquín Rosales',
+      author='Silvestre Huens',
       author_email='s.huens@gmail.com',
       url='https://github.com/collective/collective.upload',
       license='GPL',
