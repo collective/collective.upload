@@ -4,12 +4,10 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0dev'
-long_description = "%s\n%s\n%s\n%s" % (
-                        open("README.rst").read(),
-                        open(os.path.join("docs", "INSTALL.txt")).read(),
-                        open(os.path.join("docs", "CREDITS.txt")).read(),
-                        open(os.path.join("docs", "HISTORY.txt")).read(),
-                        )
+long_description = open("README.rst").read() + "\n" + \
+                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "HISTORY.txt")).read()
 
 setup(name='collective.upload',
       version=version,
