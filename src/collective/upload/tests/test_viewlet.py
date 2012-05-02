@@ -27,22 +27,15 @@ class ViewletTest(unittest.TestCase):
         self.portal.invokeFactory('Folder', 'test-folder')
         setRoles(self.portal, TEST_USER_ID, ['Member'])
         self.folder = self.portal['test-folder']
+        # HACK: our Folder object "has" the behavior just for testing purposes
+        alsoProvides(self.folder, IMultipleUpload)
 
     def test_viewlet_is_present(self):
-        # FIXME: the viewlet is only present in Dexterity content types with
-        # IMultipleUpload behavior enabled; we need to define a content type,
-        # enable the behavior and test if the viewlet is present on it
-        # http://collective-docs.readthedocs.org/en/latest/views/viewlets.html#finding-viewlets-programmatically
-        request = self.request
-        alsoProvides(request, IMultipleUpload)
-        context = self.folder
-
-        view = View(context, request)
-        manager_name = 'plone.portalfooter'
-        manager = queryMultiAdapter((context, request, view),
-                                    IViewletManager, manager_name, default=None)
-        self.assertNotEqual(manager, None)
+        view = View(self.folder, self.request)
+        manager = queryMultiAdapter((self.folder, self.request, view),
+                                    IViewletManager, 'plone.portalfooter')
+        self.assertTrue(manager is not None)
 
         manager.update()
-        my_viewlet = [v for v in manager.viewlets if v.__name__ == 'upload.init']
-        self.assertEqual(len(my_viewlet), 1)
+        viewlet = [v for v in manager.viewlets if v.__name__ == 'upload.init']
+        self.assertEqual(len(viewlet), 1)
