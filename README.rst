@@ -36,6 +36,9 @@ Features
   supporting the required HTML5 APIs
 * The implementation is based on open standards like HTML5 and JavaScript and
   requires no additional browser plugins
+* Configlet configuration for Client-side image resizing
+* Configlet configuration for maximum allowed file size
+* Configlet configuration for accept file types
 
 Browsers supported
 ------------------
@@ -59,13 +62,18 @@ We want to implement these features at some point in the future:
 * Smooth integration with Plone's UI
 * Refactoring of widget's UI
 * HTML file upload form fallback
-* Configlet for more plugin options
-* Client-side image resizing
 * Cross-site file uploads
 * Resume of aborted uploads with browsers supporting the Blob API
 * Upload of large files in smaller chunks with browsers supporting the Blob
   API
 * Support for upload content on Archetypes-based content types
+* Configuration to enable automatic uploads
+* Server side image resizing
+* Server side file type constraint
+* AMD support
+* Widget for allowed extensions configlet
+* complete i18n support
+
 
 Why do we need another multiple file upload package?
 ----------------------------------------------------
