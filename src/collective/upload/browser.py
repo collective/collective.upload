@@ -33,6 +33,9 @@ class Folder_Contents(grok.View, FolderContentsView):
 
 # TODO: convert into a folder action: Upload files and images
 class Media_Uploader(grok.View):
+    """ Handler for the upload process, creation of files, can set a title or
+        description, the place to touch if you need extra data saved.
+    """
     grok.context(IMultipleUpload)
     grok.require('cmf.AddPortalContent')
 
@@ -42,8 +45,8 @@ class Media_Uploader(grok.View):
         if hasattr(self.request, "REQUEST_METHOD"):
             json_view = queryMultiAdapter((self.context, self.request),
                                           name=u"api")
-            #TODO we should check errors in the creation process, and broadcast
-            #those to the error template in js
+            # TODO: we should check errors in the creation process, and
+            # broadcast those to the error template in JS
             if self.request["REQUEST_METHOD"] == "POST":
                 if getattr(self.request, "files[]", None) is not None:
                     files = self.request['files[]']
@@ -94,6 +97,9 @@ class Media_Uploader(grok.View):
 
 
 class JSON_View(grok.View):
+    """ JSON converter; the jQuery plugin requires this kind of response,
+    represent the metadata info of the file.
+    """
     grok.context(Interface)
     grok.name('api')
     grok.require('cmf.AddPortalContent')
@@ -131,8 +137,8 @@ class JSON_View(grok.View):
             context_url = context_state.object_url()
 
             del_url = context_url
-            #TODO we should check errors in the delete process, and broadcast
-            #those to the error template in js
+            # TODO: we should check errors in the delete process, and
+            # broadcast those to the error template in JS
             info = {'name': context_name,
                     'title': context_name,
                     'description': context.Description(),
@@ -160,12 +166,15 @@ class JSON_View(grok.View):
 messages = {
     'DELETE_MSG': _(u'delete', default=u'Delete'),
     'START_MSG': _(u'start', default=u'Start'),
-}
+    }
 
 messageTemplate = "jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n"
 
 
 class JSVariables(grok.View):
+    """ This method generates global JavaScript variables, for i18n and plugin
+    configuration.
+    """
     grok.context(Interface)
     grok.name('jsvariables')
 

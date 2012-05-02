@@ -98,8 +98,62 @@ we want to implement it.
 Also, we strongly believe Adobe Flash must die and Microsoft must stop
 pretending Internet Explorer can continue ignoring web standards forever.
 
+Developer's notes
+-----------------
+
+In the folder "static" you are going to find the JavaScript used in this
+project; here a list with the file name and function:
+
+applications.js
+  The main file; here you will find 2 important things: plugin initialization
+  and inheritance of basic UI code with custom templates (e.g. every new file
+  dropped in the file upload widget is going to generate a new row, here is
+  the code for that).
+
+media-upload-init-behavior.js
+  When you apply a behavior to a content type, this script is loaded in a
+  viewlet and creates a new item in the "add new" menu.
+
+`canvas-to-blob.min.js`_
+  Converts canvas elements into Blob objects, is a polyfill for the standard
+  HTML canvas.toBlob method.
+
+`load-image.min.js`_
+  Load Image is a function to load images provided as File or Blob objects or
+  via URL.
+
+jquery.1.7.1.js
+  The File Upload plugin is compatible with jQuery 1.7+; Plone has jQuery 1.4,
+  sadly there is no easy way to upgrade the jquery version, so we are doing a
+  no-conflict trick and uploading the version required just for this.
+
+jquery.fileupload.js
+  The most basic version of the File Upload plugin, with no UI.
+
+jquery.fileupload-ip.js
+  Extends the basic fileupload widget with image processing functionality.
+
+jquery.fileupload-ui.js
+  Extends the IP version, adds complete user interface interaction.
+
+jquery.iframe-transport.js
+  Used for cross-site iframe transport uploads a way of degradation for the
+  XHR upload.
+
+cors/jquery.xdr-transport.js
+  jQuery XDomainRequest Transport plugin; enables cross-domain AJAX requests
+  (GET and POST only) (not really used, its just there if you need to
+  implement that kind of functionality).
+
+vendor/jquery.ui.widget.js
+  jQuery UI widget factory; very lightweight, flexible base for building
+  complex, statefull plugins with a consistent API. It is designed for general
+  consumption by developers who want to create object-oriented components
+  without reinventing common infrastructure.
+
 .. _`collective.uploadify`: http://pypi.python.org/pypi/collective.uploadify
 .. _`collective.quickupload`: http://pypi.python.org/pypi/collective.quickupload
 .. _`Extended browser support information`: https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support
-
+.. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
+.. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
 
