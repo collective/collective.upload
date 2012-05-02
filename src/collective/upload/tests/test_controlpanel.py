@@ -66,7 +66,7 @@ class RegistryTestCase(unittest.TestCase):
     def test_upload_extensions_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'upload_extensions'))
         self.assertEqual(self.settings.upload_extensions,
-                         )
+                         config.UPLOAD_EXTENSIONS)
 
     def test_max_file_size_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'max_file_size'))
