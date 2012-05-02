@@ -8,6 +8,6 @@ UPLOAD_EXTENSIONS = u'gif, jpeg, jpg, png'
 # XXX: that should be big enough
 MAX_FILE_SIZE = 10 * 1024  # 10MB
 
-# XXX: the following values are for images of 10 MP
+# XXX: the following values are for images of aprox 10 MP
 RESIZE_MAX_WIDTH = 3872
-RESIZE_MAX_HEIGHT = 2592
+RESIZE_MAX_HEIGHT = 3872
