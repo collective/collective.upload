@@ -74,7 +74,7 @@ We want to implement these features at some point in the future:
 - Enable/disable automatic uploads
 - Server side image resizing
 - Server side file type constraint
-- AMD support
+- Asynchronous Module Definition (`AMD`_) support
 - Widget for "allowed extensions" option
 
 Why do we need another multiple file upload package?
@@ -156,4 +156,5 @@ vendor/jquery.ui.widget.js
 .. _`Extended browser support information`: https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support
 .. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
 .. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
+.. _`AMD`: https://github.com/amdjs/amdjs-api/wiki/AMD
 
