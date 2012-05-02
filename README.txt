@@ -10,10 +10,10 @@ Overview
 File upload widget with multiple file selection, drag&drop support, progress
 bars, client-side image resizing and preview images.
 
-- In the current state, the implementation is ONLY available like a Dexterity
-  behavior.
+- **In the current state, the implementation is ONLY available like a behavior
+  for Dexterity-based containers**.
 - The action to launch the overlay is located in the "Add new…" menu and is
-  inserted using JavaScript, if JavaScript is deactivated, the plugin is not
+  inserted using JavaScript; if JavaScript is deactivated, the plugin is not
   going to work.
 
 Features
