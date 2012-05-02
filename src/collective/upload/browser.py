@@ -11,7 +11,7 @@ from zope.interface import Interface
 from zope.i18n import translate
 from zope.component import getUtility
 
-from collective.upload.interfaces import IUploadBrowserLayer
+from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 from collective.upload.behaviors import  IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
@@ -194,10 +194,10 @@ class JSVariables(grok.View):
     def registry_config(self):
         config = {}
         registry = getUtility(IRegistry)
-        ext = registry['collective.upload.interfaces.IUploadSettings.upload_extensions']
-        config['extensions'] = str(ext.replace(' ', '').replace(',', '|'))
-        config['max_file_size'] = registry['collective.upload.interfaces.IUploadSettings.max_file_size']
-        config['resize_max_width'] = registry['collective.upload.interfaces.IUploadSettings.resize_max_width']
-        config['resize_max_height'] = registry['collective.upload.interfaces.IUploadSettings.resize_max_height']
+        settings = registry.forInterface(IUploadSettings)
+        config['extensions'] = str(settings.upload_extensions.replace(' ', '').replace(',', '|'))
+        config['max_file_size'] = settings.max_file_size
+        config['resize_max_width'] = settings.resize_max_width
+        config['resize_max_height'] = settings.resize_max_height
 
         return str(config)
