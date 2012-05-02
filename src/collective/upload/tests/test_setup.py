@@ -34,16 +34,12 @@ class UninstallTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.qi = self.portal['portal_quickinstaller']
+        self.qi.uninstallProducts(products=[PROJECTNAME])
 
     def test_uninstalled(self):
-        qi = getattr(self.portal, 'portal_quickinstaller')
-        qi.uninstallProducts(products=[PROJECTNAME])
-        self.assertFalse(qi.isProductInstalled(PROJECTNAME))
+        self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
     def test_browserlayer_uninstalled(self):
         layers = [l.getName() for l in registered_layers()]
         self.assertFalse('IUploadBrowserLayer' in layers)
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

@@ -4,17 +4,19 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0dev'
-long_description = open("README.rst").read() + "\n" + \
+long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
 
 setup(name='collective.upload',
       version=version,
-      description="An implementation of the jQuery File Upload Plugin for Plone.",
+      description="File upload widget with multiple file selection, "
+                  "drag&drop support, progress bars, client-side image "
+                  "resizing and preview images.",
       long_description=long_description,
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.1",
@@ -27,7 +29,7 @@ setup(name='collective.upload',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='plone jquery upload',
-      author='Silvestre Huens, Joaquín Rosales',
+      author='Silvestre Huens',
       author_email='s.huens@gmail.com',
       url='https://github.com/collective/collective.upload',
       license='GPL',

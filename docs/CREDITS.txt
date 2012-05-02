@@ -1,12 +1,14 @@
 Contributors
 ------------
 
-* Joaquín Rosales (globojorro@gmail.com) - idea
-
-* Héctor Velarde (hector.velarde@gmail.com)
-
-* Silvestre Huens (s.huens@gmail.com)
-
-* Sebastian Tschan (blueimp.net) - jQuery File Upload Plugin
+- Joaquín Rosales
+- Héctor Velarde
+- Silvestre Huens
 
 Development sponsored by Open Multimedia.
+
+collective.upload is an implementation of the `jQuery File Upload`_ plugin for
+Plone.
+
+.. _`jQuery File Upload`: http://blueimp.github.com/jQuery-File-Upload/
+
