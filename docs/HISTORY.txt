@@ -4,7 +4,7 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- passing portal site to namechooser.
 
 
 1.0b1 (2012-05-02)
