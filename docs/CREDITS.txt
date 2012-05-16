@@ -1,9 +1,10 @@
 Contributors
 ------------
 
+- Silvestre Huens
 - Joaquín Rosales
 - Héctor Velarde
-- Silvestre Huens
+- Gonzalo Almeida
 
 Development sponsored by Open Multimedia.
 
