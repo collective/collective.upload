@@ -10,6 +10,7 @@ from zope.component import queryMultiAdapter
 from zope.interface import Interface
 from zope.i18n import translate
 from zope.component import getUtility
+from zope.app.component.hooks import getSite
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 from collective.upload.behaviors import  IMultipleUpload
@@ -66,15 +67,15 @@ class Media_Uploader(grok.View):
         namechooser = INameChooser(self.context)
         if not isinstance(files, list):
             files = [files]
-
+        portal = getSite()
         for item in files:
             if item.filename:
                 content_type = item.headers.get('Content-Type')
                 id_name = ''
                 if title:
-                    id_name = namechooser.chooseName(title[0], self.context)
+                    id_name = namechooser.chooseName(title[0], portal)
                 else:
-                    id_name = namechooser.chooseName(item.filename, self.context)
+                    id_name = namechooser.chooseName(item.filename, portal)
                 portal_type = 'File'
                 if content_type in IMAGE_MIMETYPES:
                     portal_type = 'Image'
