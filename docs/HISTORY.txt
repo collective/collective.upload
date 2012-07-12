@@ -4,7 +4,7 @@ Changelog
 1.0b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Fixed browser layer interface. [hvelarde]
 
 
 1.0b2 (2012-05-16)

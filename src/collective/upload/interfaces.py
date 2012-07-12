@@ -3,13 +3,11 @@
 from zope import schema
 from zope.interface import Interface
 
-from plone.theme.interfaces import IDefaultPloneLayer
-
 from collective.upload import _
 from collective.upload import config
 
 
-class IUploadBrowserLayer(IDefaultPloneLayer):
+class IUploadBrowserLayer(Interface):
     """A marker interface for the theme layer.
     """
 
