@@ -4,15 +4,22 @@ Installation
 To enable this product in a buildout-based installation:
 
 1. Edit your buildout.cfg and add ``collective.upload`` to the list of eggs to
-   install ::
+   install::
 
     [buildout]
     ...
     eggs =
         collective.upload
 
-2. You may need to extend a five.grok known good set (KGS) to make sure that
-   you get the right versions of the packages that make up five.grok ::
+2. You may need to pin the right versions of the jQuery and jQuery Tools
+   packages::
+
+    [versions]
+    plone.app.jquery = 1.7.2
+    plone.app.jquerytools = 1.4
+
+3. You may need to extend a five.grok known good set (KGS) to make sure that
+   you get the right versions of the packages that make up five.grok::
 
     [buildout]
     ...
@@ -24,7 +31,7 @@ take care of updating your system.
 
 Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
-Check the box next to ''collective.upload'' and click the 'Activate' button.
+Check the box next to ``collective.upload`` and click the 'Activate' button.
 
 Note: You may have to empty your browser cache and save your resource
 registries in order to see the effects of the product installation.
