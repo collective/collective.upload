@@ -4,8 +4,8 @@ collective.upload
 
 .. contents:: Table of Contents
 
-Overview
---------
+Life, the Universe, and Everything
+----------------------------------
 
 File upload widget with multiple file selection, drag&drop support, progress
 bars, client-side image resizing and preview images.
@@ -151,10 +151,18 @@ vendor/jquery.ui.widget.js
   consumption by developers who want to create object-oriented components
   without reinventing common infrastructure.
 
+Mostly Harmless
+---------------
+
+.. image:: https://secure.travis-ci.org/collective/collective.upload.png
+    :target: http://travis-ci.org/collective/collective.upload
+
+Have an idea? Found a bug? Let us know by `opening a support ticket`_.
+
+.. _`opening a support ticket`: https://github.com/collective/collective.upload/issues
 .. _`collective.uploadify`: http://pypi.python.org/pypi/collective.uploadify
 .. _`collective.quickupload`: http://pypi.python.org/pypi/collective.quickupload
 .. _`Extended browser support information`: https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support
 .. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
 .. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
 .. _`AMD`: https://github.com/amdjs/amdjs-api/wiki/AMD
-

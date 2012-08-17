@@ -1,5 +1,8 @@
-Contributors
-------------
+Share and Enjoy
+---------------
+
+collective.upload would not have been possible without the contribution of the
+following people:
 
 - Silvestre Huens
 - Joaquín Rosales
