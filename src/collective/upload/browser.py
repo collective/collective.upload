@@ -5,12 +5,18 @@ import json
 from Acquisition import aq_inner
 
 from five import grok
+
 from zope.container.interfaces import INameChooser
 from zope.component import queryMultiAdapter
+
+from zope.event import notify
+
 from zope.interface import Interface
 from zope.i18n import translate
 from zope.component import getUtility
 from zope.app.component.hooks import getSite
+
+from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 from collective.upload.behaviors import  IMultipleUpload
@@ -86,6 +92,7 @@ class Media_Uploader(grok.View):
                             description=description[0])
                         self.context[id_name].reindexObject()
                         newfile = self.context[id_name]
+                        notify(ObjectModifiedEvent(newfile))
                         loaded.append(newfile)
                         name_index = 100
                     except:
