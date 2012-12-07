@@ -19,7 +19,7 @@ from zope.app.component.hooks import getSite
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-from collective.upload.behaviors import  IMultipleUpload
+from collective.upload.behaviors import IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
@@ -88,8 +88,8 @@ class Media_Uploader(grok.View):
                 name_index = 0
                 while name_index < 100:
                     try:
-                        self.context.invokeFactory(portal_type, id=id_name, file=item,
-                            description=description[0])
+                        self.context.invokeFactory(
+                            portal_type, id=id_name, file=item, description=description[0])
                         self.context[id_name].reindexObject()
                         newfile = self.context[id_name]
                         notify(ObjectModifiedEvent(newfile))
@@ -139,8 +139,8 @@ class JSON_View(grok.View):
 
         info = ''
         if hasattr(context, 'size'):
-            context_state = queryMultiAdapter((context, self.request),
-                                            name=u'plone_context_state')
+            context_state = queryMultiAdapter(
+                (context, self.request), name=u'plone_context_state')
             context_name = context_state.object_title()
             context_url = context_state.object_url()
 
@@ -174,7 +174,7 @@ class JSON_View(grok.View):
 messages = {
     'DELETE_MSG': _(u'delete', default=u'Delete'),
     'START_MSG': _(u'start', default=u'Start'),
-    }
+}
 
 messageTemplate = "jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n"
 

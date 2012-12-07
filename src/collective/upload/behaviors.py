@@ -1,4 +1,5 @@
-from zope.interface import alsoProvides, Interface
+from zope.interface import Interface
+
 
 class IMultipleUpload(Interface):
     """ just the behavior interface """
