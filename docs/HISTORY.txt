@@ -8,6 +8,12 @@ Because you have to know where your towel is.
 
 - Tested compatibility with Plone 4.3. [hvelarde]
 
+- Update package documentation. [hvelarde]
+
+- Fix package license to GPLv2. [hvelarde]
+
+- Package will now support Plone 4.2+ only. [hvelarde]
+
 - Fixed browser layer interface. [hvelarde]
 
 
