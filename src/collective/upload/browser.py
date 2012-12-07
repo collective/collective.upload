@@ -14,7 +14,7 @@ from zope.event import notify
 from zope.interface import Interface
 from zope.i18n import translate
 from zope.component import getUtility
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 
 from zope.lifecycleevent import ObjectModifiedEvent
 
