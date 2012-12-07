@@ -1,6 +1,5 @@
 #! /bin/sh
 
-PATH=bin:$PATH
 I18NDOMAIN="collective.upload"
 BASE_DIRECTORY="src/collective/upload"
 
@@ -15,4 +14,4 @@ for po in ${BASE_DIRECTORY}/locales/*/LC_MESSAGES/${I18NDOMAIN}.po; do
 done
 
 # Report of errors and suspect untranslated messages
-i18ndude find-untranslated ${BASE_DIRECTORY}
+i18ndude find-untranslated -n ${BASE_DIRECTORY}
