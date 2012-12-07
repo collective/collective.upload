@@ -4,6 +4,8 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0b3.dev0'
+description = "File upload widget with multiple file selection, drag&drop \
+support, progress bars, client-side image resizing and preview images."
 long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
@@ -11,9 +13,7 @@ long_description = open("README.txt").read() + "\n" + \
 
 setup(name='collective.upload',
       version=version,
-      description="File upload widget with multiple file selection, "
-                  "drag&drop support, progress bars, client-side image "
-                  "resizing and preview images.",
+      description=description,
       long_description=long_description,
       classifiers=[
         "Development Status :: 4 - Beta",
@@ -50,7 +50,11 @@ setup(name='collective.upload',
         'z3c.jbot',
         ],
       extras_require={
-        'test': ['plone.app.testing'],
+        'test': [
+          'plone.app.testing',
+          'robotsuite',
+          'robotframework-selenium2library',
+          ],
         },
       entry_points="""
       [z3c.autoinclude.plugin]
