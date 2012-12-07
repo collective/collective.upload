@@ -15,6 +15,8 @@ from collective.upload.config import PROJECTNAME
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.testing import INTEGRATION_TESTING
 
+BASE_REGISTRY = 'collective.upload.controlpanel.IuploadSettings.%s'
+
 
 class ControlPanelTestCase(unittest.TestCase):
 
@@ -83,18 +85,16 @@ class RegistryTestCase(unittest.TestCase):
         self.assertEqual(self.settings.resize_max_height,
                          config.RESIZE_MAX_HEIGHT)
 
-    def get_record(self, record):
-        """ Helper function; it raises KeyError if the record is not in the
-        registry.
-        """
-        prefix = 'collective.upload.controlpanel.IuploadSettings.'
-        return self.registry[prefix + record]
-
     def test_records_removed_on_uninstall(self):
-        # XXX: I haven't found a better way to test this; anyone?
         qi = self.portal['portal_quickinstaller']
-        qi.uninstallProducts(products=[PROJECTNAME])
-        self.assertRaises(KeyError, self.get_record, 'upload_extensions')
-        self.assertRaises(KeyError, self.get_record, 'max_file_size')
-        self.assertRaises(KeyError, self.get_record, 'resize_max_width')
-        self.assertRaises(KeyError, self.get_record, 'resize_max_height')
+        qi.uninstallProducts(products=[config.PROJECTNAME])
+
+        records = [
+            BASE_REGISTRY % 'upload_extensions',
+            BASE_REGISTRY % 'max_file_size',
+            BASE_REGISTRY % 'resize_max_width',
+            BASE_REGISTRY % 'resize_max_height',
+        ]
+
+        for r in records:
+            self.assertNotIn(r, self.registry)
