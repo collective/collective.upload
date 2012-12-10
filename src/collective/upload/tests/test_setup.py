@@ -35,11 +35,21 @@ class UninstallTest(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.qi = self.portal['portal_quickinstaller']
-        self.qi.uninstallProducts(products=[PROJECTNAME])
+
+    def test_product_is_installed(self):
+        """ Validate that our products GS profile has been run and the product
+            installed
+        """
+        pid = 'collective.upload'
+        installed = [p['id'] for p in self.qi.listInstalledProducts()]
+        self.assertTrue(pid in installed,
+                        'package appears not to have been installed')
 
     def test_uninstalled(self):
+        self.qi.uninstallProducts(products=[PROJECTNAME])
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
     def test_browserlayer_uninstalled(self):
+        self.qi.uninstallProducts(products=[PROJECTNAME])
         layers = [l.getName() for l in registered_layers()]
         self.assertFalse('IUploadBrowserLayer' in layers)

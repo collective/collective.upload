@@ -111,6 +111,7 @@ class JSON_View(grok.View):
     grok.context(Interface)
     grok.name('api')
     grok.require('cmf.AddPortalContent')
+    grok.layer(IUploadBrowserLayer)
 
     json_var = {'name': 'File-Name.jpg',
                 'title': '',
@@ -185,6 +186,7 @@ class JSVariables(grok.View):
     """
     grok.context(Interface)
     grok.name('jsvariables')
+    grok.layer(IUploadBrowserLayer)
 
     def render(self):
         response = self.request.response

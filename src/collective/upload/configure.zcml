@@ -28,6 +28,14 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+	<genericsetup:registerProfile
+      	name="testfixture"
+      	title="collective.upload: testfixture"
+      	directory="profiles/testfixture"
+      	description="This fixture creates generic content to be used in tests."
+      	provides="Products.GenericSetup.interfaces.EXTENSION"
+      	/>
+
     <!-- Control panel -->
     <browser:page
         name="upload-settings"
