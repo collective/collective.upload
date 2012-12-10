@@ -8,6 +8,12 @@
     i18n_domain="collective.upload">
 
     <includeDependencies package="." />
+
+    <permission
+        id="collective.upload.UploadFiles"
+        title="collective.upload: Upload Files"
+        />
+	
     <grok:grok package="." />
     <i18n:registerTranslations directory="locales" />
     <include file="behaviors.zcml" />
