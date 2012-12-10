@@ -14,10 +14,13 @@ class Fixture(PloneSandboxLayer):
         # Load ZCML
         import collective.upload
         self.loadZCML(package=collective.upload)
+        import plone.app.dexterity
+        self.loadZCML(package=plone.app.dexterity)
 
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
         self.applyProfile(portal, 'collective.upload:default')
+        self.applyProfile(portal, 'collective.upload:testfixture')
 
 FIXTURE = Fixture()
 INTEGRATION_TESTING = IntegrationTesting(

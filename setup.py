@@ -53,6 +53,7 @@ setup(name='collective.upload',
       extras_require={
         'test': [
           'plone.app.testing',
+          'plone.app.dexterity',
           'robotsuite',
           'robotframework-selenium2library',
           ],

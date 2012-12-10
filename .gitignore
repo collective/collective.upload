@@ -9,3 +9,10 @@ downloads/
 eggs/
 parts/
 var/
+.project
+.pydevproject
+.settings/
+Makefile.local
+coverage/
+local.cfg
+src/collective.*

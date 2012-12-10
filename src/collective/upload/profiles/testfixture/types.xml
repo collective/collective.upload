@@ -1,0 +1,3 @@
+<object name="portal_types">
+	<object name="test_upload_type" meta_type="Dexterity FTI" />
+</object>
