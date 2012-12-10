@@ -44,7 +44,7 @@ class Media_Uploader(grok.View):
         description, the place to touch if you need extra data saved.
     """
     grok.context(IMultipleUpload)
-    grok.require('cmf.AddPortalContent')
+    grok.require('collective.upload.UploadFiles')
 
     files = []
 
