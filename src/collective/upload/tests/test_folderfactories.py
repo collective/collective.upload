@@ -2,15 +2,9 @@
 
 import unittest2 as unittest
 
-from zope.component import queryMultiAdapter
-from zope.interface import alsoProvides
-from zope.viewlet.interfaces import IViewletManager
-
 from plone.testing.z2 import Browser
 from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
-from plone.app.testing import setRoles
 
-from collective.upload.behaviors import IMultipleUpload
 from collective.upload.testing import FUNCTIONAL_TESTING
 
 

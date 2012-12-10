@@ -44,7 +44,7 @@ class UninstallTest(unittest.TestCase):
         installed = [p['id'] for p in self.qi.listInstalledProducts()]
         self.assertTrue(pid in installed,
                         'package appears not to have been installed')
-        
+
     def test_uninstalled(self):
         self.qi.uninstallProducts(products=[PROJECTNAME])
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))

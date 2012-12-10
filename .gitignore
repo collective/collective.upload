@@ -16,3 +16,4 @@ Makefile.local
 coverage/
 local.cfg
 src/collective.*
+node_modules/
