@@ -5,7 +5,7 @@ SHELL = /bin/sh
 
 options = -N -q -t 3
 src = src/collective/upload/
-minimum_coverage = 59
+minimum_coverage = 69
 pep8_ignores = E501
 css_ignores = ! -name bootstrap\* ! -name jquery\*
 js_ignores = ! -name bootstrap\* ! -name jquery\*
