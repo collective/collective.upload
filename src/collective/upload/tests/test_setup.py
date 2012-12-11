@@ -22,6 +22,13 @@ class InstallTest(unittest.TestCase):
         qi = getattr(self.portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
+    def test_add_permission(self):
+        permission = 'collective.upload: Upload Files'
+        roles = self.portal.rolesOfPermission(permission)
+        roles = [r['name'] for r in roles if r['selected']]
+        expected = ['Contributor', 'Manager', 'Owner', 'Site Administrator']
+        self.assertListEqual(roles, expected)
+
     def test_browserlayer_installed(self):
         layers = [l.getName() for l in registered_layers()]
         self.assertTrue('IUploadBrowserLayer' in layers)
