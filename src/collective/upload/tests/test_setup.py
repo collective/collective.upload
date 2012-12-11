@@ -43,15 +43,6 @@ class UninstallTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.qi = self.portal['portal_quickinstaller']
 
-    def test_product_is_installed(self):
-        """ Validate that our products GS profile has been run and the product
-            installed
-        """
-        pid = 'collective.upload'
-        installed = [p['id'] for p in self.qi.listInstalledProducts()]
-        self.assertTrue(pid in installed,
-                        'package appears not to have been installed')
-
     def test_uninstalled(self):
         self.qi.uninstallProducts(products=[PROJECTNAME])
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
