@@ -25,8 +25,7 @@ from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
 
 from collective.upload import _
-
-IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
+from collective.upload.config import IMAGE_MIMETYPES
 
 grok.templatedir('templates')
 

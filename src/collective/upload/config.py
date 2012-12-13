@@ -2,6 +2,7 @@
 
 PROJECTNAME = 'collective.upload'
 
+IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
 # XXX: we don't want to put limits here; that should be user configurable
 UPLOAD_EXTENSIONS = u'gif, jpeg, jpg, png'
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB; that should be big enough
