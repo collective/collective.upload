@@ -143,6 +143,11 @@ vendor/jquery.ui.widget.js
   consumption by developers who want to create object-oriented components
   without reinventing common infrastructure.
 
+Roadmap
+---------------
+
+* Check if constraints are in place before adding the menu item
+
 Mostly Harmless
 ---------------
 
