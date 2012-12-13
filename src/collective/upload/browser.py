@@ -43,7 +43,7 @@ class Media_Uploader(grok.View):
     """ Handler for the upload process, creation of files, can set a title or
         description, the place to touch if you need extra data saved.
     """
-    grok.context(IMultipleUpload)
+    grok.context(Interface)  # XXX: what's the interface of folderish objects?
     grok.require('collective.upload.UploadFiles')
 
     files = []
