@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<object name="portal_javascripts">
+
+  <!-- Global vars -->
+  <javascript id="jsvariables"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+  <javascript id="++resource++collective.upload/vendor/jquery.ui.widget.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The Templates plugin is included to render the upload/download listings -->
+  <!-- <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script> -->
+
+  <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+  <javascript id="++resource++collective.upload/load-image.min.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+  <javascript id="++resource++collective.upload/canvas-to-blob.min.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- Bootstrap JS -->
+  <javascript id="++resource++collective.upload/vendor/bootstrap.min.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+
+  <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+  <javascript id="++resource++collective.upload/jquery.iframe-transport.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The basic File Upload plugin -->
+  <javascript id="++resource++collective.upload/jquery.fileupload.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The File Upload file processing plugin -->
+  <javascript id="++resource++collective.upload/jquery.fileupload-fp.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The File Upload user interface plugin -->
+  <javascript id="++resource++collective.upload/jquery.fileupload-ui.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The main application script -->
+  <javascript id="++resource++collective.upload/main.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+  <javascript id="++resource++collective.upload/cors/jquery.xdr-transport.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" conditionalcomment="if gte IE 8" />
+</object>

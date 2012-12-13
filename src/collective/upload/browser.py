@@ -33,7 +33,7 @@ grok.templatedir('templates')
 
 # TODO: implement drag&drop here
 class Folder_Contents(grok.View, FolderContentsView):
-    grok.context(IMultipleUpload)
+    grok.context(Interface)
     grok.layer(IUploadBrowserLayer)
     grok.require('cmf.ModifyPortalContent')
 
@@ -43,7 +43,7 @@ class Media_Uploader(grok.View):
     """ Handler for the upload process, creation of files, can set a title or
         description, the place to touch if you need extra data saved.
     """
-    grok.context(IMultipleUpload)
+    grok.context(Interface)
     grok.require('collective.upload.UploadFiles')
 
     files = []

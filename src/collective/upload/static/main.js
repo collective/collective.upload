@@ -86,7 +86,7 @@ $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
     }
 
 });
-}(j$));
+}(jQuery));
 
 
 j$(document).ready(function() {
