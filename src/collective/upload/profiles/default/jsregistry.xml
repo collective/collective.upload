@@ -13,7 +13,9 @@
       expression="" inline="False" authenticated="True" />
 
   <!-- The Templates plugin is included to render the upload/download listings -->
-  <!-- <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script> -->
+  <javascript id="++resource++collective.upload/tmpl.min.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
 
   <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
   <javascript id="++resource++collective.upload/load-image.min.js"

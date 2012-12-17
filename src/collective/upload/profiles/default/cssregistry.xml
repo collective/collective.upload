@@ -4,9 +4,6 @@
     enabled="1" expression="" id="++resource++collective.upload/css/bootstrap.min.css" media="screen"
     rel="stylesheet" rendering="import"/>
   <stylesheet title="" cacheable="True" compression="safe" cookable="True"
-    enabled="1" expression="" id="++resource++collective.upload/css/bootstrap-responsive.min.css" media="screen"
-    rel="stylesheet" rendering="import"/>
-  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="1" expression="" id="++resource++collective.upload/css/jquery.fileupload-ui.css" media="screen"
     rel="stylesheet" rendering="import"/>
 </object>

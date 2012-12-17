@@ -131,7 +131,7 @@ class JSON_View(grok.View):
         """ """
         if json_var is None:
             json_var = {}
-        return json.dumps(json_var)
+        return json.dumps({'files': json_var})
 
     def getContextInfo(self, context=None):
         if context is None:
@@ -166,7 +166,7 @@ class JSON_View(grok.View):
             item_info = self.getContextInfo(self.context[item])
             if item_info:
                 contents.append(item_info)
-        return contents
+        return {'files': contents}
 
     def render(self):
         return self.dumps(self.getContainerInfo())
