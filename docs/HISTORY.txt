@@ -6,6 +6,8 @@ Because you have to know where your towel is.
 1.0b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Add deprecation warning message on the IMultipleUpload behavior. [hvelarde]
+
 - Tested compatibility with Plone 4.3. [hvelarde]
 
 - Update package documentation. [hvelarde]

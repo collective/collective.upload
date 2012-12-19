@@ -50,4 +50,17 @@
         permission="cmf.ManagePortal"
         />
 
+    <!-- Menu item -->
+    <adapter
+        for="* collective.upload.interfaces.IUploadBrowserLayer"
+        name="plone.contentmenu.factories"
+        factory="collective.upload.menu.FactoriesSubMenuItem"
+        provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
+
+    <browser:menu
+        id="upload_contentmenu_factory"
+        title="The 'add' menu - allows the user to add new content items in the context"
+        class=".menu.FactoriesMenu"
+    />    
+
 </configure>

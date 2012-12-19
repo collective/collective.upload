@@ -25,8 +25,7 @@ from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
 
 from collective.upload import _
-
-IMAGE_MIMETYPES = ['image/jpeg', 'image/gif', 'image/png']
+from collective.upload.config import IMAGE_MIMETYPES
 
 grok.templatedir('templates')
 
@@ -43,7 +42,7 @@ class Media_Uploader(grok.View):
     """ Handler for the upload process, creation of files, can set a title or
         description, the place to touch if you need extra data saved.
     """
-    grok.context(Interface)
+    grok.context(Interface)  # XXX: what's the interface of folderish objects?
     grok.require('collective.upload.UploadFiles')
 
     files = []

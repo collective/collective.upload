@@ -10,11 +10,8 @@ Life, the Universe, and Everything
 File upload widget with multiple file selection, drag&drop support, progress
 bars, client-side image resizing and preview images.
 
-- **In the current state, the implementation is ONLY available like a behavior
-  for Dexterity-based containers**.
-- The action to launch the overlay is located in the "Add new…" menu and is
-  inserted using JavaScript; if JavaScript is deactivated, the plugin is not
-  going to work.
+``collective.upload`` is smoothly integrated with Plone's UI and works with
+any folderish content type based on Archetypes or Dexterity.
 
 Features
 --------
@@ -60,7 +57,6 @@ Future features
 
 We want to implement these features at some point in the future:
 
-- Smooth integration with Plone's UI
 - Refactoring of widget's UI
 - **Resumable uploads**: Aborted uploads can be resumed with browsers
   supporting the Blob API
@@ -90,10 +86,6 @@ this feature.
 We though `collective.quickupload`_ was good but, at that point, it had no
 support for Dexterity-based content types. After some research we found that
 jQuery File Upload was really nice, so we started this project.
-
-Unfortunately, we hadn't enough time to work more on this, but that has
-changed. We have our own vision on how the UI for this feature must behave and
-we want to implement it.
 
 Also, we strongly believe Adobe Flash must die and Microsoft must stop
 pretending Internet Explorer can continue ignoring web standards forever.
@@ -150,6 +142,11 @@ vendor/jquery.ui.widget.js
   complex, statefull plugins with a consistent API. It is designed for general
   consumption by developers who want to create object-oriented components
   without reinventing common infrastructure.
+
+Roadmap
+---------------
+
+* Check if constraints are in place before adding the menu item
 
 Mostly Harmless
 ---------------

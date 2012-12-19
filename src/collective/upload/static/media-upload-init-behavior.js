@@ -1,6 +1,6 @@
 jq(function () {
     //overlay
-    jq('#plone-contentmenu-factories #upload').prepOverlay(
+    jq('#plone-contentmenu-factories #collective-upload').prepOverlay(
         {
             subtype: 'ajax',
             filter: common_content_filter,
