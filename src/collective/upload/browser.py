@@ -165,7 +165,7 @@ class JSON_View(grok.View):
             item_info = self.getContextInfo(self.context[item])
             if item_info:
                 contents.append(item_info)
-        return {'files': contents}
+        return contents
 
     def render(self):
         return self.dumps(self.getContainerInfo())

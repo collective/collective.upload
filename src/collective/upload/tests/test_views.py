@@ -60,7 +60,7 @@ class APITestCase(unittest.TestCase):
     def test_dumps(self):
         view = getMultiAdapter((self.folder, self.request), name='api')
 
-        self.assertEqual(view.dumps(), '{}')
+        self.assertEqual(view.dumps(), '{"files": {}}')
         # TODO: test with content added
 
     def test_getContextInfo(self):
@@ -76,5 +76,5 @@ class APITestCase(unittest.TestCase):
     def test_render(self):
         view = getMultiAdapter((self.folder, self.request), name='api')
 
-        self.assertEqual(view.render(), '[]')
+        self.assertEqual(view.render(), '{"files": []}')
         # TODO: test with content added

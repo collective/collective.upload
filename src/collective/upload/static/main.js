@@ -181,7 +181,7 @@ $(document).ready(function() {
     config_upload_form
 
     //overlay
-    $('#plone-contentmenu-factories #collective-upload').prepOverlay(
+    $('#plone-contentmenu-factories #multiple-files').prepOverlay(
         {
             subtype: 'ajax',
             filter: common_content_filter,
