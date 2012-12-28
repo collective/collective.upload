@@ -1,5 +1,11 @@
-# convenience makefile to boostrap & run buildout
-# use `make options=-v` to run buildout with extra options
+# convenience Makefile to run tests and QA tools
+# options: zc.buildout options
+# src: source path
+# minimum_coverage: minimun test coverage allowed
+# pep8_ignores: ignore listed PEP 8 errors and warnings
+# max_complexity: maximum McCabe complexity allowed
+# css_ignores: skip file names matching find pattern (use ! -name PATTERN)
+# js_ignores: skip file names matching find pattern (use ! -name PATTERN)
 
 SHELL = /bin/sh
 
@@ -7,8 +13,9 @@ options = -N -q -t 3
 src = src/collective/upload/
 minimum_coverage = 69
 pep8_ignores = E501
-css_ignores = ! -name bootstrap\* ! -name jquery\*
-js_ignores = ! -name bootstrap\* ! -name jquery\*
+max_complexity = 12
+css_ignores = ! -name jquery\*
+js_ignores = ! -name jquery\*
 
 ack-install:
 	sudo apt-get install ack-grep
@@ -26,8 +33,7 @@ jshint-install: nodejs-install
 
 python-validation:
 	@echo Validating Python files
-	bin/pep8 --ignore=$(pep8_ignores) $(src)
-	bin/pyflakes $(src)
+	bin/flake8 --ignore=$(pep8_ignores) --max-complexity=$(max_complexity) $(src)
 
 css-validation: ack-install csslint-install
 	@echo Validating CSS files
