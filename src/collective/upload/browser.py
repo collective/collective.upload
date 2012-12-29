@@ -19,7 +19,7 @@ from zope.component.hooks import getSite
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-from collective.upload.behaviors import IMultipleUpload
+#from collective.upload.behaviors import IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
