@@ -178,7 +178,7 @@ $(document).ready(function() {
         }
 
     };
-    config_upload_form
+    config_upload_form();
 
     //overlay
     $('#plone-contentmenu-factories #multiple-files').prepOverlay(
