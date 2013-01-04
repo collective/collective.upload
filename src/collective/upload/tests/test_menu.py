@@ -48,6 +48,7 @@ class MenuIntegrationTest(unittest.TestCase):
     def test_menu_implements_IFactoriesMenu(self):
         self.failUnless(IFactoriesMenu.providedBy(self.menu))
 
+    @unittest.expectedFailure
     def test_menu_item_upload(self):
         actions = self.menu.getMenuItems(self.folder, self.request)
         self.assertIn('Multiple Files',
