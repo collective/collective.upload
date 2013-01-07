@@ -18,6 +18,14 @@ Because you have to know where your towel is.
 
 - Fixed browser layer interface. [hvelarde]
 
+- Added new version of jquery-file-upload. [quimera]
+
+- Refactoring (almost) all dirty js code. [quimera]
+
+- Fixed compatibility with chameleon and the js template. [quimera]
+
+- Fixed url generation in the sub menu item. [quimera]
+
 
 1.0b2 (2012-05-16)
 ^^^^^^^^^^^^^^^^^^

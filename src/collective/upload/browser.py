@@ -19,7 +19,7 @@ from zope.component.hooks import getSite
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-from collective.upload.behaviors import IMultipleUpload
+#from collective.upload.behaviors import IMultipleUpload
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
@@ -32,7 +32,7 @@ grok.templatedir('templates')
 
 # TODO: implement drag&drop here
 class Folder_Contents(grok.View, FolderContentsView):
-    grok.context(IMultipleUpload)
+    grok.context(Interface)
     grok.layer(IUploadBrowserLayer)
     grok.require('cmf.ModifyPortalContent')
 
@@ -130,7 +130,7 @@ class JSON_View(grok.View):
         """ """
         if json_var is None:
             json_var = {}
-        return json.dumps(json_var)
+        return json.dumps({'files': json_var})
 
     def getContextInfo(self, context=None):
         if context is None:

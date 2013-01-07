@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
-
+# Zope imports
+from zope.interface import Interface
 from five import grok
 
-from plone.app.layout.viewlets.interfaces import IPortalFooter
-
-from collective.upload.behaviors import IMultipleUpload
-
-grok.templatedir('viewlets')
+# Plone imports
+from plone.app.layout.viewlets.interfaces import IHtmlHead
 
 
-class MediaUploaderInit(grok.Viewlet):
-    """ The viewlet doing the initialization, imports of JavaScript,
-    no-conflict jQuery variable assignation, etc.
-    """
-    grok.context(IMultipleUpload)
-    grok.name('upload.init')
-    grok.require('cmf.AddPortalContent')
-    grok.template('media_uploader_init')
-    grok.viewletmanager(IPortalFooter)
+grok.templatedir("viewlets")
+# grok.layer(IVTVLayer)
+
+
+class Tmpls(grok.Viewlet):
+    grok.context(Interface)
+    grok.name(u"collective.upload.tmpls")
+    grok.require("zope2.View")
+    grok.template("tmpls")
+    grok.viewletmanager(IHtmlHead)

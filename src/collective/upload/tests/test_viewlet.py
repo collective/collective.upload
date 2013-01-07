@@ -33,9 +33,9 @@ class ViewletTest(unittest.TestCase):
     def test_viewlet_is_present(self):
         view = View(self.folder, self.request)
         manager = queryMultiAdapter((self.folder, self.request, view),
-                                    IViewletManager, 'plone.portalfooter')
+                                    IViewletManager, 'plone.htmlhead')
         self.assertTrue(manager is not None)
 
         manager.update()
-        viewlet = [v for v in manager.viewlets if v.__name__ == 'upload.init']
+        viewlet = [v for v in manager.viewlets if v.__name__ == 'collective.upload.tmpls']
         self.assertEqual(len(viewlet), 1)
