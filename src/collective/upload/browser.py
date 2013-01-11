@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
-
+import base64
+import urllib2
+import cStringIO
 import json
+from urlparse import urlparse, parse_qs
+from PIL import Image
 
 from Acquisition import aq_inner
 
@@ -210,3 +214,91 @@ class JSVariables(grok.View):
         config['resize_max_height'] = settings.resize_max_height
 
         return str(config)
+
+
+class JSONImageConverter(grok.View):
+    """ Serialize an image into a base64 arg.
+    """
+    grok.context(Interface)
+    grok.name('jsonimageserializer')
+    grok.layer(IUploadBrowserLayer)
+
+    def render(self):
+        # Surround everything in a try/except
+        try:
+            # Get the parameters from the URL
+            query = self.request
+
+            # If the user has specified a URL
+            if 'url' in query:
+                url = query['url']
+                try:
+
+                    # Get the image
+                    f = urllib2.urlopen(urllib2.unquote(url))
+
+                    # If server with the image responds with 200
+                    if f.code == 200:
+
+                        # Create holder for the image
+                        im = cStringIO.StringIO(f.read())
+
+                        # Open the image with PIL
+                        image = Image.open(im)
+
+                        # Get its width and height
+                        width, height = image.size
+
+                        # Create the structure for the data URL
+                        type_prefix = "data:image/" + image.format.lower() + ";base64,"
+
+                        # Convert the image to base64
+                        return_image = base64.b64encode(im.getvalue())
+
+                        # Construct the response
+                        data = json.dumps({
+                            "width": width,
+                            "height": height,
+                            "data": type_prefix + return_image,
+                            "mimetype": 'jpeg'
+                        })
+
+                        # If a callback has been specified
+                        if 'callback' in query:
+                            callback = query['callback']
+
+                            # Add the callback to the end for cross-domain JSON
+                            data = callback + '(' + data + ');'
+
+                            # Return the JSON
+                            response = self.request.response
+                            response.setHeader('content-type', 'application/json;;charset=utf-8')
+
+                            return data
+
+                        # If no callback was specified
+                        else:
+                            #404
+                            return
+
+                    # If server with the image responded with something other than 200
+                    else:
+                        status_code = f.code
+                        return
+
+                # If urllib errors
+                except urllib2.HTTPError, e:
+                    if e.code == 404:
+                        self.send_error(404, e)
+                    else:
+                        self.send_error(500, e)
+                except urllib2.URLError, e:
+                    print "URLError", e
+
+            # If the URL was not specified in the request
+            else:
+                return
+
+        # Catch any other error
+        except:
+            return

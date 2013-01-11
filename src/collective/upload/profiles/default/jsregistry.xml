@@ -7,6 +7,11 @@
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="True" />
 
+  <!-- The jQuery getimagedada plugin, for crossdomain uploads -->
+  <javascript id="++resource++collective.upload/vendor/jquery.getimagedata.min.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
   <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
   <javascript id="++resource++collective.upload/vendor/jquery.ui.widget.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
