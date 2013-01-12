@@ -26,6 +26,8 @@ Because you have to know where your towel is.
 
 - Fixed url generation in the sub menu item. [quimera]
 
+- Added support for crossdomain uploads [quimera]
+
 
 1.0b2 (2012-05-16)
 ^^^^^^^^^^^^^^^^^^

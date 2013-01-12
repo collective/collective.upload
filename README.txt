@@ -33,6 +33,8 @@ Features
   plugins
 - **Graceful fallback for legacy browsers**: Uploads files via XMLHttpRequests
   if supported and uses iframes as fallback for legacy browsers
+- **Cross-site file uploads**: Supports uploading files to a different domain
+  with Cross-site XMLHttpRequests
 
 Browsers supported
 ------------------
@@ -64,8 +66,6 @@ We want to implement these features at some point in the future:
   browsers supporting the Blob API
 - **HTML file upload form fallback**: Shows a standard HTML file upload form
   if JavaScript is disabled
-- **Cross-site file uploads**: Supports uploading files to a different domain
-  with Cross-site XMLHttpRequests
 - Support for Archetypes-based content types
 - Enable/disable automatic uploads
 - Server side image resizing

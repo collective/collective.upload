@@ -3,7 +3,6 @@ import base64
 import urllib2
 import cStringIO
 import json
-from urlparse import urlparse, parse_qs
 from PIL import Image
 
 from Acquisition import aq_inner
@@ -21,6 +20,8 @@ from zope.component import getUtility
 from zope.component.hooks import getSite
 
 from zope.lifecycleevent import ObjectModifiedEvent
+
+from ZPublisher.HTTPRequest import HTTPResponse
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 #from collective.upload.behaviors import IMultipleUpload
@@ -283,15 +284,15 @@ class JSONImageConverter(grok.View):
 
                     # If server with the image responded with something other than 200
                     else:
-                        status_code = f.code
+                        #status_code = f.code
                         return
 
                 # If urllib errors
                 except urllib2.HTTPError, e:
                     if e.code == 404:
-                        self.send_error(404, e)
+                        self.response.setStatus(self, 404, lock=None)
                     else:
-                        self.send_error(500, e)
+                        self.response.setStatus(self, 500, lock=None)
                 except urllib2.URLError, e:
                     print "URLError", e
 
