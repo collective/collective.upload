@@ -21,8 +21,6 @@ from zope.component.hooks import getSite
 
 from zope.lifecycleevent import ObjectModifiedEvent
 
-from ZPublisher.HTTPRequest import HTTPResponse
-
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 #from collective.upload.behaviors import IMultipleUpload
 
