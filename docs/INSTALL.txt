@@ -16,10 +16,11 @@ To enable this product in a buildout-based installation:
 
     [versions]
     plone.app.jquery = 1.7.2
-    plone.app.jquerytools = 1.4
+    plone.app.jquerytools = 1.5.1
 
-3. You may need to extend a five.grok known good set (KGS) to make sure that
-   you get the right versions of the packages that make up five.grok::
+3. If you are using Plone 4.1, you may need to extend a five.grok known good
+   set (KGS) to make sure that you get the right versions of the packages that
+   make up five.grok::
 
     [buildout]
     ...

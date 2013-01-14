@@ -16,6 +16,7 @@ any folderish content type based on Archetypes or Dexterity.
 Features
 --------
 
+- Support for Archetypes and Dexterity-based content types
 - **Multiple file upload**: Allows to select multiple files at once and upload
   them sequentially (simultaneously is not currently enabled)
 - **Drag & Drop support**: Allows to upload files by dragging them from your
@@ -66,7 +67,6 @@ We want to implement these features at some point in the future:
   browsers supporting the Blob API
 - **HTML file upload form fallback**: Shows a standard HTML file upload form
   if JavaScript is disabled
-- Support for Archetypes-based content types
 - Enable/disable automatic uploads
 - Server side image resizing
 - Server side file type constraint
@@ -146,7 +146,7 @@ vendor/jquery.ui.widget.js
 Roadmap
 ---------------
 
-* Check if constraints are in place before adding the menu item
+* Check if constraints are in place before adding the menu item.
 
 Mostly Harmless
 ---------------
