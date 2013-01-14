@@ -102,10 +102,6 @@ applications.js
   dropped in the file upload widget is going to generate a new row, here is
   the code for that).
 
-media-upload-init-behavior.js
-  When you apply a behavior to a content type, this script is loaded in a
-  viewlet and creates a new item in the "add new" menu.
-
 `canvas-to-blob.min.js`_
   Converts canvas elements into Blob objects, is a polyfill for the standard
   HTML canvas.toBlob method.
@@ -114,19 +110,14 @@ media-upload-init-behavior.js
   Load Image is a function to load images provided as File or Blob objects or
   via URL.
 
-jquery.1.7.1.js
-  The File Upload plugin is compatible with jQuery 1.7+; Plone has jQuery 1.4,
-  sadly there is no easy way to upgrade the jquery version, so we are doing a
-  no-conflict trick and uploading the version required just for this.
-
 jquery.fileupload.js
   The most basic version of the File Upload plugin, with no UI.
 
-jquery.fileupload-ip.js
+jquery.fileupload-fp.js
   Extends the basic fileupload widget with image processing functionality.
 
 jquery.fileupload-ui.js
-  Extends the IP version, adds complete user interface interaction.
+  Extends the FP version, adds complete user interface interaction.
 
 jquery.iframe-transport.js
   Used for cross-site iframe transport uploads a way of degradation for the
@@ -142,6 +133,9 @@ vendor/jquery.ui.widget.js
   complex, statefull plugins with a consistent API. It is designed for general
   consumption by developers who want to create object-oriented components
   without reinventing common infrastructure.
+
+vendor/jquery.getimagedata.min.js
+  It enables pixel level access to images from different origins. It works by sending a JSONP request with the URL of the image to the server. The server then converts the image into base64 encoded data URL and sends the image back as a JSON object. (what this script does, can be done with CORS)
 
 Roadmap
 ---------------
