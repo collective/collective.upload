@@ -6,6 +6,16 @@ Because you have to know where your towel is.
 1.0b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Added support for Cross-site file uploads. [quimera]
+
+- Fixed URL generation in the sub menu item. [quimera]
+
+- Fixed compatibility with Chameleon and the JavaScript template. [quimera]
+
+- Refactoring (almost) all dirty JavaScript code. [quimera]
+
+- Updated version of jQuery File Upload. [quimera]
+
 - Add deprecation warning message on the IMultipleUpload behavior. [hvelarde]
 
 - Tested compatibility with Plone 4.3. [hvelarde]
@@ -17,16 +27,6 @@ Because you have to know where your towel is.
 - Package will now support Plone 4.2+ only. [hvelarde]
 
 - Fixed browser layer interface. [hvelarde]
-
-- Added new version of jquery-file-upload. [quimera]
-
-- Refactoring (almost) all dirty js code. [quimera]
-
-- Fixed compatibility with chameleon and the js template. [quimera]
-
-- Fixed url generation in the sub menu item. [quimera]
-
-- Added support for crossdomain uploads [quimera]
 
 
 1.0b2 (2012-05-16)
