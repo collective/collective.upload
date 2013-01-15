@@ -29,7 +29,7 @@ class MenuFunctionalTest(unittest.TestCase):
         self.assertIn('@@media_uploader', browser.contents)
         browser.getLink('Multiple Files').click()
         self.assertIn('@@media_uploader', browser.url)
-        self.assertIn('Add files or images…', browser.contents)
+        self.assertIn('Add files or images&hellip;', browser.contents)
 
 
 class MenuIntegrationTest(unittest.TestCase):
