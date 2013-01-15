@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0b3.dev0'
+version = '1.0b3'
 description = "File upload widget with multiple file selection, drag&drop \
 support, progress bars, client-side image resizing and preview images."
 long_description = open("README.txt").read() + "\n" + \

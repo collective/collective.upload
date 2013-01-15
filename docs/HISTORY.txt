@@ -3,7 +3,7 @@ Changelog
 
 Because you have to know where your towel is.
 
-1.0b3 (unreleased)
+1.0b3 (2013-01-15)
 ^^^^^^^^^^^^^^^^^^
 
 - Added support for Cross-site file uploads. [quimera]
