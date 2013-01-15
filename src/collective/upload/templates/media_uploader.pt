@@ -29,7 +29,7 @@
                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn btn-success fileinput-button">
                                     <i class="icon-plus icon-white"></i>
-                                    <span i18n:translate="">Add files or images…</span>
+                                    <span i18n:translate="">Add files or images&hellip;</span>
                                     <input type="file" name="files[]" multiple>
                                 </span>
                                 <button type="submit" class="btn btn-primary start">
