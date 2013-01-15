@@ -4,7 +4,7 @@
                 <tr class="template-upload fade">
                     <td class="preview"><span class="fade"></span></td>
                     <td class="name">
-                        <input name="title[]" type="text" value="{%=file.name%}" required/><br/>
+                        <input name="title[]" type="text" value="{%=file.name%}" required="required"/><br/>
                         <label for="description">Descripción</label>
                         <textarea name="description[]" cols="10" rows="3"></textarea>
                     </td>
