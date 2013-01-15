@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.upload\n"
 "POT-Creation-Date: 2013-01-15 16:53+0000\n"
-"PO-Revision-Date: 2012-02-23 15:44-0300\n"
-"Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
+"PO-Revision-Date: 2013-01-15 15:29-0300\n"
+"Last-Translator: Andre Nogueira <andre@simplesconsultoria.com.br>\n"
 "Language-Team: Brazilian Portuguese <https://github.com/collective>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -17,49 +17,51 @@ msgstr ""
 
 #: collective/upload/menu.py:36
 msgid "A form to upload multiple files."
-msgstr ""
+msgstr "UM formulário para upload de múltiplos arquivos."
 
 #: collective/upload/templates/media_uploader.pt:32
 msgid "Add files or images&hellip;"
-msgstr ""
+msgstr "Adicionar arquivos ou imagens&hellip;"
 
 #: collective/upload/interfaces.py:21
 msgid "Allowed Extensions"
-msgstr ""
+msgstr "Extensões permitidas"
 
 #: collective/upload/templates/media_uploader.pt:41
 msgid "Cancel upload"
-msgstr ""
+msgstr "Cancelar upload"
 
 #: collective/upload/templates/media_uploader.pt:45
 msgid "Delete selected"
-msgstr ""
+msgstr "Apagar selecionadas"
 
 #: collective/upload/controlpanel.py:13
 msgid "Here you can modify the settings for collective.upload"
-msgstr ""
+msgstr "Aqui você pode modificar as configurações do collective.upload"
 
 #: collective/upload/interfaces.py:31
 msgid "Max file size"
-msgstr ""
+msgstr "Tamanho máximo do arquivo"
 
 #: collective/upload/menu.py:37
 msgid "Multiple Files"
-msgstr ""
+msgstr "Múltiplos arquivos"
 
 #: collective/upload/templates/media_uploader.pt:37
 msgid "Start upload"
-msgstr ""
+msgstr "Iniciar upload"
 
 #: collective/upload/controlpanel.py:12
 #: collective/upload/profiles/default/controlpanel.xml
 msgid "Upload Settings"
-msgstr ""
+msgstr "Definições do upload"
 
 #. Default: "List the file extensions allowed for upload, without dot, comma separated"
 #: collective/upload/interfaces.py:22
 msgid "allowed_extensions_key"
 msgstr ""
+"Liste as extensões de arquivos que podem ser enviados, sem o ponto, separado "
+"por vírgulas"
 
 #. Default: "Delete"
 #: collective/upload/browser.py:178
@@ -70,27 +72,29 @@ msgstr "Excluir"
 #: collective/upload/interfaces.py:32
 msgid "max_file_size_key"
 msgstr ""
+"O tamanho máximo permitido para os arquivos em bytes. Note que servidores "
+"web intermediários podem informar valores diferentes deste valor. Em caso de "
+"dúvidas, consulte o Administrador do seu sistema."
 
 #: collective/upload/interfaces.py:51
 msgid "maximum height"
-msgstr ""
+msgstr "altura máxima"
 
 #: collective/upload/interfaces.py:42
 msgid "maximum width"
-msgstr ""
+msgstr "largura máxima"
 
 #. Default: "The maximum height for uploaded images."
 #: collective/upload/interfaces.py:52
 msgid "resize_max_height_key"
-msgstr ""
+msgstr "Altura máxima para as imagens enviadas"
 
 #. Default: "The maximum width for uploaded images."
 #: collective/upload/interfaces.py:43
 msgid "resize_max_width_key"
-msgstr ""
+msgstr "Largura máxima para as imagens enviadas"
 
 #. Default: "Start"
 #: collective/upload/browser.py:179
 msgid "start"
 msgstr "Iniciar"
-
