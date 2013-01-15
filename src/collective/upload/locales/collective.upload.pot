@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-23 17:42+0000\n"
+"POT-Creation-Date: 2013-01-15 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,82 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.upload\n"
 
-#: collective/upload/templates/media_uploader.pt:31
-msgid "Add files or images…"
+#: collective/upload/menu.py:36
+msgid "A form to upload multiple files."
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:35
+#: collective/upload/templates/media_uploader.pt:32
+msgid "Add files or images&hellip;"
+msgstr ""
+
+#: collective/upload/interfaces.py:21
+msgid "Allowed Extensions"
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:41
 msgid "Cancel upload"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:36
+#: collective/upload/templates/media_uploader.pt:45
 msgid "Delete selected"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:48
-msgid "Progress bar"
+#: collective/upload/controlpanel.py:13
+msgid "Here you can modify the settings for collective.upload"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:34
+#: collective/upload/interfaces.py:31
+msgid "Max file size"
+msgstr ""
+
+#: collective/upload/menu.py:37
+msgid "Multiple Files"
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:37
 msgid "Start upload"
 msgstr ""
 
+#: collective/upload/controlpanel.py:12
+#: collective/upload/profiles/default/controlpanel.xml
+msgid "Upload Settings"
+msgstr ""
+
+#. Default: "List the file extensions allowed for upload, without dot, comma separated"
+#: collective/upload/interfaces.py:22
+msgid "allowed_extensions_key"
+msgstr ""
+
 #. Default: "Delete"
-#: collective/upload/browser.py:154
+#: collective/upload/browser.py:178
 msgid "delete"
 msgstr ""
 
+#. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."
+#: collective/upload/interfaces.py:32
+msgid "max_file_size_key"
+msgstr ""
+
+#: collective/upload/interfaces.py:51
+msgid "maximum height"
+msgstr ""
+
+#: collective/upload/interfaces.py:42
+msgid "maximum width"
+msgstr ""
+
+#. Default: "The maximum height for uploaded images."
+#: collective/upload/interfaces.py:52
+msgid "resize_max_height_key"
+msgstr ""
+
+#. Default: "The maximum width for uploaded images."
+#: collective/upload/interfaces.py:43
+msgid "resize_max_width_key"
+msgstr ""
+
 #. Default: "Start"
-#: collective/upload/browser.py:155
+#: collective/upload/browser.py:179
 msgid "start"
 msgstr ""
 
