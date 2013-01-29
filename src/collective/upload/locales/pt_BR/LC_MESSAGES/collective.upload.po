@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.upload\n"
-"POT-Creation-Date: 2013-01-15 16:53+0000\n"
+"POT-Creation-Date: 2013-01-29 19:12+0000\n"
 "PO-Revision-Date: 2013-01-15 15:29-0300\n"
 "Last-Translator: Andre Nogueira <andre@simplesconsultoria.com.br>\n"
 "Language-Team: Brazilian Portuguese <https://github.com/collective>\n"
@@ -59,22 +59,32 @@ msgstr "Definições do upload"
 #. Default: "List the file extensions allowed for upload, without dot, comma separated"
 #: collective/upload/interfaces.py:22
 msgid "allowed_extensions_key"
+msgstr "Liste as extensões de arquivos que podem ser enviados, sem o ponto, separado por vírgulas"
+
+#. Default: "Cancel"
+#: collective/upload/browser.py:180
+msgid "cancel"
 msgstr ""
-"Liste as extensões de arquivos que podem ser enviados, sem o ponto, separado "
-"por vírgulas"
 
 #. Default: "Delete"
 #: collective/upload/browser.py:178
 msgid "delete"
 msgstr "Excluir"
 
+#. Default: "Description"
+#: collective/upload/browser.py:181
+msgid "description"
+msgstr ""
+
+#. Default: "Error"
+#: collective/upload/browser.py:182
+msgid "error"
+msgstr ""
+
 #. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."
 #: collective/upload/interfaces.py:32
 msgid "max_file_size_key"
-msgstr ""
-"O tamanho máximo permitido para os arquivos em bytes. Note que servidores "
-"web intermediários podem informar valores diferentes deste valor. Em caso de "
-"dúvidas, consulte o Administrador do seu sistema."
+msgstr "O tamanho máximo permitido para os arquivos em bytes. Note que servidores web intermediários podem informar valores diferentes deste valor. Em caso de dúvidas, consulte o Administrador do seu sistema."
 
 #: collective/upload/interfaces.py:51
 msgid "maximum height"
@@ -98,3 +108,4 @@ msgstr "Largura máxima para as imagens enviadas"
 #: collective/upload/browser.py:179
 msgid "start"
 msgstr "Iniciar"
+

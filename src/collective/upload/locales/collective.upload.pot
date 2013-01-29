@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-15 16:53+0000\n"
+"POT-Creation-Date: 2013-01-29 19:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,9 +63,24 @@ msgstr ""
 msgid "allowed_extensions_key"
 msgstr ""
 
+#. Default: "Cancel"
+#: collective/upload/browser.py:180
+msgid "cancel"
+msgstr ""
+
 #. Default: "Delete"
 #: collective/upload/browser.py:178
 msgid "delete"
+msgstr ""
+
+#. Default: "Description"
+#: collective/upload/browser.py:181
+msgid "description"
+msgstr ""
+
+#. Default: "Error"
+#: collective/upload/browser.py:182
+msgid "error"
 msgstr ""
 
 #. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."

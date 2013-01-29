@@ -5,7 +5,7 @@
                     <td class="preview"><span class="fade"></span></td>
                     <td class="name">
                         <input name="title[]" type="text" value="{%=file.name%}" required="required"/><br/>
-                        <label for="description">Descripción</label>
+                        <label for="description">{%=o.options.description_i18n%}</label>
                         <textarea name="description[]" cols="10" rows="3"></textarea>
                     </td>
                     <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
@@ -18,7 +18,7 @@
                         <td class="start">{% if (!o.options.autoUpload) { %}
                             <button class="btn btn-primary">
                                 <i class="icon-upload icon-white"></i>
-                                <span>Start</span>
+                                <span>{%=o.options.start_i18n%}</span>
                             </button>
                         {% } %}</td>
                     {% } else { %}
@@ -27,7 +27,7 @@
                     <td class="cancel">{% if (!i) { %}
                         <button class="btn btn-warning">
                             <i class="icon-ban-circle icon-white"></i>
-                            <span>Cancel</span>
+                            <span>{%=o.options.cancel_i18n%}</span>
                         </button>
                     {% } %}</td>
                 </tr>
@@ -41,7 +41,7 @@
                         <td></td>
                         <td class="name"><span>{%=file.title%}</span></td>
                         <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-                        <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
+                        <td class="error" colspan="2"><span class="label label-important">{%=o.options.error_i18n%}</span> {%=file.error%}</td>
                     {% } else { %}
                         <td class="preview">{% if (file.thumbnail_url) { %}
                             <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
@@ -55,7 +55,7 @@
                     <td class="delete">
                         <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
                             <i class="icon-trash icon-white"></i>
-                            <span>Delete</span>
+                            <span>{%=o.options.delete_i18n%}</span>
                         </button>
                         <input type="checkbox" name="delete" value="1">
                     </td>

@@ -177,6 +177,9 @@ class JSON_View(grok.View):
 messages = {
     'DELETE_MSG': _(u'delete', default=u'Delete'),
     'START_MSG': _(u'start', default=u'Start'),
+    'CANCEL_MSG': _(u'cancel', default=u'Cancel'),
+    'DESCRIPTION_MSG': _(u'description', default=u'Description'),
+    'ERROR_MSG': _(u'error', default=u'Error'),
 }
 
 messageTemplate = "jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n"

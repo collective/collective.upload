@@ -129,7 +129,12 @@ $(document).ready(function() {
                     {
                         action: 'save'
                     }
-                ]
+                ],
+                start_i18n: jupload.messages['START_MSG'],
+                cancel_i18n: jupload.messages['CANCEL_MSG'],
+                delete_i18n: jupload.messages['DELETE_MSG'],
+                description_i18n: jupload.messages['DESCRIPTION_MSG'],
+                error_i18n: jupload.messages['ERROR_MSG']
             });
             // Upload server status check for browsers with CORS support:
             if ($.support.cors) {

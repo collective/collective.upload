@@ -82,3 +82,8 @@
     width: 60px;
   }
 }
+
+
+.template-upload td, .template-download td {
+  padding: 10px 0px;
+}
