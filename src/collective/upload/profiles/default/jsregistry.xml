@@ -32,11 +32,6 @@
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="True" />
 
-  <!-- Bootstrap JS -->
-  <javascript id="++resource++collective.upload/vendor/bootstrap.min.js"
-      cacheable="True" compression="none" cookable="True" enabled="True"
-      expression="" inline="False" authenticated="True" />
-
 
   <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
   <javascript id="++resource++collective.upload/jquery.iframe-transport.js"
@@ -55,6 +50,11 @@
 
   <!-- The File Upload user interface plugin -->
   <javascript id="++resource++collective.upload/jquery.fileupload-ui.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False" authenticated="True" />
+
+  <!-- Bootstrap JS -->
+  <javascript id="++resource++collective.upload/vendor/bootstrap.min.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="True" />
 
