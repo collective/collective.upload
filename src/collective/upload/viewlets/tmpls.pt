@@ -4,9 +4,8 @@
                 <tr class="template-upload fade">
                     <td class="preview"><span class="fade"></span></td>
                     <td class="name">
-                        <input name="title[]" type="text" value="{%=file.name%}" required="required"/><br/>
-                        <label for="description">{%=o.options.description_i18n%}</label>
-                        <textarea name="description[]" cols="10" rows="3"></textarea>
+                        <input placeholder="Title" name="title[]" type="text" value="{%=file.name%}" required="required"/>
+                        <textarea placeholder="Description" name="description[]" cols="10" rows="3"></textarea>
                     </td>
                     <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
                     {% if (file.error) { %}

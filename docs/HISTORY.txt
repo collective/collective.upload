@@ -6,7 +6,9 @@ Because you have to know where your towel is.
 1.0b4 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Fix translation [quimera].
+- Add placeholders to input fields in upload template. [hvelarde]
+
+- Fix translation. [quimera]
 
 
 1.0b3 (2013-01-15)
