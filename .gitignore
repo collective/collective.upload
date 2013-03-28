@@ -12,7 +12,7 @@ var/
 .project
 .pydevproject
 .settings/
-Makefile.local
+Makefile
 coverage/
 local.cfg
 src/collective.*
