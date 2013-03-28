@@ -6,6 +6,8 @@ Because you have to know where your towel is.
 1.0b4 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Tested for compatibility with Plone 4.3. [hvelarde]
+
 - Add placeholders to input fields in upload template. [hvelarde]
 
 - Fix translation. [quimera]
