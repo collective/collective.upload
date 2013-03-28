@@ -9,9 +9,12 @@ the following people:
 - Héctor Velarde
 - Gonzalo Almeida
 
-Development sponsored by OpenMultimedia.
+You can find an updated list of package contributors on `GitHub`_.
 
 ``collective.upload`` is an implementation of the `jQuery File Upload`_ plugin
 for Plone.
 
+Development sponsored by Open Multimedia.
+
 .. _`jQuery File Upload`: http://blueimp.github.com/jQuery-File-Upload/
+.. _`GitHub`: https://github.com/collective/collective.upload/contributors
