@@ -42,23 +42,24 @@ setup(name='collective.upload',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        'setuptools',
-        'Products.CMFPlone>=4.2',
-        'five.grok>=1.2.0',
-        'plone.app.jquery>=1.7.2',
-        'plone.app.jquerytools',
-        'plone.behavior',
-        'plone.app.dexterity',
-        'z3c.jbot',
-        ],
-      extras_require={
-        'test': [
-          'plone.app.testing',
+          'five.grok',
+          'Pillow',
           'plone.app.dexterity',
-          'robotsuite',
-          'robotframework-selenium2library',
+          'plone.app.jquery>=1.7.2',
+          'plone.app.jquerytools>=1.5.5',
+          'plone.behavior',
+          'Products.CMFPlone>=4.2',
+          'setuptools',
+          'z3c.jbot',
+      ],
+      extras_require={
+          'test': [
+              'plone.app.testing',
+              'plone.app.dexterity',
+              'robotsuite',
+              'robotframework-selenium2library',
           ],
-        },
+      },
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
