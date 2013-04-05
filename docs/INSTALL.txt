@@ -16,7 +16,7 @@ To enable this product in a buildout-based installation:
 
     [versions]
     plone.app.jquery = 1.7.2
-    plone.app.jquerytools = 1.5.5
+    plone.app.jquerytools = 1.5.1
 
 After updating the configuration you need to run ''bin/buildout'', which will
 take care of updating your system.
