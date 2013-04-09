@@ -63,4 +63,9 @@
         class=".menu.FactoriesMenu"
     />    
 
+    <browser:resourceDirectory
+        name="collective.upload"
+        directory="static"
+    />
+
 </configure>
