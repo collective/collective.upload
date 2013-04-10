@@ -17,12 +17,14 @@ from zope.event import notify
 from zope.interface import Interface
 from zope.i18n import translate
 from zope.component import getUtility
-from zope.component.hooks import getSite
 
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
 #from collective.upload.behaviors import IMultipleUpload
+
+from plone.namedfile.file import NamedBlobFile
+from plone.namedfile.file import NamedBlobImage
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
@@ -75,32 +77,39 @@ class Media_Uploader(grok.View):
         namechooser = INameChooser(self.context)
         if not isinstance(files, list):
             files = [files]
-        portal = getSite()
         for item in files:
             if item.filename:
                 content_type = item.headers.get('Content-Type')
+                filename = unicode(item.filename)
+                data = item.read()
                 id_name = ''
-                if title:
-                    id_name = namechooser.chooseName(title[0], portal)
-                else:
-                    id_name = namechooser.chooseName(item.filename, portal)
-                portal_type = 'File'
+                title = title and title[0] or filename
+                # Get a unique id here
+                id_name = namechooser.chooseName(title, self.context)
+
+                # Portal types allowed : File and Image
+                # Since Plone 4.x both types use Blob
                 if content_type in IMAGE_MIMETYPES:
                     portal_type = 'Image'
-                name_index = 0
-                while name_index < 100:
-                    try:
-                        self.context.invokeFactory(
-                            portal_type, id=id_name, file=item, description=description[0])
-                        self.context[id_name].reindexObject()
-                        newfile = self.context[id_name]
-                        notify(ObjectModifiedEvent(newfile))
-                        loaded.append(newfile)
-                        name_index = 100
-                    except:
-                        pass
-                    name_index = name_index + 1
-                    id_name = id_name + '-' + str(name_index)
+                    data = NamedBlobImage(data=data, filename=filename)
+                else:
+                    portal_type = 'File'
+                    data = NamedBlobFile(data=data, filename=filename)
+
+                # Create content
+                self.context.invokeFactory(portal_type,
+                                           id=id_name,
+                                           description=description[0])
+                newfile = self.context[id_name]
+                # Set data
+                if portal_type == 'File':
+                    newfile.file = data
+                elif portal_type == 'Image':
+                    newfile.image = data
+                # Finalize content creation, reindex it
+                newfile.reindexObject()
+                notify(ObjectModifiedEvent(newfile))
+                loaded.append(newfile)
             if loaded:
                 return loaded
             return False
@@ -141,25 +150,29 @@ class JSON_View(grok.View):
         context = aq_inner(context)
 
         info = ''
-        if hasattr(context, 'size'):
-            context_state = queryMultiAdapter(
-                (context, self.request), name=u'plone_context_state')
-            context_name = context_state.object_title()
-            context_url = context_state.object_url()
+        context_name = context.Title()
+        context_url = context.absolute_url()
+        context_type = context.Type()
+        del_url = context_url
 
-            del_url = context_url
-            # TODO: we should check errors in the delete process, and
-            # broadcast those to the error template in JS
-            info = {'name': context_name,
-                    'title': context_name,
-                    'description': context.Description(),
-                    'url': context_url,
-                    'size': context.size(),
-                    'delete_url': del_url,
-                    'delete_type': 'DELETE',
-                    }
-            if context.Type() == 'Image':
-                info['thumbnail_url'] = context_url + '/image_thumb'
+        # TODO: we should check errors in the delete process, and
+        # broadcast those to the error template in JS
+        info = {'name': context_name,
+                'title': context_name,
+                'description': context.Description(),
+                'url': context_url,
+                'delete_url': del_url,
+                'delete_type': 'DELETE',
+                }
+        if hasattr(context, 'size'):
+            info['size'] = context.size()
+        else:
+            if context_type == 'File':
+                info['size'] = context.file.getSize()
+            elif context_type == 'Image':
+                info['size'] = context.image.getSize()
+        if context_type == 'Image':
+            info['thumbnail_url'] = context_url + '/image_thumb'
         return info
 
     def getContainerInfo(self):
