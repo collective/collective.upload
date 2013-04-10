@@ -172,7 +172,9 @@ class JSON_View(grok.View):
             elif context_type == 'Image':
                 info['size'] = context.image.getSize()
         if context_type == 'Image':
-            info['thumbnail_url'] = context_url + '/image_thumb'
+            scales = context.restrictedTraverse('@@images')
+            thumb = scales.scale(fieldname='image', scale='thumb')
+            info['thumbnail_url'] = thumb.url
         return info
 
     def getContainerInfo(self):
