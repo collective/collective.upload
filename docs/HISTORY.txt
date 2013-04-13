@@ -8,8 +8,8 @@ Because you have to know where your towel is.
 
 - Fix package dependencies. [hvelarde]
 
-- Remove dependency on unittest2; this could break tests when ran under
-  Python 2.6. You have been warned. [hvelarde]
+- Remove dependency on unittest2. This could break tests when ran under
+  Python 2.6; you have been warned. [hvelarde]
 
 - Tested for compatibility with Plone 4.3. [hvelarde]
 
