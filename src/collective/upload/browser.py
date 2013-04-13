@@ -28,6 +28,7 @@ from plone.namedfile.file import NamedBlobImage
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
+from Products.ATContentTypes.interfaces import IATImage
 
 from collective.upload import _
 from collective.upload.config import IMAGE_MIMETYPES
@@ -172,9 +173,13 @@ class JSON_View(grok.View):
             elif context_type == 'Image':
                 info['size'] = context.image.getSize()
         if context_type == 'Image':
-            scales = context.restrictedTraverse('@@images')
-            thumb = scales.scale(fieldname='image', scale='thumb')
-            info['thumbnail_url'] = thumb.url
+            if IATImage.providedBy(context):  # ATContentTypes
+                # XXX: leave as it was until we have chance to take a further look
+                info['thumbnail_url'] = context_url + '/image_thumb'
+            else:  # plone.app.contenttypes
+                scales = context.restrictedTraverse('@@images')
+                thumb = scales.scale(fieldname='image', scale='thumb')
+                info['thumbnail_url'] = thumb.url
         return info
 
     def getContainerInfo(self):
