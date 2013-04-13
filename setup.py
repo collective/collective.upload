@@ -44,7 +44,6 @@ setup(name='collective.upload',
       install_requires=[
           'five.grok',
           'Pillow',
-          'plone.app.content',
           'plone.app.contentmenu',
           'plone.app.jquery>=1.7.2',
           'plone.app.jquerytools>=1.5.1',
