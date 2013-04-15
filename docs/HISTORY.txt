@@ -6,6 +6,8 @@ Because you have to know where your towel is.
 1.0b4 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Support Dexterity content types (plone.app.contenttypes) [ericof]
+
 - Fix package dependencies. [hvelarde]
 
 - Remove dependency on unittest2. This could break tests when ran under
