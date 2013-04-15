@@ -180,13 +180,9 @@ class JSON_View(grok.View):
             elif context_type == 'Image':
                 info['size'] = context.image.getSize()
         if context_type == 'Image':
-            if IATImage.providedBy(context):  # ATContentTypes
-                # XXX: leave as it was until we have chance to take a further look
-                info['thumbnail_url'] = context_url + '/image_thumb'
-            else:  # plone.app.contenttypes
-                scales = context.restrictedTraverse('@@images')
-                thumb = scales.scale(fieldname='image', scale='thumb')
-                info['thumbnail_url'] = thumb.url
+            scales = context.restrictedTraverse('@@images')
+            thumb = scales.scale(fieldname='image', scale='thumb')
+            info['thumbnail_url'] = thumb.url
         return info
 
     def getContainerInfo(self):
