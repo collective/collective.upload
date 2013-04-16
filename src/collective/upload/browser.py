@@ -28,6 +28,7 @@ from plone.namedfile.file import NamedBlobImage
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
+from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
 
 from collective.upload import _
@@ -92,10 +93,10 @@ class Media_Uploader(grok.View):
                 # Since Plone 4.x both types use Blob
                 if content_type in IMAGE_MIMETYPES:
                     portal_type = 'Image'
-                    data = NamedBlobImage(data=data, filename=filename)
+                    wrapped_data = NamedBlobImage(data=data, filename=filename)
                 else:
                     portal_type = 'File'
-                    data = NamedBlobFile(data=data, filename=filename)
+                    wrapped_data = NamedBlobFile(data=data, filename=filename)
 
                 # Create content
                 self.context.invokeFactory(portal_type,
@@ -104,9 +105,15 @@ class Media_Uploader(grok.View):
                 newfile = self.context[id_name]
                 # Set data
                 if portal_type == 'File':
-                    newfile.file = data
+                    if IATFile.providedBy(newfile):
+                        newfile.setFile(data)
+                    else:
+                        newfile.file = wrapped_data
                 elif portal_type == 'Image':
-                    newfile.image = data
+                    if IATImage.providedBy(newfile):
+                        newfile.setImage(data)
+                    else:
+                        newfile.image = wrapped_data
                 # Finalize content creation, reindex it
                 newfile.reindexObject()
                 notify(ObjectModifiedEvent(newfile))
@@ -173,13 +180,9 @@ class JSON_View(grok.View):
             elif context_type == 'Image':
                 info['size'] = context.image.getSize()
         if context_type == 'Image':
-            if IATImage.providedBy(context):  # ATContentTypes
-                # XXX: leave as it was until we have chance to take a further look
-                info['thumbnail_url'] = context_url + '/image_thumb'
-            else:  # plone.app.contenttypes
-                scales = context.restrictedTraverse('@@images')
-                thumb = scales.scale(fieldname='image', scale='thumb')
-                info['thumbnail_url'] = thumb.url
+            scales = context.restrictedTraverse('@@images')
+            thumb = scales.scale(fieldname='image', scale='thumb')
+            info['thumbnail_url'] = thumb.url
         return info
 
     def getContainerInfo(self):
