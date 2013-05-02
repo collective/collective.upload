@@ -14,7 +14,7 @@ There's a frood who really knows where his towel is
 - Remove dependency on unittest2. This could break tests when ran under
   Python 2.6; you have been warned. [hvelarde]
 
-- Tested for compatibility with Plone 4.3. [hvelarde]
+- Package is now compatible with Plone 4.3. [jpgimenez, hvelarde]
 
 - Add placeholders to input fields in upload template. [hvelarde]
 
