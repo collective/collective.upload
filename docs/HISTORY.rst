@@ -1,7 +1,7 @@
 There's a frood who really knows where his towel is
 ---------------------------------------------------
 
-1.0b4 (unreleased)
+1.0b4 (2013-05-02)
 ^^^^^^^^^^^^^^^^^^
 
 - Package now depends on plone.app.jquerytools >= 1.5.5 to keep it in sync
