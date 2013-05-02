@@ -1,12 +1,13 @@
-Changelog
----------
-
-Because you have to know where your towel is.
+There's a frood who really knows where his towel is
+---------------------------------------------------
 
 1.0b4 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Support Dexterity content types (plone.app.contenttypes) [ericof]
+- Package now depends on plone.app.jquerytools >= 1.5.5 to keep it in sync
+  with Plone 4.3 pinned versions. [hvelarde]
+
+- Support Dexterity content types (plone.app.contenttypes). [ericof]
 
 - Fix package dependencies. [hvelarde]
 
