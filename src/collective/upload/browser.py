@@ -30,6 +30,7 @@ from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
 from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
+from Products.CMFPlone.utils import safe_unicode
 
 from collective.upload import _
 from collective.upload.config import IMAGE_MIMETYPES
@@ -82,7 +83,7 @@ class Media_Uploader(grok.View):
         for item in files:
             if item.filename:
                 content_type = item.headers.get('Content-Type')
-                filename = unicode(item.filename)
+                filename = safe_unicode(item.filename)
                 data = item.read()
                 id_name = ''
                 title = title and title[0] or filename
