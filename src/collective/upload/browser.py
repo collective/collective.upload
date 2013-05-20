@@ -102,6 +102,7 @@ class Media_Uploader(grok.View):
                 # Create content
                 self.context.invokeFactory(portal_type,
                                            id=id_name,
+                                           title=title,
                                            description=description[0])
                 newfile = self.context[id_name]
                 # Set data
