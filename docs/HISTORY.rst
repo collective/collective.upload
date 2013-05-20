@@ -4,7 +4,7 @@ There's a frood who really knows where his towel is
 1.0b5 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Fix issue with collective.upload ignoring title information [ericof]
 
 
 1.0b4 (2013-05-02)
