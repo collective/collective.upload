@@ -4,6 +4,9 @@ There's a frood who really knows where his towel is
 1.0b5 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Display viewlet **only** for users with Add portal content permission and
+  if the context is a contaner [ericof]
+
 - Fix issue with collective.upload ignoring title information [ericof]
 
 
