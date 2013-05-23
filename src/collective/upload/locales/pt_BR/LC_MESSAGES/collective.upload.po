@@ -17,7 +17,7 @@ msgstr ""
 
 #: collective/upload/menu.py:36
 msgid "A form to upload multiple files."
-msgstr "UM formulário para upload de múltiplos arquivos."
+msgstr "Um formulário para upload de múltiplos arquivos."
 
 #: collective/upload/templates/media_uploader.pt:32
 msgid "Add files or images&hellip;"
@@ -64,22 +64,22 @@ msgstr "Liste as extensões de arquivos que podem ser enviados, sem o ponto, sep
 #. Default: "Cancel"
 #: collective/upload/browser.py:180
 msgid "cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. Default: "Delete"
 #: collective/upload/browser.py:178
 msgid "delete"
-msgstr "Excluir"
+msgstr "excluir"
 
 #. Default: "Description"
 #: collective/upload/browser.py:181
 msgid "description"
-msgstr ""
+msgstr "descrição"
 
 #. Default: "Error"
 #: collective/upload/browser.py:182
 msgid "error"
-msgstr ""
+msgstr "erro"
 
 #. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."
 #: collective/upload/interfaces.py:32
