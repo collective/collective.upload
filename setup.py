@@ -5,7 +5,7 @@ from setuptools import setup
 
 import os
 
-version = '1.0b5.dev0'
+version = '1.0b5'
 description = "File upload widget with multiple file selection, drag&drop \
 support, progress bars, client-side image resizing and preview images."
 long_description = (

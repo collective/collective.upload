@@ -1,7 +1,7 @@
 There's a frood who really knows where his towel is
 ---------------------------------------------------
 
-1.0b5 (unreleased)
+1.0b5 (2013-06-13)
 ^^^^^^^^^^^^^^^^^^
 
 - Display viewlet **only** for users with Add portal content permission and
