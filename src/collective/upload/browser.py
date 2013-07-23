@@ -108,12 +108,12 @@ class Media_Uploader(grok.View):
                 # Set data
                 if portal_type == 'File':
                     if IATFile.providedBy(newfile):
-                        newfile.setFile(data)
+                        newfile.setFile(data, filename=filename)
                     else:
                         newfile.file = wrapped_data
                 elif portal_type == 'Image':
                     if IATImage.providedBy(newfile):
-                        newfile.setImage(data)
+                        newfile.setImage(data, filename=filename)
                     else:
                         newfile.image = wrapped_data
                 # Finalize content creation, reindex it
