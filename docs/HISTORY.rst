@@ -4,8 +4,10 @@ There's a frood who really knows where his towel is
 1.0b6 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Fix issue with collective.upload not setting filename on uploaded images (
+  Archetypes) [ericof]
 
+- Fix misplaced input element in chrome [domruf]
 
 1.0b5 (2013-06-13)
 ^^^^^^^^^^^^^^^^^^
