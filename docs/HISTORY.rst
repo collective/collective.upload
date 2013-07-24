@@ -4,13 +4,14 @@ There's a frood who really knows where his towel is
 1.0b6 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Fix issue with collective.upload not setting filename on uploaded images (
-  Archetypes) [ericof]
+- Fixes issue `#24`_, upload not working on folderish objects with a
+  default_page defined. [jpgimenez]
 
-- Fix misplaced input element in chrome [domruf]
+- Fix issue with collective.upload not setting filename on uploaded images
+  (Archetypes). [ericof]
 
-- Fixes issue #24, collective.upload not working on folderish content with
-  a default_page defined [jpgimenez]
+- Fix misplaced input element in chrome. [domruf]
+
 
 1.0b5 (2013-06-13)
 ^^^^^^^^^^^^^^^^^^
@@ -79,3 +80,5 @@ There's a frood who really knows where his towel is
 ^^^^^^^^^^^^^^^^^^
 
 - Initial release.
+
+.. _`#24`: https://github.com/collective/collective.upload/issues/24
