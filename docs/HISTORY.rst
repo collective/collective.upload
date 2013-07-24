@@ -9,6 +9,9 @@ There's a frood who really knows where his towel is
 
 - Fix misplaced input element in chrome [domruf]
 
+- Fixes issue #24, collective.upload not working on folderish content with
+  a default_page defined [jpgimenez]
+
 1.0b5 (2013-06-13)
 ^^^^^^^^^^^^^^^^^^
 
