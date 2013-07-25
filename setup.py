@@ -12,7 +12,7 @@ long_description = (
     open('README.rst').read() + '\n' +
     open(os.path.join('docs', 'INSTALL.rst')).read() + '\n' +
     open(os.path.join('docs', 'CREDITS.rst')).read() + '\n' +
-    open(os.path.join('docs', 'HISTORY.rst')).read()
+    open(os.path.join('docs', 'CHANGES.rst')).read()
 )
 
 setup(name='collective.upload',
