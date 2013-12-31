@@ -13,8 +13,57 @@ bars, client-side image resizing and preview images.
 ``collective.upload`` is smoothly integrated with Plone's UI and works with
 any folderish content type based on Archetypes or Dexterity.
 
+Mostly Harmless
+---------------
+
+.. image:: https://secure.travis-ci.org/collective/collective.upload.png?branch=master
+    :alt: Travis CI badge
+    :target: http://travis-ci.org/collective/collective.upload
+
+.. image:: https://coveralls.io/repos/collective/collective.upload/badge.png?branch=master
+    :alt: Coveralls badge
+    :target: https://coveralls.io/r/collective/collective.upload
+
+Got an idea? Found a bug? Let us know by `opening a support ticket`_.
+
+.. _`opening a support ticket`: https://github.com/collective/collective.upload/issues
+
+Don't Panic
+-----------
+
+Installation
+^^^^^^^^^^^^
+
+To enable this product in a buildout-based installation:
+
+#. Edit your buildout.cfg and add ``collective.upload`` to the list of eggs to
+   install::
+
+    [buildout]
+    ...
+    eggs =
+        collective.upload
+
+#. If you're using Plone 4.2, you may need to pin the right versions of the
+   jQuery and jQuery Tools packages::
+
+    [versions]
+    plone.app.jquery = 1.7.2
+    plone.app.jquerytools = 1.5.6
+
+After updating the configuration you need to run ''bin/buildout'', which will
+take care of updating your system.
+
+Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
+
+Check the box next to ``collective.upload`` and click the 'Activate' button.
+
+.. Note::
+    You may have to empty your browser cache and save your resource registries
+    in order to see the effects of the product installation.
+
 Features
---------
+^^^^^^^^
 
 - Support for Archetypes and Dexterity-based content types
 - **Multiple file upload**: Allows to select multiple files at once and upload
@@ -38,7 +87,7 @@ Features
   with Cross-site XMLHttpRequests
 
 Browsers supported
-------------------
+^^^^^^^^^^^^^^^^^^
 
 - Google Chrome 7.0+
 - Mozilla Firefox 3.0+
@@ -56,7 +105,7 @@ upload progress.
 `Extended browser support information`_.
 
 Future features
----------------
+^^^^^^^^^^^^^^^
 
 We want to implement these features at some point in the future:
 
@@ -73,25 +122,8 @@ We want to implement these features at some point in the future:
 - Asynchronous Module Definition (`AMD`_) support
 - Widget for "allowed extensions" option
 
-Why do we need another multiple file upload package?
-----------------------------------------------------
-
-Because in software development, as in any natural environment, diversity is
-good.
-
-By mid 2011 we tested the existing packages, `collective.uploadify`_ and
-`collective.quickupload`_, because we were working on a project that required
-this feature.
-
-We though `collective.quickupload`_ was good but, at that point, it had no
-support for Dexterity-based content types. After some research we found that
-jQuery File Upload was really nice, so we started this project.
-
-Also, we strongly believe Adobe Flash must die and Microsoft must stop
-pretending Internet Explorer can continue ignoring web standards forever.
-
 Developer's notes
------------------
+^^^^^^^^^^^^^^^^^
 
 In the folder "static" you are going to find the JavaScript used in this
 project; here a list with the file name and function:
@@ -137,23 +169,25 @@ vendor/jquery.ui.widget.js
 vendor/jquery.getimagedata.min.js
   It enables pixel level access to images from different origins. It works by sending a JSONP request with the URL of the image to the server. The server then converts the image into base64 encoded data URL and sends the image back as a JSON object. (what this script does, can be done with CORS)
 
-Roadmap
----------------
+To-do list
+^^^^^^^^^^
 
 * Check if constraints are in place before adding the menu item.
 
-Mostly Harmless
----------------
-
-.. image:: https://secure.travis-ci.org/collective/collective.upload.png
-    :target: http://travis-ci.org/collective/collective.upload
-
-Have an idea? Found a bug? Let us know by `opening a support ticket`_.
-
-.. _`opening a support ticket`: https://github.com/collective/collective.upload/issues
-.. _`collective.uploadify`: http://pypi.python.org/pypi/collective.uploadify
-.. _`collective.quickupload`: http://pypi.python.org/pypi/collective.quickupload
 .. _`Extended browser support information`: https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support
 .. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
 .. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
 .. _`AMD`: https://github.com/amdjs/amdjs-api/wiki/AMD
+
+Not entirely unlike
+-------------------
+
+`collective.quickupload`_
+    Pure javascript files upload tool for Plone, with drag and drop, multi
+    selection, and progress bar.
+
+`collective.uploadify`_
+    Multi File Upload for Plone.
+
+.. _`collective.quickupload`: http://pypi.python.org/pypi/collective.quickupload
+.. _`collective.uploadify`: http://pypi.python.org/pypi/collective.uploadify
