@@ -1,0 +1,6 @@
+src/collective/upload/static/canvas-to-blob.min.js
+src/collective/upload/static/jquery.fileupload*.js
+src/collective/upload/static/load-image.min.js
+src/collective/upload/static/main.js
+src/collective/upload/static/tmpl.min.js
+src/collective/upload/static/vendor/*.js
