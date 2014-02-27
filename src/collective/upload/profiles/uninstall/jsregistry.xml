@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+  <javascript remove="True" id="++resource++collective.upload/vendor/jquery.getimagedata.min.js"/>
+  <javascript remove="True" id="++resource++collective.upload/vendor/jquery.ui.widget.js"/>
+  <javascript remove="True" id="++resource++collective.upload/tmpl.min.js"/>
+  <javascript remove="True" id="++resource++collective.upload/load-image.min.js"/>
+  <javascript remove="True" id="++resource++collective.upload/canvas-to-blob.min.js"/>
+  <javascript remove="True" id="++resource++collective.upload/jquery.iframe-transport.js"/>
+  <javascript remove="True" id="++resource++collective.upload/jquery.fileupload.js"/>
+  <javascript remove="True" id="++resource++collective.upload/jquery.fileupload-fp.js"/>
+  <javascript remove="True" id="++resource++collective.upload/jquery.fileupload-ui.js"/>
+  <javascript remove="True" id="++resource++collective.upload/vendor/bootstrap.min.js"/>
+  <javascript remove="True" id="++resource++collective.upload/main.js"/>
+  <javascript remove="True" id="++resource++collective.upload/cors/jquery.xdr-transport.js"/>

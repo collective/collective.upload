@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layers>
+ <layer remove="True"
+        name="collective.upload.layer"
+        interface="collective.upload.interfaces.IUploadBrowserLayer" />
+</layers>
