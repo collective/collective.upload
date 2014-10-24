@@ -68,4 +68,7 @@
         directory="static"
     />
 
+  <utility factory=".setuphandlers.HiddenProfiles" name="collective.upload" />
+  <utility factory=".setuphandlers.HiddenProducts" name="collective.upload" />
+
 </configure>
