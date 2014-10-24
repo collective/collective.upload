@@ -1,11 +1,14 @@
-There's a frood who really knows where his towel is
----------------------------------------------------
+Changelog
+---------
+
+There's a frood who really knows where his towel is.
 
 1.0b7 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- fix browser CORS check
+- Fix browser CORS check.
   [petschki]
+
 - Add missing uninstall profile.
   [thet]
 

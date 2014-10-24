@@ -24,6 +24,10 @@ Mostly Harmless
     :alt: Coveralls badge
     :target: https://coveralls.io/r/collective/collective.upload
 
+.. image:: https://pypip.in/d/collective.upload/badge.png
+    :alt: Downloads
+    :target: https://pypi.python.org/pypi/collective.upload
+
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
 .. _`opening a support ticket`: https://github.com/collective/collective.upload/issues
@@ -49,7 +53,7 @@ To enable this product in a buildout-based installation:
 
     [versions]
     plone.app.jquery = 1.7.2
-    plone.app.jquerytools = 1.5.6
+    plone.app.jquerytools = 1.5.7
 
 After updating the configuration you need to run ''bin/buildout'', which will
 take care of updating your system.
