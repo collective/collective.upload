@@ -3,8 +3,8 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.0b7 (unreleased)
-^^^^^^^^^^^^^^^^^^
+1.0rc1 (2014-10-24)
+^^^^^^^^^^^^^^^^^^^
 
 - Fix browser CORS check.
   [petschki]
