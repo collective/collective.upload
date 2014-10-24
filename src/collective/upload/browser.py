@@ -21,7 +21,7 @@ from zope.component import getUtility
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-#from collective.upload.behaviors import IMultipleUpload
+# from collective.upload.behaviors import IMultipleUpload
 
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.file import NamedBlobImage
@@ -305,12 +305,12 @@ class JSONImageConverter(grok.View):
 
                         # If no callback was specified
                         else:
-                            #404
+                            # 404
                             return
 
                     # If server with the image responded with something other than 200
                     else:
-                        #status_code = f.code
+                        # status_code = f.code
                         return
 
                 # If urllib errors

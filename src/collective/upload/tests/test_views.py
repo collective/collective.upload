@@ -64,12 +64,12 @@ class APITestCase(unittest.TestCase):
         # TODO: test with content added
 
     def test_getContextInfo(self):
-        #view = getMultiAdapter((self.folder, self.request), name='api')
+        # view = getMultiAdapter((self.folder, self.request), name='api')
         # TODO
         NotImplemented
 
     def test_getContainerInfo(self):
-        #view = getMultiAdapter((self.folder, self.request), name='api')
+        # view = getMultiAdapter((self.folder, self.request), name='api')
         # TODO
         NotImplemented
 
