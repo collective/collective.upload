@@ -95,7 +95,7 @@ $(document).ready(function() {
     'use strict';
 
         //we have to check if the fileupload element existing
-        
+
         if ($('#fileupload')[0] !== undefined) {
             var files_re = new RegExp('(\\.|\/)('+jupload.config['extensions']+')$', 'i');
             // Initialize the jQuery File Upload widget:
@@ -139,7 +139,7 @@ $(document).ready(function() {
             // Upload server status check for browsers with CORS support:
             if ($.support.cors) {
                 $.ajax({
-                    url: '',
+                    url: './',
                     type: 'HEAD'
                 }).fail(function () {
                     $('<span class="alert alert-error"/>')
@@ -170,7 +170,7 @@ $(document).ready(function() {
             //     });
             // }
 
-            // //in the latest version we have a method formData who actually is 
+            // //in the latest version we have a method formData who actually is
             // // doing this...=)
             $('#fileupload').bind('fileuploadsubmit', function (e, data) {
                 var inputs = data.context.find(':input');
@@ -202,9 +202,9 @@ $(document).ready(function() {
                         }
                     });
                 }
-                e.preventDefault();            
+                e.preventDefault();
             });
-            
+
         }
 
     };
