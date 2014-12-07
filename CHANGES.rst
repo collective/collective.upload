@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Updated Spanish translation.
+  [macagua]
 
 
 1.0rc1 (2014-10-24)
