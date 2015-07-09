@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.upload">
+
+  <genericsetup:upgradeSteps
+      source="1"
+      destination="2"
+      profile="collective.upload:default">
+
+    <genericsetup:upgradeStep
+        title="Update role map"
+        description=""
+        handler=".update_rolemap"
+        />
+
+    <genericsetup:upgradeStep
+        title="Update control panel configlet"
+        description=""
+        handler=".update_configlet"
+        />
+
+  </genericsetup:upgradeSteps>
+
+</configure>

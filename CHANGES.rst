@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Make control panel configlet accesible to Site Administrator role (closes `#35`_).
+  [hvelarde]
+
 - Updated Spanish translation.
   [macagua]
 
@@ -101,3 +104,4 @@ There's a frood who really knows where his towel is.
 - Initial release.
 
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
+.. _`#35`: https://github.com/collective/collective.upload/issues/35

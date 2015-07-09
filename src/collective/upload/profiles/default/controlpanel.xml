@@ -4,17 +4,15 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="collective.upload"
     purge="False">
-
-    <configlet
-        title="Upload Settings"
-        action_id="upload"
-        appId="collective.upload"
-        category="Products"
-        condition_expr=""
-        url_expr="string:${portal_url}/@@upload-settings"
-        visible="True"
-        i18n:attributes="title">
-            <permission>Manage portal</permission>
-    </configlet>
-
+  <configlet title="Upload Settings"
+      action_id="upload"
+      appId="collective.upload"
+      category="Products"
+      condition_expr=""
+      url_expr="string:${portal_url}/@@upload-settings"
+      icon_expr="string:${portal_url}/++resource++collective.upload/upload-icon.png"
+      visible="True"
+      i18n:attributes="title">
+    <permission>collective.upload: Setup</permission>
+  </configlet>
 </object>

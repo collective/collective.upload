@@ -69,6 +69,7 @@ setup(name='collective.upload',
       extras_require={
           'test': [
               'AccessControl',
+              'plone.api',
               'plone.app.dexterity',
               'plone.app.robotframework',
               'plone.app.testing [robot] >=4.2.2',
