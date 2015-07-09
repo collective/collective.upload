@@ -6,14 +6,14 @@ from zope.component import getMultiAdapter
 from Products.CMFCore.interfaces import IFolderish
 
 
-grok.templatedir("viewlets")
+grok.templatedir('viewlets')
 
 
 class Tmpls(grok.Viewlet):
     grok.context(Interface)
-    grok.name(u"collective.upload.tmpls")
-    grok.require("cmf.AddPortalContent")
-    grok.template("tmpls")
+    grok.name(u'collective.upload.tmpls')
+    grok.require('cmf.AddPortalContent')
+    grok.template('tmpls')
     grok.viewletmanager(IHtmlHead)
 
     def enabled(self):

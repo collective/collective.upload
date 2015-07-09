@@ -56,13 +56,13 @@ class Media_Uploader(grok.View):
     files = []
 
     def __call__(self, *args, **kwargs):
-        if hasattr(self.request, "REQUEST_METHOD"):
-            json_view = queryMultiAdapter((self.context, self.request),
-                                          name=u"api")
+        if hasattr(self.request, 'REQUEST_METHOD'):
+            json_view = queryMultiAdapter(
+                (self.context, self.request), name=u'api')
             # TODO: we should check errors in the creation process, and
             # broadcast those to the error template in JS
-            if self.request["REQUEST_METHOD"] == "POST":
-                if getattr(self.request, "files[]", None) is not None:
+            if self.request['REQUEST_METHOD'] == 'POST':
+                if getattr(self.request, 'files[]', None) is not None:
                     files = self.request['files[]']
                     title = self.request['title[]']
                     description = self.request['description[]']
@@ -207,7 +207,7 @@ messages = {
     'ERROR_MSG': _(u'error', default=u'Error'),
 }
 
-messageTemplate = "jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n"
+messageTemplate = 'jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n'
 
 
 class JSVariables(grok.View):
@@ -277,17 +277,17 @@ class JSONImageConverter(grok.View):
                         width, height = image.size
 
                         # Create the structure for the data URL
-                        type_prefix = "data:image/" + image.format.lower() + ";base64,"
+                        type_prefix = 'data:image/' + image.format.lower() + ';base64,'
 
                         # Convert the image to base64
                         return_image = base64.b64encode(im.getvalue())
 
                         # Construct the response
                         data = json.dumps({
-                            "width": width,
-                            "height": height,
-                            "data": type_prefix + return_image,
-                            "mimetype": 'jpeg'
+                            'width': width,
+                            'height': height,
+                            'data': type_prefix + return_image,
+                            'mimetype': 'jpeg'
                         })
 
                         # If a callback has been specified
@@ -320,7 +320,7 @@ class JSONImageConverter(grok.View):
                     else:
                         self.response.setStatus(self, 500, lock=None)
                 except urllib2.URLError, e:
-                    print "URLError", e
+                    print 'URLError', e
 
             # If the URL was not specified in the request
             else:
