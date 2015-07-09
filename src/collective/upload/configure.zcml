@@ -11,6 +11,8 @@
   <include package="five.grok" />
   <include package="Products.CMFCore" file="permissions.zcml" />
 
+  <permission id="collective.upload.Setup" title="collective.upload: Setup" />
+
     <permission
         id="collective.upload.UploadFiles"
         title="collective.upload: Upload Files"
@@ -20,13 +22,12 @@
     <include file="behaviors.zcml" />
     <include file="profiles.zcml" />
 
-    <!-- Control panel -->
-    <browser:page
-        name="upload-settings"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.UploadSettingsControlPanel"
-        permission="cmf.ManagePortal"
-        />
+  <browser:page
+      name="upload-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class="collective.upload.controlpanel.UploadSettingsControlPanel"
+      permission="collective.upload.Setup"
+      />
 
     <!-- Menu item -->
     <adapter
@@ -39,7 +40,7 @@
         id="upload_contentmenu_factory"
         title="The 'add' menu - allows the user to add new content items in the context"
         class=".menu.FactoriesMenu"
-    />    
+    />
 
   <browser:resourceDirectory name="collective.upload" directory="static" />
 
