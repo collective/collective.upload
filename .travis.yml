@@ -5,12 +5,10 @@ cache:
   directories:
   - eggs
 env:
-- PLONE_VERSION=4.2
 - PLONE_VERSION=4.3
 matrix:
   fast_finish: true
 install:
-- sed -ie "s#test-4.3#test-$PLONE_VERSION#" buildout.cfg
 - python bootstrap.py
 - bin/buildout annotate
 - bin/buildout -Nq

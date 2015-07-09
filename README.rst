@@ -45,13 +45,6 @@ To enable this product in a buildout-based installation:
     eggs =
         collective.upload
 
-#. If you're using Plone 4.2, you may need to pin the right versions of the
-   jQuery and jQuery Tools packages::
-
-    [versions]
-    plone.app.jquery = 1.7.2
-    plone.app.jquerytools = 1.5.7
-
 After updating the configuration you need to run ''bin/buildout'', which will
 take care of updating your system.
 
