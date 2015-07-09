@@ -16,17 +16,14 @@ any folderish content type based on Archetypes or Dexterity.
 Mostly Harmless
 ---------------
 
-.. image:: https://secure.travis-ci.org/collective/collective.upload.png?branch=master
-    :alt: Travis CI badge
+.. image:: http://img.shields.io/pypi/v/collective.upload.svg
+    :target: https://pypi.python.org/pypi/collective.upload
+
+.. image:: https://img.shields.io/travis/collective/collective.upload/master.svg
     :target: http://travis-ci.org/collective/collective.upload
 
-.. image:: https://coveralls.io/repos/collective/collective.upload/badge.png?branch=master
-    :alt: Coveralls badge
+.. image:: https://img.shields.io/coveralls/collective/collective.upload/master.svg
     :target: https://coveralls.io/r/collective/collective.upload
-
-.. image:: https://pypip.in/d/collective.upload/badge.png
-    :alt: Downloads
-    :target: https://pypi.python.org/pypi/collective.upload
 
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
