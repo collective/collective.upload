@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Drop support for Plone 4.2.
+  [hvelarde]
+
 - Make control panel configlet accesible to Site Administrator role (closes `#35`_).
   [hvelarde]
 

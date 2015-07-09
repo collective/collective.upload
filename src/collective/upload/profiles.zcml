@@ -20,7 +20,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-	<genericsetup:registerProfile
+  <genericsetup:registerProfile
       name="testfixture"
       title="collective.upload: testfixture"
       directory="profiles/testfixture"

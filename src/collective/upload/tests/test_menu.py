@@ -46,7 +46,7 @@ class MenuIntegrationTest(unittest.TestCase):
                                context=self.folder)
 
     def test_menu_implements_IFactoriesMenu(self):
-        self.failUnless(IFactoriesMenu.providedBy(self.menu))
+        self.assertTrue(IFactoriesMenu.providedBy(self.menu))
 
     @unittest.expectedFailure
     def test_menu_item_upload(self):
