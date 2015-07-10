@@ -173,7 +173,12 @@ $(document).ready(function() {
             // //in the latest version we have a method formData who actually is
             // // doing this...=)
             $('#fileupload').bind('fileuploadsubmit', function (e, data) {
-                var inputs = data.context.find(':input');
+                var inputs;
+                if(data.context){
+                    inputs = data.context.find(':input');
+                }else{
+                    inputs = data.form.find(':input');
+                }
                 if (inputs.filter('[required][value=""]').first().focus().length) {
                     return false;
                 }
