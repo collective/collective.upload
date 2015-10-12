@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Use "application/javascript" media type instead of the obsolete "text/javascript".
+  [hvelarde]
+
 - Depend on collective.js.bootstrap (closes `#31`_).
   [rodfersou]
 

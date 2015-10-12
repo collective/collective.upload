@@ -212,7 +212,7 @@ class JSVariables(grok.View):
 
     def render(self):
         response = self.request.response
-        response.setHeader('content-type', 'text/javascript;;charset=utf-8')
+        response.setHeader('content-type', 'application/javascript')
 
         messageTemplate = 'jupload={{}};jupload.messages = {{\n{0}}};\njupload.config = {1};\n'
         template = ''
