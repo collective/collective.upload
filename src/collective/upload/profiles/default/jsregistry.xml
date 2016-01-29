@@ -66,5 +66,5 @@
   <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
   <javascript id="++resource++collective.upload/cors/jquery.xdr-transport.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
-      expression="" inline="False" authenticated="True" conditionalcomment="if gte IE 8" />
+      expression="" inline="False" authenticated="True" conditionalcomment="gte IE 8" />
 </object>
