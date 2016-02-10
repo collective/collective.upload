@@ -12,3 +12,4 @@
   <javascript remove="True" id="++resource++collective.upload/vendor/bootstrap.min.js"/>
   <javascript remove="True" id="++resource++collective.upload/main.js"/>
   <javascript remove="True" id="++resource++collective.upload/cors/jquery.xdr-transport.js"/>
+</object>
