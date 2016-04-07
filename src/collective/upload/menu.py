@@ -35,7 +35,7 @@ class FactoriesMenu(BaseMenu):
                         'submenu': None,
                         'description': _(u'A form to upload multiple files.'),
                         'title': _(u'Multiple Files'),
-                        'action': '%s/@@media_uploader' % url,
+                        'action': '{0}/@@media_uploader'.format(url),
                         'selected': False,
                         'id': 'Multiple Files',
                         'icon': ICON}

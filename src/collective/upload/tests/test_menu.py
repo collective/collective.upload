@@ -23,8 +23,10 @@ class MenuFunctionalTest(unittest.TestCase):
     def test_factory_menu_item(self):
         browser = Browser(self.app)
         portalURL = self.portal.absolute_url()
-        browser.addHeader('Authorization', 'Basic %s:%s' %
-                          (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
+        browser.addHeader(
+            'Authorization',
+            'Basic {0}:{1}'.format(SITE_OWNER_NAME, SITE_OWNER_PASSWORD),
+        )
         browser.open(portalURL + '/upload-folder')
         self.assertIn('Multiple Files', browser.contents)
         self.assertIn('@@media_uploader', browser.contents)

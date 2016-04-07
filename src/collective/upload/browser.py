@@ -205,8 +205,6 @@ messages = {
     'ERROR_MSG': _(u'error', default=u'Error'),
 }
 
-messageTemplate = 'jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n'
-
 
 class JSVariables(grok.View):
     """ This method generates global JavaScript variables, for i18n and plugin
@@ -220,14 +218,15 @@ class JSVariables(grok.View):
         response = self.request.response
         response.setHeader('content-type', 'text/javascript;;charset=utf-8')
 
+        messageTemplate = 'jupload={{}};jupload.messages = {{\n{0}}};\njupload.config = {1};\n'
         template = ''
 
         for key in messages:
             msg = translate(messages[key], context=self.request).replace("'", "\\'")
-            template = "%s%s: '%s',\n" % (template, key, msg)
+            template = "{0}{1}: '{2}',\n".format(template, key, msg)
 
         # note trimming of last comma
-        return messageTemplate % (template[:-2], self.registry_config())
+        return messageTemplate.format(template[:-2], self.registry_config())
 
     def registry_config(self):
         config = {}
