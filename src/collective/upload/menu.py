@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 from collective.upload import _
 from collective.upload.config import ICON
+from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
 from plone.app.contentmenu.menu import FactoriesMenu as BaseMenu
 from plone.app.contentmenu.menu import FactoriesSubMenuItem as BaseMenuItem
-from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
-from zope.interface import implements
 from zope.component import getMultiAdapter
+from zope.interface import implements
 
 
 class FactoriesSubMenuItem(BaseMenuItem):

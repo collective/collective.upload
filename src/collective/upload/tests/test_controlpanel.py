@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import unittest
-
-from zope.component import getMultiAdapter
-from zope.component import getUtility
-
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import logout
-from plone.app.testing import setRoles
-from plone.registry.interfaces import IRegistry
-
 from collective.upload import config
 from collective.upload.config import PROJECTNAME
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.testing import INTEGRATION_TESTING
+from plone.app.testing import logout
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+
+import unittest
+
 
 BASE_REGISTRY = 'collective.upload.controlpanel.IuploadSettings.%s'
 

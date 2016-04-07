@@ -2,7 +2,8 @@
 from collective.upload.testing import FUNCTIONAL_TESTING
 from collective.upload.testing import INTEGRATION_TESTING
 from plone.app.contentmenu.interfaces import IFactoriesMenu
-from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
+from plone.app.testing import SITE_OWNER_NAME
+from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.testing.z2 import Browser
 from zope.browsermenu.interfaces import IBrowserMenu
 from zope.component import getUtility

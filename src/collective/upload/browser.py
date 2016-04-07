@@ -1,39 +1,36 @@
 # -*- coding: utf-8 -*-
-import base64
-import urllib2
-import cStringIO
-import json
-from PIL import Image
-
 from Acquisition import aq_inner
-
+from collective.upload import _
+from collective.upload.config import IMAGE_MIMETYPES
+from collective.upload.interfaces import IUploadBrowserLayer
+from collective.upload.interfaces import IUploadSettings
 from five import grok
-
-from zope.container.interfaces import INameChooser
-from zope.component import queryMultiAdapter
-
-from zope.event import notify
-
-from zope.interface import Interface
-from zope.i18n import translate
-from zope.component import getUtility
-
-from zope.lifecycleevent import ObjectModifiedEvent
-
-from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-# from collective.upload.behaviors import IMultipleUpload
-
+from PIL import Image
+from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.file import NamedBlobImage
-
-from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
 from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
 from Products.CMFPlone.utils import safe_unicode
+from zope.component import getUtility
+from zope.component import queryMultiAdapter
+from zope.container.interfaces import INameChooser
+from zope.event import notify
+from zope.i18n import translate
+from zope.interface import Interface
+from zope.lifecycleevent import ObjectModifiedEvent
 
-from collective.upload import _
-from collective.upload.config import IMAGE_MIMETYPES
+import base64
+import cStringIO
+import json
+import urllib2
+
+
+# from collective.upload.behaviors import IMultipleUpload
+
+
+
 
 grok.templatedir('templates')
 

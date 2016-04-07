@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from plone import api
 from collective.upload.testing import INTEGRATION_TESTING
+from plone import api
 
 import unittest
 

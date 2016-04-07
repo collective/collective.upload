@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from five import grok
 from plone.app.layout.viewlets.interfaces import IHtmlHead
-from zope.interface import Interface
-from zope.component import getMultiAdapter
 from Products.CMFCore.interfaces import IFolderish
+from zope.component import getMultiAdapter
+from zope.interface import Interface
 
 
 grok.templatedir('viewlets')
