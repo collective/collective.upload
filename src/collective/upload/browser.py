@@ -13,6 +13,7 @@ from plone.namedfile.file import NamedBlobImage
 from plone.registry.interfaces import IRegistry
 from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
+from Products.CMFPlone.utils import safe_hasattr
 from Products.CMFPlone.utils import safe_unicode
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
@@ -26,11 +27,6 @@ import base64
 import cStringIO
 import json
 import urllib2
-
-
-# from collective.upload.behaviors import IMultipleUpload
-
-
 
 
 grok.templatedir('templates')
@@ -54,7 +50,7 @@ class Media_Uploader(grok.View):
     files = []
 
     def __call__(self, *args, **kwargs):
-        if hasattr(self.request, 'REQUEST_METHOD'):
+        if safe_hasattr(self.request, 'REQUEST_METHOD'):
             json_view = queryMultiAdapter(
                 (self.context, self.request), name=u'api')
             # TODO: we should check errors in the creation process, and
@@ -172,7 +168,7 @@ class JSON_View(grok.View):
                 'delete_url': del_url,
                 'delete_type': 'DELETE',
                 }
-        if hasattr(context, 'size'):
+        if safe_hasattr(context, 'size'):
             info['size'] = context.size()
         else:
             if context_type == 'File':
