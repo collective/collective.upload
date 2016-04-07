@@ -4,6 +4,7 @@ from collective.upload import _
 from collective.upload.config import IMAGE_MIMETYPES
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.interfaces import IUploadSettings
+from collective.upload.logger import logger
 from five import grok
 from PIL import Image
 from plone.app.content.browser.foldercontents import FolderContentsView
@@ -317,7 +318,7 @@ class JSONImageConverter(grok.View):
                     else:
                         self.response.setStatus(self, 500, lock=None)
                 except urllib2.URLError, e:
-                    print 'URLError', e
+                    logger.error('URLError', e)
 
             # If the URL was not specified in the request
             else:
