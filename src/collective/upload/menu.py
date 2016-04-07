@@ -5,11 +5,11 @@ from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
 from plone.app.contentmenu.menu import FactoriesMenu as BaseMenu
 from plone.app.contentmenu.menu import FactoriesSubMenuItem as BaseMenuItem
 from zope.component import getMultiAdapter
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(IFactoriesSubMenuItem)
 class FactoriesSubMenuItem(BaseMenuItem):
-    implements(IFactoriesSubMenuItem)
 
     submenuId = 'upload_contentmenu_factory'
 

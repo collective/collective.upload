@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.testing import INTEGRATION_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getMultiAdapter
 from zope.component import queryMultiAdapter
-from zope.interface import directlyProvides
+from zope.interface import alsoProvides
 
 import unittest
 
@@ -18,7 +17,7 @@ class JSVariablesViewTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        directlyProvides(self.request, IUploadBrowserLayer)
+        alsoProvides(self.request, IUploadBrowserLayer)
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.portal.invokeFactory('Folder', 'test-folder')
@@ -45,7 +44,7 @@ class APITestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        directlyProvides(self.request, IUploadBrowserLayer)
+        alsoProvides(self.request, IUploadBrowserLayer)
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.portal.invokeFactory('Folder', 'test-folder')
@@ -86,7 +85,7 @@ class JSONImageConverterTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        directlyProvides(self.request, IUploadBrowserLayer)
+        alsoProvides(self.request, IUploadBrowserLayer)
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.portal.invokeFactory('Folder', 'test-folder')

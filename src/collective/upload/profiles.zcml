@@ -31,6 +31,5 @@
   <include package=".upgrades" />
 
   <utility factory=".setuphandlers.HiddenProfiles" name="collective.upload" />
-  <utility factory=".setuphandlers.HiddenProducts" name="collective.upload" />
 
 </configure>

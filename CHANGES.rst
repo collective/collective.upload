@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Remove dependency on Products.CMFQuickInstallerTool.
+  [hvelarde]
+
 - Fix IE conditional comment on JS registry
   [tcurvelo]
 
