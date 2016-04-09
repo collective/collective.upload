@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.upload.testing import INTEGRATION_TESTING
+from collective.upload.upgrades.v3 import FIX_CSS
+from collective.upload.upgrades.v3 import FIX_JS
 from plone import api
 
 import unittest
@@ -94,3 +96,37 @@ class To2TestCase(BaseUpgradeTestCase):
         configlet = cptool.getActionObject('Products/upload')
         new_permissions = ('collective.upload: Setup',)
         self.assertEqual(configlet.getPermissions(), new_permissions)
+
+
+class To3TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'2', u'3')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 4)
+
+    def test_fix_resources_references(self):
+        # check if the upgrade step is registered
+        title = u'Fix resource references'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        css_tool = api.portal.get_tool('portal_css')
+        css_tool.renameResource(FIX_CSS['new'], FIX_CSS['old'])
+        self.assertIn(FIX_CSS['old'], css_tool.getResourceIds())
+        self.assertNotIn(FIX_CSS['new'], css_tool.getResourceIds())
+        js_tool = api.portal.get_tool('portal_javascripts')
+        js_tool.renameResource(FIX_JS['new'], FIX_JS['old'])
+        self.assertIn(FIX_JS['old'], js_tool.getResourceIds())
+        self.assertNotIn(FIX_JS['new'], js_tool.getResourceIds())
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertNotIn(FIX_CSS['old'], css_tool.getResourceIds())
+        self.assertIn(FIX_CSS['new'], css_tool.getResourceIds())
+        self.assertNotIn(FIX_JS['old'], js_tool.getResourceIds())
+        self.assertIn(FIX_JS['new'], js_tool.getResourceIds())

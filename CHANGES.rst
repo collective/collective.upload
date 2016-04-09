@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Depend on collective.js.bootstrap (closes `#31`_).
+  [rodfersou]
+
 - Remove dependency on Products.CMFQuickInstallerTool.
   [hvelarde]
 
@@ -113,4 +116,5 @@ There's a frood who really knows where his towel is.
 - Initial release.
 
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
+.. _`#31`: https://github.com/collective/collective.upload/issues/31
 .. _`#35`: https://github.com/collective/collective.upload/issues/35

@@ -41,8 +41,10 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
           'Acquisition',
+          'collective.js.bootstrap',
           'five.grok',
           'Pillow',
+          'plone.api',
           'plone.app.content',
           'plone.app.contentmenu',
           'plone.app.jquery',
@@ -66,7 +68,6 @@ setup(name='collective.upload',
       extras_require={
           'test': [
               'AccessControl',
-              'plone.api',
               'plone.app.dexterity',
               'plone.app.robotframework',
               'plone.app.testing [robot] >=4.2.2',
