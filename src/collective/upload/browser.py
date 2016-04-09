@@ -1,39 +1,33 @@
 # -*- coding: utf-8 -*-
-import base64
-import urllib2
-import cStringIO
-import json
-from PIL import Image
-
 from Acquisition import aq_inner
-
+from collective.upload import _
+from collective.upload.config import IMAGE_MIMETYPES
+from collective.upload.interfaces import IUploadBrowserLayer
+from collective.upload.interfaces import IUploadSettings
+from collective.upload.logger import logger
 from five import grok
-
-from zope.container.interfaces import INameChooser
-from zope.component import queryMultiAdapter
-
-from zope.event import notify
-
-from zope.interface import Interface
-from zope.i18n import translate
-from zope.component import getUtility
-
-from zope.lifecycleevent import ObjectModifiedEvent
-
-from collective.upload.interfaces import IUploadBrowserLayer, IUploadSettings
-# from collective.upload.behaviors import IMultipleUpload
-
+from PIL import Image
+from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.file import NamedBlobImage
-
-from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.registry.interfaces import IRegistry
 from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
+from Products.CMFPlone.utils import safe_hasattr
 from Products.CMFPlone.utils import safe_unicode
+from zope.component import getUtility
+from zope.component import queryMultiAdapter
+from zope.container.interfaces import INameChooser
+from zope.event import notify
+from zope.i18n import translate
+from zope.interface import Interface
+from zope.lifecycleevent import ObjectModifiedEvent
 
-from collective.upload import _
-from collective.upload.config import IMAGE_MIMETYPES
+import base64
+import cStringIO
+import json
+import urllib2
+
 
 grok.templatedir('templates')
 
@@ -56,7 +50,7 @@ class Media_Uploader(grok.View):
     files = []
 
     def __call__(self, *args, **kwargs):
-        if hasattr(self.request, 'REQUEST_METHOD'):
+        if safe_hasattr(self.request, 'REQUEST_METHOD'):
             json_view = queryMultiAdapter(
                 (self.context, self.request), name=u'api')
             # TODO: we should check errors in the creation process, and
@@ -174,7 +168,7 @@ class JSON_View(grok.View):
                 'delete_url': del_url,
                 'delete_type': 'DELETE',
                 }
-        if hasattr(context, 'size'):
+        if safe_hasattr(context, 'size'):
             info['size'] = context.size()
         else:
             if context_type == 'File':
@@ -207,8 +201,6 @@ messages = {
     'ERROR_MSG': _(u'error', default=u'Error'),
 }
 
-messageTemplate = 'jupload={};jupload.messages = {\n%s};\njupload.config = %s;\n'
-
 
 class JSVariables(grok.View):
     """ This method generates global JavaScript variables, for i18n and plugin
@@ -222,14 +214,15 @@ class JSVariables(grok.View):
         response = self.request.response
         response.setHeader('content-type', 'text/javascript;;charset=utf-8')
 
+        messageTemplate = 'jupload={{}};jupload.messages = {{\n{0}}};\njupload.config = {1};\n'
         template = ''
 
         for key in messages:
             msg = translate(messages[key], context=self.request).replace("'", "\\'")
-            template = "%s%s: '%s',\n" % (template, key, msg)
+            template = "{0}{1}: '{2}',\n".format(template, key, msg)
 
         # note trimming of last comma
-        return messageTemplate % (template[:-2], self.registry_config())
+        return messageTemplate.format(template[:-2], self.registry_config())
 
     def registry_config(self):
         config = {}
@@ -320,7 +313,7 @@ class JSONImageConverter(grok.View):
                     else:
                         self.response.setStatus(self, 500, lock=None)
                 except urllib2.URLError, e:
-                    print 'URLError', e
+                    logger.error('URLError', e)
 
             # If the URL was not specified in the request
             else:

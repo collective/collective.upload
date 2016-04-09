@@ -2,7 +2,8 @@
 from collective.upload.testing import FUNCTIONAL_TESTING
 from collective.upload.testing import INTEGRATION_TESTING
 from plone.app.contentmenu.interfaces import IFactoriesMenu
-from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
+from plone.app.testing import SITE_OWNER_NAME
+from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.testing.z2 import Browser
 from zope.browsermenu.interfaces import IBrowserMenu
 from zope.component import getUtility
@@ -22,8 +23,10 @@ class MenuFunctionalTest(unittest.TestCase):
     def test_factory_menu_item(self):
         browser = Browser(self.app)
         portalURL = self.portal.absolute_url()
-        browser.addHeader('Authorization', 'Basic %s:%s' %
-                          (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
+        browser.addHeader(
+            'Authorization',
+            'Basic {0}:{1}'.format(SITE_OWNER_NAME, SITE_OWNER_PASSWORD),
+        )
         browser.open(portalURL + '/upload-folder')
         self.assertIn('Multiple Files', browser.contents)
         self.assertIn('@@media_uploader', browser.contents)

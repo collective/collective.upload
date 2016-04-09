@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from zope import schema
-from zope.interface import Interface
-
 from collective.upload import _
 from collective.upload import config
+from zope import schema
+from zope.interface import Interface
 
 
 class IUploadBrowserLayer(Interface):

@@ -1,15 +1,15 @@
 # -*- coding:utf-8 -*-
 from collective.upload import _
 from collective.upload.config import ICON
+from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
 from plone.app.contentmenu.menu import FactoriesMenu as BaseMenu
 from plone.app.contentmenu.menu import FactoriesSubMenuItem as BaseMenuItem
-from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
-from zope.interface import implements
 from zope.component import getMultiAdapter
+from zope.interface import implementer
 
 
+@implementer(IFactoriesSubMenuItem)
 class FactoriesSubMenuItem(BaseMenuItem):
-    implements(IFactoriesSubMenuItem)
 
     submenuId = 'upload_contentmenu_factory'
 
@@ -35,7 +35,7 @@ class FactoriesMenu(BaseMenu):
                         'submenu': None,
                         'description': _(u'A form to upload multiple files.'),
                         'title': _(u'Multiple Files'),
-                        'action': '%s/@@media_uploader' % url,
+                        'action': '{0}/@@media_uploader'.format(url),
                         'selected': False,
                         'id': 'Multiple Files',
                         'icon': ICON}

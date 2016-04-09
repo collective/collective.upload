@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.registry.browser import controlpanel
-
 from collective.upload import _
 from collective.upload.interfaces import IUploadSettings
+from plone.app.registry.browser import controlpanel
 
 
 class UploadSettingsEditForm(controlpanel.RegistryEditForm):

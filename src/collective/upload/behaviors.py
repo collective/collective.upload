@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import warnings
-
 from zope.interface import Interface
+
+import warnings
 
 
 class IMultipleUpload(Interface):

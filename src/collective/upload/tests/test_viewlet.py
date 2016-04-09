@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import unittest
-
+from collective.upload.behaviors import IMultipleUpload
+from collective.upload.testing import INTEGRATION_TESTING
+from plone.app.testing import logout
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from Products.Five.browser import BrowserView as View
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 from zope.viewlet.interfaces import IViewletManager
 
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-from plone.app.testing import logout
+import unittest
 
-from Products.Five.browser import BrowserView as View
-
-from collective.upload.behaviors import IMultipleUpload
-from collective.upload.testing import INTEGRATION_TESTING
 
 NAME = 'collective.upload.tmpls'
 
