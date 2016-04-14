@@ -25,9 +25,15 @@ Mostly Harmless
 .. image:: https://img.shields.io/coveralls/collective/collective.upload/master.svg
     :target: https://coveralls.io/r/collective/collective.upload
 
-Got an idea? Found a bug? Let us know by `opening a support ticket`_.
+Got an idea? Found a bug? Let us know by `opening a support ticket <https://github.com/collective/collective.upload/issues>`_.
 
-.. _`opening a support ticket`: https://github.com/collective/collective.upload/issues
+Known issues
+^^^^^^^^^^^^
+
+* `Uninstall removes collective.js.bootstrap resources <https://github.com/collective/collective.upload/issues/47>`_.
+  This may break sites with other add-ons depending on it.
+
+See the `complete list of bugs on GitHub <https://github.com/collective/collective.upload/issues?labels=bug&milestone=&page=1&state=open>`_.
 
 Don't Panic
 -----------
@@ -53,8 +59,7 @@ Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 Check the box next to ``collective.upload`` and click the 'Activate' button.
 
 .. Note::
-    You may have to empty your browser cache and save your resource registries
-    in order to see the effects of the product installation.
+    You may have to empty your browser cache and save your resource registries in order to see the effects of the product installation.
 
 Features
 ^^^^^^^^
