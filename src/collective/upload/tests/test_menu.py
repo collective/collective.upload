@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.upload.testing import FUNCTIONAL_TESTING
 from collective.upload.testing import INTEGRATION_TESTING
+from plone import api
 from plone.app.contentmenu.interfaces import IFactoriesMenu
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
@@ -8,6 +9,7 @@ from plone.testing.z2 import Browser
 from zope.browsermenu.interfaces import IBrowserMenu
 from zope.component import getUtility
 
+import transaction
 import unittest
 
 
@@ -18,7 +20,11 @@ class MenuFunctionalTest(unittest.TestCase):
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
-        self.folder = self.portal['upload-folder']
+
+        with api.env.adopt_roles(['Manager']):
+            self.folder = api.content.create(self.portal, 'Folder', 'upload-folder')
+
+        transaction.commit()
 
     def test_factory_menu_item(self):
         browser = Browser(self.app)
@@ -40,10 +46,12 @@ class MenuIntegrationTest(unittest.TestCase):
     layer = INTEGRATION_TESTING
 
     def setUp(self):
-        self.app = self.layer['app']
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        self.folder = self.portal['upload-folder']
+
+        with api.env.adopt_roles(['Manager']):
+            self.folder = api.content.create(self.portal, 'Folder', 'upload-folder')
+
         self.menu = getUtility(IBrowserMenu,
                                name='upload_contentmenu_factory',
                                context=self.folder)
