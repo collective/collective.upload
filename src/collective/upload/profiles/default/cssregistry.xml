@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="portal_css" meta_type="Stylesheets Registry">
-  <stylesheet title="" cacheable="True" compression="none" cookable="True"
-    enabled="1" expression="" id="++resource++collective.js.bootstrap/css/bootstrap.min.css" media="screen"
+  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="" id="++resource++collective.upload/main.css" media="screen"
     rel="stylesheet" rendering="link"/>
   <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="1" expression="" id="++resource++collective.upload/css/jquery.fileupload-ui.css" media="screen"
