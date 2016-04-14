@@ -12,13 +12,13 @@ matrix:
 install:
 - python bootstrap.py
 - bin/buildout annotate
-- bin/buildout -Nq
+- bin/buildout
 script:
 - bin/code-analysis
 - bin/test
 after_success:
 - bin/createcoverage
-- pip install -q coveralls
+- pip install coveralls
 - coveralls
 notifications:
   irc: irc.freenode.org#simplesconsultoria
