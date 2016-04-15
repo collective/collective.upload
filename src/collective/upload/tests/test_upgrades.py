@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.upload.testing import INTEGRATION_TESTING
-from collective.upload.upgrades.v3 import FIX_CSS
-from collective.upload.upgrades.v3 import FIX_JS
+from collective.upload.upgrades.v3 import REMOVE_CSS
+from collective.upload.upgrades.v3 import REMOVE_JS
 from plone import api
 
 import unittest
@@ -106,27 +106,39 @@ class To3TestCase(BaseUpgradeTestCase):
     def test_registered_steps(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertGreaterEqual(int(version), int(self.to_version))
-        self.assertEqual(self._get_registered_steps, 4)
+        self.assertEqual(self._get_registered_steps, 5)
 
-    def test_fix_resources_references(self):
+    def test_remove_resources_references(self):
         # check if the upgrade step is registered
-        title = u'Fix resource references'
+        title = u'Remove Bootstrap references on resource registries'
         step = self._get_upgrade_step_by_title(title)
         self.assertIsNotNone(step)
 
         # simulate state on previous version
         css_tool = api.portal.get_tool('portal_css')
-        css_tool.renameResource(FIX_CSS['new'], FIX_CSS['old'])
-        self.assertIn(FIX_CSS['old'], css_tool.getResourceIds())
-        self.assertNotIn(FIX_CSS['new'], css_tool.getResourceIds())
+        css_tool.registerResource(REMOVE_CSS)
+        self.assertIn(REMOVE_CSS, css_tool.getResourceIds())
         js_tool = api.portal.get_tool('portal_javascripts')
-        js_tool.renameResource(FIX_JS['new'], FIX_JS['old'])
-        self.assertIn(FIX_JS['old'], js_tool.getResourceIds())
-        self.assertNotIn(FIX_JS['new'], js_tool.getResourceIds())
+        js_tool.registerResource(REMOVE_JS)
+        self.assertIn(REMOVE_JS, js_tool.getResourceIds())
 
         # run the upgrade step to validate the update
         self._do_upgrade_step(step)
-        self.assertNotIn(FIX_CSS['old'], css_tool.getResourceIds())
-        self.assertIn(FIX_CSS['new'], css_tool.getResourceIds())
-        self.assertNotIn(FIX_JS['old'], js_tool.getResourceIds())
-        self.assertIn(FIX_JS['new'], js_tool.getResourceIds())
+        self.assertNotIn(REMOVE_CSS, css_tool.getResourceIds())
+        self.assertNotIn(REMOVE_JS, js_tool.getResourceIds())
+
+    def test_add_main_css(self):
+        # check if the upgrade step is registered
+        title = u'Add main.css into registry'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        css_tool = api.portal.get_tool('portal_css')
+        main_css = '++resource++collective.upload/main.css'
+        css_tool.unregisterResource(main_css)
+        self.assertNotIn(main_css, css_tool.getResourceIds())
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertIn(main_css, css_tool.getResourceIds())

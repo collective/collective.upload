@@ -16,9 +16,16 @@
         />
 
     <genericsetup:upgradeStep
-        title="Fix resource references"
-        description="Fix resource references after add collective.js.bootstrap dependency."
-        handler=".fix_resources_references"
+        title="Remove Bootstrap references on resource registries"
+        description="Remove bootstrap resource references."
+        handler=".remove_bootstrap"
+        />
+
+    <genericsetup:upgradeDepends
+        title="Add main.css into registry"
+        description="Add main.css into registry."
+        import_steps="cssregistry"
+        run_deps="false"
         />
 
     <genericsetup:upgradeStep

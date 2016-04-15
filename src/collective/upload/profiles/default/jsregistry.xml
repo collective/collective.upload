@@ -32,7 +32,6 @@
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="True" />
 
-
   <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
   <javascript id="++resource++collective.upload/jquery.iframe-transport.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
@@ -62,10 +61,5 @@
   <javascript id="++resource++collective.upload/cors/jquery.xdr-transport.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" authenticated="True" conditionalcomment="gte IE 8" />
-
-  <!-- Bootstrap JS -->
-  <javascript id="++resource++collective.js.bootstrap/js/bootstrap.min.js"
-      cacheable="True" compression="none" cookable="True" enabled="True"
-      expression="" inline="False" />
 
 </object>

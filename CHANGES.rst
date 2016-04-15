@@ -6,11 +6,11 @@ There's a frood who really knows where his towel is.
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Remove dependency on Bootstrap (closes `#46`_).
+  [rodfersou]
+
 - Use "application/javascript" media type instead of the obsolete "text/javascript".
   [hvelarde]
-
-- Depend on collective.js.bootstrap (closes `#31`_).
-  [rodfersou]
 
 - Remove dependency on Products.CMFQuickInstallerTool.
   [hvelarde]
@@ -119,5 +119,5 @@ There's a frood who really knows where his towel is.
 - Initial release.
 
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
-.. _`#31`: https://github.com/collective/collective.upload/issues/31
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
+.. _`#46`: https://github.com/collective/collective.upload/issues/46
