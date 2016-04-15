@@ -27,12 +27,6 @@ Mostly Harmless
 
 Got an idea? Found a bug? Let us know by `opening a support ticket <https://github.com/collective/collective.upload/issues>`_.
 
-Known issues
-^^^^^^^^^^^^
-
-* `Uninstall removes collective.js.bootstrap resources <https://github.com/collective/collective.upload/issues/47>`_.
-  This may break sites with other add-ons depending on it.
-
 See the `complete list of bugs on GitHub <https://github.com/collective/collective.upload/issues?labels=bug&milestone=&page=1&state=open>`_.
 
 Don't Panic
