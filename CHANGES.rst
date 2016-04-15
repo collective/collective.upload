@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.0rc2 (unreleased)
+1.1b1 (2016-04-15)
 ^^^^^^^^^^^^^^^^^^^
 
 - Remove dependency on Bootstrap (closes `#46`_).
