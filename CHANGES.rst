@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 1.1b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Fix UnicodeEncodeError on JSVariables view.
+  [rodfersou]
 
 
 1.1b1 (2016-04-15)
