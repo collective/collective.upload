@@ -219,7 +219,7 @@ class JSVariables(grok.View):
 
         for key in messages:
             msg = translate(messages[key], context=self.request).replace("'", "\\'")
-            template = "{0}{1}: '{2}',\n".format(template, key, msg)
+            template = "{0}{1}: '{2}',\n".format(template, key, msg.encode('utf-8'))
 
         # note trimming of last comma
         return messageTemplate.format(template[:-2], self.registry_config())
