@@ -169,7 +169,7 @@
                 chain = dfd.promise();
             that._processing += 1;
             $.each(options.process, function (i, settings) {
-                chain = chain.pipe(function (data) {
+                chain = chain.then(function (data) {
                     return that.processActions[settings.action]
                         .call(this, data, settings);
                 });
@@ -196,7 +196,7 @@
             if (options.process && options.process.length &&
                     this._isXHRUpload(options)) {
                 $.each(data.files, function (index, file) {
-                    that._processingQueue = that._processingQueue.pipe(
+                    that._processingQueue = that._processingQueue.then(
                         function () {
                             var dfd = $.Deferred();
                             that._processFile(data.files, index, options)
