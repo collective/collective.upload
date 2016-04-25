@@ -487,7 +487,7 @@
                 if (options.previewSourceFileTypes.test(file.type) &&
                         ($.type(options.previewSourceMaxFileSize) !== 'number' ||
                         file.size < options.previewSourceMaxFileSize)) {
-                    that._processingQueue = that._processingQueue.pipe(function () {
+                    that._processingQueue = that._processingQueue.then(function () {
                         var dfd = $.Deferred();
                         that._renderPreview(file, $(element)).done(
                             function () {

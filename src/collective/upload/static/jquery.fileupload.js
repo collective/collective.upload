@@ -699,9 +699,9 @@
                 if (this.options.limitConcurrentUploads > 1) {
                     slot = $.Deferred();
                     this._slots.push(slot);
-                    pipe = slot.pipe(send);
+                    pipe = slot.then(send);
                 } else {
-                    pipe = (this._sequence = this._sequence.pipe(send, send));
+                    pipe = (this._sequence = this._sequence.then(send, send));
                 }
                 // Return the piped Promise object, enhanced with an abort method,
                 // which is delegated to the jqXHR object of the current upload,
@@ -841,7 +841,7 @@
                 $.map(entries, function (entry) {
                     return that._handleFileTreeEntry(entry, path);
                 })
-            ).pipe(function () {
+            ).then(function () {
                 return Array.prototype.concat.apply(
                     [],
                     arguments
@@ -910,7 +910,7 @@
             return $.when.apply(
                 $,
                 $.map(fileInput, this._getSingleFileInputFiles)
-            ).pipe(function () {
+            ).then(function () {
                 return Array.prototype.concat.apply(
                     [],
                     arguments

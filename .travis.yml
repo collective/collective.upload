@@ -11,7 +11,7 @@ env:
 matrix:
   fast_finish: true
 install:
-- python bootstrap.py
+- python bootstrap.py --setuptools-version=20.9.0
 - bin/buildout annotate
 - bin/buildout
 script:
