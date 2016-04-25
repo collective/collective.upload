@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.1b2 (unreleased)
+1.1b2 (2016-04-25)
 ^^^^^^^^^^^^^^^^^^
 
 - Use jQuery `.then()` method instead of deprecated `deferred.pipe()`;
