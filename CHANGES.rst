@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.1b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Review upload layout (closes `#33`_).
+  [rodfersou]
+
 - Fix UnicodeEncodeError on JSVariables view.
   [rodfersou]
 
@@ -126,5 +129,6 @@ There's a frood who really knows where his towel is.
 - Initial release.
 
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
+.. _`#33`: https://github.com/collective/collective.upload/issues/33
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
 .. _`#46`: https://github.com/collective/collective.upload/issues/46
