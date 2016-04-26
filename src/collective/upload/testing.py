@@ -6,6 +6,7 @@ We have to set different test fixtures depending on features we want:
 plone.app.contenttypes:
     installed under Plone 4.3, if requested
 """
+from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
@@ -50,3 +51,8 @@ INTEGRATION_TESTING = IntegrationTesting(
 
 FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FIXTURE,), name='collective.upload:Functional')
+
+ROBOT_TESTING = FunctionalTesting(
+    bases=(FIXTURE, AUTOLOGIN_LIBRARY_FIXTURE, z2.ZSERVER_FIXTURE),
+    name='collective.upload:Robot',
+)
