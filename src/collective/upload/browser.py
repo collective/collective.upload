@@ -60,7 +60,8 @@ class Media_Uploader(grok.View):
                     files = self.request['files[]']
                     title = self.request['title[]']
                     description = self.request['description[]']
-                    uploaded = self.upload([files], [title], [description])
+                    rights = self.request['rights[]']
+                    uploaded = self.upload([files], [title], [description], [rights])
                     if uploaded and json_view:
                         upped = []
                         for item in uploaded:
@@ -69,7 +70,7 @@ class Media_Uploader(grok.View):
                 return json_view()
         return super(Media_Uploader, self).__call__(*args, **kwargs)
 
-    def upload(self, files, title='', description=''):
+    def upload(self, files, title='', description='', rights=''):
         loaded = []
         namechooser = INameChooser(self.context)
         if not isinstance(files, list):
@@ -97,7 +98,8 @@ class Media_Uploader(grok.View):
                 self.context.invokeFactory(portal_type,
                                            id=id_name,
                                            title=title,
-                                           description=description[0])
+                                           description=description[0],
+                                           rights=rights[0])
                 newfile = self.context[id_name]
                 # Set data
                 if portal_type == 'File':
@@ -131,6 +133,7 @@ class JSON_View(grok.View):
     json_var = {'name': 'File-Name.jpg',
                 'title': '',
                 'description': '',
+                'rights': '',
                 'size': 999999,
                 'url': '\/\/nohost.org',
                 'thumbnail_url': '//nohost.org',
@@ -164,6 +167,7 @@ class JSON_View(grok.View):
         info = {'name': context_name,
                 'title': context_name,
                 'description': context.Description(),
+                'rights': context.Rights(),
                 'url': context_url,
                 'delete_url': del_url,
                 'delete_type': 'DELETE',
