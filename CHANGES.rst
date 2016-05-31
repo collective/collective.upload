@@ -6,8 +6,8 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
-
+- Finnish translations.
+  [petri]
 
 1.1b2 (2016-04-25)
 ^^^^^^^^^^^^^^^^^^
