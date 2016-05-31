@@ -94,7 +94,7 @@ class JSONImageConverterTestCase(unittest.TestCase):
 
     def test_encoding(self):
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
-        url = 'http://plone.org/logo.png'
+        url = 'http://old.plone.org/logo.png'
         self.request['url'] = url
         self.request['callback'] = '?'
 
@@ -103,7 +103,7 @@ class JSONImageConverterTestCase(unittest.TestCase):
     def test_nocallback(self):
         # TODO: Change this test after the nocallback error implementation
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
-        url = 'http://plone.org/logo.png'
+        url = 'http://old.plone.org/logo.png'
         self.request['url'] = url
 
         self.assertEqual(view.render(), None)
