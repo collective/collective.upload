@@ -36,7 +36,7 @@ grok.templatedir('templates')
 class Folder_Contents(grok.View, FolderContentsView):
     grok.context(Interface)
     grok.layer(IUploadBrowserLayer)
-    grok.require('cmf.ModifyPortalContent')
+    grok.require('cmf.ListFolderContents')
 
 
 # TODO: convert into a folder action: Upload files and images

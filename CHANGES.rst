@@ -6,6 +6,10 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- The ``folder_contents`` view is now bounded to the ``cmf.ListFolderContents`` permission;
+  previously, it was incorrectly bound to ``cmf.ModifyPortalContent`` and that was causing problems for users with the Reviewer rol (HT @claytonc).
+  [hvelarde]
+
 - Fix MIME type of images processed in ``jsonimageserializer`` view.
   [hvelarde]
 
