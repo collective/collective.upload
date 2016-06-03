@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Fix MIME type of images processed in ``jsonimageserializer`` view.
+  [hvelarde]
+
 - Add field to set the creator (closes `#34`_).
   [rodfersou]
 

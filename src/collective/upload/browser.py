@@ -274,7 +274,8 @@ class JSONImageConverter(grok.View):
                         width, height = image.size
 
                         # Create the structure for the data URL
-                        type_prefix = 'data:image/' + image.format.lower() + ';base64,'
+                        mimetype = image.format.lower()
+                        data_uri_prefix = 'data:image/{0};base64,'.format(mimetype)
 
                         # Convert the image to base64
                         return_image = base64.b64encode(im.getvalue())
@@ -283,8 +284,8 @@ class JSONImageConverter(grok.View):
                         data = json.dumps({
                             'width': width,
                             'height': height,
-                            'data': type_prefix + return_image,
-                            'mimetype': 'jpeg'
+                            'data': data_uri_prefix + return_image,
+                            'mimetype': mimetype,
                         })
 
                         # If a callback has been specified
