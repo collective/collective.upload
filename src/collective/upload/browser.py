@@ -2,12 +2,9 @@
 from Acquisition import aq_inner
 from collective.upload import _
 from collective.upload.config import IMAGE_MIMETYPES
-from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.logger import logger
-from five import grok
 from PIL import Image
-from plone.app.content.browser.foldercontents import FolderContentsView
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.file import NamedBlobImage
 from plone.registry.interfaces import IRegistry
@@ -15,12 +12,12 @@ from Products.ATContentTypes.interfaces import IATFile
 from Products.ATContentTypes.interfaces import IATImage
 from Products.CMFPlone.utils import safe_hasattr
 from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser import BrowserView
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
 from zope.container.interfaces import INameChooser
 from zope.event import notify
 from zope.i18n import translate
-from zope.interface import Interface
 from zope.lifecycleevent import ObjectModifiedEvent
 
 import base64
@@ -29,23 +26,11 @@ import json
 import urllib2
 
 
-grok.templatedir('templates')
-
-
-# TODO: implement drag&drop here
-class Folder_Contents(grok.View, FolderContentsView):
-    grok.context(Interface)
-    grok.layer(IUploadBrowserLayer)
-    grok.require('cmf.ListFolderContents')
-
-
 # TODO: convert into a folder action: Upload files and images
-class Media_Uploader(grok.View):
+class MediaUploader(BrowserView):
     """ Handler for the upload process, creation of files, can set a title or
         description, the place to touch if you need extra data saved.
     """
-    grok.context(Interface)  # XXX: what's the interface of folderish objects?
-    grok.require('collective.upload.UploadFiles')
 
     files = []
 
@@ -68,7 +53,7 @@ class Media_Uploader(grok.View):
                             upped.append(json_view.getContextInfo(item))
                         return json_view.dumps(upped)
                 return json_view()
-        return super(Media_Uploader, self).__call__(*args, **kwargs)
+        return super(MediaUploader, self).__call__(*args, **kwargs)
 
     def upload(self, files, title='', description='', rights=''):
         loaded = []
@@ -121,14 +106,10 @@ class Media_Uploader(grok.View):
             return False
 
 
-class JSON_View(grok.View):
+class JSONView(BrowserView):
     """ JSON converter; the jQuery plugin requires this kind of response,
     represent the metadata info of the file.
     """
-    grok.context(Interface)
-    grok.name('api')
-    grok.require('cmf.AddPortalContent')
-    grok.layer(IUploadBrowserLayer)
 
     json_var = {'name': 'File-Name.jpg',
                 'title': '',
@@ -143,7 +124,7 @@ class JSON_View(grok.View):
 
     def __call__(self):
         self.response.setHeader('Content-Type', 'text/plain')
-        return super(JSON_View, self).__call__()
+        return super(JSONView, self).__call__()
 
     def dumps(self, json_var=None):
         """ """
@@ -206,13 +187,13 @@ messages = {
 }
 
 
-class JSVariables(grok.View):
+class JSVariables(BrowserView):
     """ This method generates global JavaScript variables, for i18n and plugin
     configuration.
     """
-    grok.context(Interface)
-    grok.name('jsvariables')
-    grok.layer(IUploadBrowserLayer)
+
+    def __call__(self):
+        return self.render()
 
     def render(self):
         response = self.request.response
@@ -240,18 +221,19 @@ class JSVariables(grok.View):
         return str(config)
 
 
-class JSONImageConverter(grok.View):
+class JSONImageConverter(BrowserView):
     """ Serialize an image into a base64 arg.
     """
-    grok.context(Interface)
-    grok.name('jsonimageserializer')
-    grok.layer(IUploadBrowserLayer)
+
+    def __call__(self):
+        return self.render()
 
     def render(self):
         # Surround everything in a try/except
         try:
             # Get the parameters from the URL
             query = self.request
+            response = self.request.response
 
             # If the user has specified a URL
             if 'url' in query:
@@ -296,7 +278,6 @@ class JSONImageConverter(grok.View):
                             data = callback + '(' + data + ');'
 
                             # Return the JSON
-                            response = self.request.response
                             response.setHeader('content-type', 'application/json;;charset=utf-8')
 
                             return data
@@ -314,9 +295,9 @@ class JSONImageConverter(grok.View):
                 # If urllib errors
                 except urllib2.HTTPError, e:
                     if e.code == 404:
-                        self.response.setStatus(self, 404, lock=None)
+                        response.setStatus(self, 404, lock=None)
                     else:
-                        self.response.setStatus(self, 500, lock=None)
+                        response.setStatus(self, 500, lock=None)
                 except urllib2.URLError, e:
                     logger.error('URLError', e)
 

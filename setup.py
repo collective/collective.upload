@@ -41,7 +41,6 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
           'Acquisition',
-          'five.grok',
           'plone.api',
           'plone.app.content',
           'plone.app.contentmenu',

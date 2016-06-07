@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Remove dependency on five.grok (closes `#66`_).
+  [rodfersou]
+
 - Cross-site file uploads are working again (fixes `#71`_).
   [rodfersou]
 
@@ -153,4 +156,5 @@ There's a frood who really knows where his towel is.
 .. _`#34`: https://github.com/collective/collective.upload/issues/34
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
 .. _`#46`: https://github.com/collective/collective.upload/issues/46
+.. _`#66`: https://github.com/collective/collective.upload/issues/66
 .. _`#71`: https://github.com/collective/collective.upload/issues/71
