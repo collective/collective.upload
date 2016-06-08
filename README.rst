@@ -61,8 +61,10 @@ Features
 - Support for Archetypes and Dexterity-based content types
 - **Multiple file upload**: Allows to select multiple files at once and upload
   them sequentially (simultaneously is not currently enabled)
-- **Drag & Drop support**: Allows to upload files by dragging them from your
+- **Drag & Drop support**: Allows to upload multiple files by dragging them from your
   desktop or file manager and dropping them on your browser window
+- **Cross site Drag & Drop support**: Allows to upload files by dragging them from
+  other browser window image and dropping them on file uploader window
 - **Upload progress bar**: Shows a progress bar indicating the upload progress
   for individual files and for all uploads combined
 - **Cancelable uploads**: Individual file uploads can be canceled to stop the
@@ -88,7 +90,7 @@ Browsers supported
 - Opera 10.0+
 - Apple Safari 4.0+
 
-Drag & Drop is only supported on Google Chrome, Firefox 4.0+ and Safari 5.0+.
+Drag & Drop is only supported on Firefox 4.0+ and Safari 5.0+.
 
 Client-side image resizing is only supported on Google Chrome, Firefox 4.0+.
 
