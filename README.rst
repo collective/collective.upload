@@ -59,45 +59,27 @@ Features
 ^^^^^^^^
 
 - Support for Archetypes and Dexterity-based content types
-- **Multiple file upload**: Allows to select multiple files at once and upload
-  them sequentially (simultaneously is not currently enabled)
-- **Drag & Drop support**: Allows to upload multiple files by dragging them from your
-  desktop or file manager and dropping them on your browser window
-- **Cross site Drag & Drop support**: Allows to upload files by dragging them from
-  other browser window image and dropping them on file uploader window
-- **Upload progress bar**: Shows a progress bar indicating the upload progress
-  for individual files and for all uploads combined
-- **Cancelable uploads**: Individual file uploads can be canceled to stop the
-  upload progress
-- **Client-side image resizing**: Images can be automatically resized on
-  client-side with browsers supporting the required JS APIs
-- **Preview images**: A preview of image files can be displayed before
-  uploading with browsers supporting the required JS APIs
-- **No browser plugins required**: The implementation is based on open
-  standards like HTML5 and JavaScript and requires no additional browser
-  plugins
-- **Graceful fallback for legacy browsers**: Uploads files via XMLHttpRequests
-  if supported and uses iframes as fallback for legacy browsers
-- **Cross-site file uploads**: Supports uploading files to a different domain
-  with Cross-site XMLHttpRequests
+- **Multiple file upload**: Allows to select multiple files at once and upload them simultaneously
+- **Drag & Drop support**: Allows to upload files by dragging them from your desktop or filemanager and dropping them on your browser window
+- **Upload progress bar**: Shows a progress bar indicating the upload progress for individual files and for all uploads combined
+- **Cancelable uploads**: Individual file uploads can be canceled to stop the upload progress
+- **Client-side image resizing**: Images can be automatically resized on client-side with browsers supporting the required JS APIs
+- **Preview images**: A preview of image files can be displayed before uploading with browsers supporting the required JS APIs
+- **No browser plugins required**: The implementation is based on open standards like HTML5 and JavaScript and requires no additional browser plugins
+- **Graceful fallback for legacy browsers**: Uploads files via XMLHttpRequests if supported and uses iframes as fallback for legacy browsers
+- **Cross-site file uploads**: Supports uploading files to a different domain with cross-site XMLHttpRequests or iframe redirects
 
-Browsers supported
-^^^^^^^^^^^^^^^^^^
+Desktop browsers support
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Google Chrome 7.0+
-- Mozilla Firefox 3.0+
-- Microsoft Internet Explorer 6.0+
-- Opera 10.0+
 - Apple Safari 4.0+
+- Google Chrome 7.0+
+- Microsoft Internet Explorer 6.0+
+- Mozilla Firefox 3.0+
+- Opera 10.0+
 
-Drag & Drop is only supported on Firefox 4.0+ and Safari 5.0+.
-
-Client-side image resizing is only supported on Google Chrome, Firefox 4.0+.
-
-Microsoft Internet Explorer has no support for multiple file selection or
-upload progress.
-
-`Extended browser support information`_.
+For a detailed overview of the features supported by each browser version,
+please have a look at the `Extended browser support information`_.
 
 Future features
 ^^^^^^^^^^^^^^^
