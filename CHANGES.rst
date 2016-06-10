@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Cross-site file uploads are working again (fixes `#71`_).
+  [rodfersou]
+
 - The ``folder_contents`` view is now bounded to the ``cmf.ListFolderContents`` permission;
   previously, it was incorrectly bound to ``cmf.ModifyPortalContent`` and that was causing problems for users with the Reviewer rol (HT @claytonc).
   [hvelarde]
@@ -150,3 +153,4 @@ There's a frood who really knows where his towel is.
 .. _`#34`: https://github.com/collective/collective.upload/issues/34
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
 .. _`#46`: https://github.com/collective/collective.upload/issues/46
+.. _`#71`: https://github.com/collective/collective.upload/issues/71
