@@ -1,20 +1,10 @@
 # -*- coding: utf-8 -*-
-from five import grok
-from plone.app.layout.viewlets.interfaces import IHtmlHead
+from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFCore.interfaces import IFolderish
 from zope.component import getMultiAdapter
-from zope.interface import Interface
 
 
-grok.templatedir('viewlets')
-
-
-class Tmpls(grok.Viewlet):
-    grok.context(Interface)
-    grok.name(u'collective.upload.tmpls')
-    grok.require('cmf.AddPortalContent')
-    grok.template('tmpls')
-    grok.viewletmanager(IHtmlHead)
+class Tmpls(ViewletBase):
 
     def enabled(self):
         """
