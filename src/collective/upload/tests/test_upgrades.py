@@ -142,3 +142,14 @@ class To3TestCase(BaseUpgradeTestCase):
         # run the upgrade step to validate the update
         self._do_upgrade_step(step)
         self.assertIn(main_css, css_tool.getResourceIds())
+
+
+class To4TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'3', u'4')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 2)
