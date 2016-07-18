@@ -18,7 +18,7 @@ class IUploadSettings(Interface):
     """
 
     show_widget = schema.Bool(
-        title=_(u'Show upload widget in folder contents?'),
+        title=_(u'Show upload widget in folder contents view?'),
         description=_(
             u'If selected, the upload widget will be shown in the context of '
             u'the folder contents view also. The widget will be always '

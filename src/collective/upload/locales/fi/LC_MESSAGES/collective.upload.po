@@ -4,8 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-05-31 12:39+0300\n"
+"POT-Creation-Date: 2016-07-18 16:19+0000\n"
 "PO-Revision-Date: 2016-05-31 13:19+0300\n"
+"Last-Translator: Petri Savolainen <petri.savolainen@koodaamo.fi>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,34 +17,41 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.upload\n"
 "X-Generator: Poedit 1.8.7\n"
-"Last-Translator: Petri Savolainen <petri.savolainen@koodaamo.fi>\n"
 "Language: fi_FI\n"
 
 #: collective/upload/menu.py:36
 msgid "A form to upload multiple files."
 msgstr "Tiedostojen latauslomake."
 
-#: collective/upload/templates/media_uploader.pt:32
+#: collective/upload/behaviors.zcml:12
+msgid "Add a new action in the add new menu, allowing the multiple upload of files or images"
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:31
 msgid "Add files or images&hellip;"
 msgstr "valitse"
 
-#: collective/upload/interfaces.py:21
+#: collective/upload/interfaces.py:31
 msgid "Allowed Extensions"
 msgstr "Sallitut päätteet"
 
-#: collective/upload/templates/media_uploader.pt:41
+#: collective/upload/profiles.zcml:13
+msgid "An implementation of the jQuery File Upload Plugin for Plone."
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:35
 msgid "Cancel upload"
 msgstr "keskeytä"
 
-#: collective/upload/templates/media_uploader.pt:45
-msgid "Delete selected"
-msgstr "poista"
-
-#: collective/upload/controlpanel.py:13
+#: collective/upload/controlpanel.py:12
 msgid "Here you can modify the settings for collective.upload"
 msgstr "Useiden tiedostojen lataustyökalun käyttöasetukset."
 
-#: collective/upload/interfaces.py:31
+#: collective/upload/interfaces.py:22
+msgid "If selected, the upload widget will be shown in the context of the folder contents view also. The widget will be always accessible via the \"Add new…\" menu regardless this value."
+msgstr ""
+
+#: collective/upload/interfaces.py:41
 msgid "Max file size"
 msgstr "Tiedoston enimmäiskoko"
 
@@ -51,64 +59,88 @@ msgstr "Tiedoston enimmäiskoko"
 msgid "Multiple Files"
 msgstr "Tiedostoja"
 
-#: collective/upload/templates/media_uploader.pt:37
+#: collective/upload/behaviors.zcml:12
+msgid "Multiple file and image upload"
+msgstr ""
+
+#: collective/upload/interfaces.py:21
+msgid "Show upload widget in folder contents view?"
+msgstr ""
+
+#: collective/upload/templates/media_uploader.pt:38
 msgid "Start upload"
 msgstr "aloita"
 
-#: collective/upload/controlpanel.py:12
+#: collective/upload/browser.zcml:61
+msgid "The 'add' menu - allows the user to add new content items in the context"
+msgstr ""
+
+#: collective/upload/profiles.zcml:21
+msgid "Uninstall profile for the collective.upload package."
+msgstr ""
+
+#: collective/upload/controlpanel.py:11
 #: collective/upload/profiles/default/controlpanel.xml
 msgid "Upload Settings"
 msgstr "Latausasetukset"
 
 #. Default: "List the file extensions allowed for upload, without dot, comma separated"
-#: collective/upload/interfaces.py:22
+#: collective/upload/interfaces.py:32
 msgid "allowed_extensions_key"
 msgstr "Sallittujen tiedostotyyppien päätteet, ilman pisteitä, pilkuin eroteltuina."
 
 #. Default: "Cancel"
-#: collective/upload/browser.py:180
+#: collective/upload/browser.py:188
 msgid "cancel"
 msgstr "peru"
 
+#: collective/upload/profiles.zcml:13
+msgid "collective.upload"
+msgstr ""
+
+#: collective/upload/profiles.zcml:21
+msgid "collective.upload uninstall"
+msgstr ""
+
 #. Default: "Delete"
-#: collective/upload/browser.py:178
+#: collective/upload/browser.py:186
 msgid "delete"
 msgstr "poista"
 
 #. Default: "Description"
-#: collective/upload/browser.py:181
+#: collective/upload/browser.py:189
 msgid "description"
 msgstr "kuvaus"
 
 #. Default: "Error"
-#: collective/upload/browser.py:182
+#: collective/upload/browser.py:190
 msgid "error"
 msgstr "virhe"
 
 #. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."
-#: collective/upload/interfaces.py:32
+#: collective/upload/interfaces.py:42
 msgid "max_file_size_key"
 msgstr "Suurin hyväksytty tiedostokoko tavuina (engl. bytes). Huomaa että jotkut ns. välityspalvelimet voivat järjestelmästä riippuen myös asettaa omia rajoituksiaan."
 
-#: collective/upload/interfaces.py:51
+#: collective/upload/interfaces.py:61
 msgid "maximum height"
 msgstr "suurin korkeus"
 
-#: collective/upload/interfaces.py:42
+#: collective/upload/interfaces.py:52
 msgid "maximum width"
 msgstr "suurin leveys"
 
 #. Default: "The maximum height for uploaded images."
-#: collective/upload/interfaces.py:52
+#: collective/upload/interfaces.py:62
 msgid "resize_max_height_key"
 msgstr "Ladattavien kuvien enimmäiskorkeus."
 
 #. Default: "The maximum width for uploaded images."
-#: collective/upload/interfaces.py:43
+#: collective/upload/interfaces.py:53
 msgid "resize_max_width_key"
 msgstr "Ladattavien kuvien enimmäisleveys."
 
 #. Default: "Start"
-#: collective/upload/browser.py:179
+#: collective/upload/browser.py:187
 msgid "start"
 msgstr "aloita"
