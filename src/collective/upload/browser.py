@@ -5,6 +5,7 @@ from collective.upload.config import IMAGE_MIMETYPES
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.logger import logger
 from PIL import Image
+from plone import api
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.file import NamedBlobImage
 from plone.registry.interfaces import IRegistry
@@ -80,12 +81,15 @@ class MediaUploader(BrowserView):
                     wrapped_data = NamedBlobFile(data=data, filename=filename)
 
                 # Create content
-                self.context.invokeFactory(portal_type,
-                                           id=id_name,
-                                           title=title,
-                                           description=description[0],
-                                           rights=rights[0])
-                newfile = self.context[id_name]
+                newfile = api.content.create(
+                    container=self.context,
+                    type=portal_type,
+                    id=id_name,
+                    title=title,
+                    description=description[0],
+                    rights=rights[0]
+                )
+
                 # Set data
                 if portal_type == 'File':
                     if IATFile.providedBy(newfile):
@@ -187,6 +191,7 @@ messages = {
 }
 
 
+# FIXME: this view is called all over the place and not only when needed
 class JSVariables(BrowserView):
     """ This method generates global JavaScript variables, for i18n and plugin
     configuration.

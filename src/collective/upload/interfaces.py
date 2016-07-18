@@ -12,9 +12,20 @@ class IUploadBrowserLayer(Interface):
 
 
 class IUploadSettings(Interface):
+
     """Global upload settings. This describes records stored in the
     configuration registry and obtainable via plone.registry.
     """
+
+    show_widget = schema.Bool(
+        title=_(u'Show upload widget in folder contents?'),
+        description=_(
+            u'If selected, the upload widget will be shown in the context of '
+            u'the folder contents view also. The widget will be always '
+            u'accessible via the "Add new…" menu regardless this value.'
+        ),
+        default=True,
+    )
 
     upload_extensions = schema.TextLine(
         title=_(u'Allowed Extensions'),

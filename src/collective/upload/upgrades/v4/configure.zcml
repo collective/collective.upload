@@ -9,6 +9,13 @@
       destination="4"
       profile="collective.upload:default">
 
+    <genericsetup:upgradeDepends
+        title="Add Show widget field to registry"
+        description="Reload registration of configlet registry to add new field."
+        import_steps="plone.app.registry"
+        run_deps="false"
+        />
+
     <genericsetup:upgradeStep
         title="Cook CSS resources"
         description="There were changes in the CSS files, so we need to cook the resources."

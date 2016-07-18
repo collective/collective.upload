@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-
 from collective.upload import config
 from collective.upload.config import PROJECTNAME
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.testing import INTEGRATION_TESTING
 from plone.app.testing import logout
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
 from zope.component import getUtility
@@ -24,7 +21,6 @@ class ControlPanelTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.controlpanel = self.portal['portal_controlpanel']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
     def test_controlpanel_has_view(self):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
@@ -42,16 +38,14 @@ class ControlPanelTestCase(unittest.TestCase):
     def test_controlpanel_installed(self):
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertTrue('upload' in actions,
-                        'control panel was not installed')
+        self.assertIn('upload', actions)
 
     def test_controlpanel_removed_on_uninstall(self):
         qi = self.portal['portal_quickinstaller']
         qi.uninstallProducts(products=[PROJECTNAME])
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertTrue('upload' not in actions,
-                        'control panel was not removed')
+        self.assertNotIn('upload', actions)
 
 
 class RegistryTestCase(unittest.TestCase):
@@ -62,7 +56,10 @@ class RegistryTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.registry = getUtility(IRegistry)
         self.settings = self.registry.forInterface(IUploadSettings)
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+
+    def test_show_widget_record_in_registry(self):
+        self.assertTrue(hasattr(self.settings, 'show_widget'))
+        self.assertTrue(self.settings.show_widget)
 
     def test_upload_extensions_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'upload_extensions'))
@@ -89,6 +86,7 @@ class RegistryTestCase(unittest.TestCase):
         qi.uninstallProducts(products=[config.PROJECTNAME])
 
         records = [
+            BASE_REGISTRY % 'show_widget',
             BASE_REGISTRY % 'upload_extensions',
             BASE_REGISTRY % 'max_file_size',
             BASE_REGISTRY % 'resize_max_width',

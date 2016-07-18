@@ -6,15 +6,15 @@ There's a frood who really knows where his towel is.
 1.1b3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Use a viewlet to display the upload widget on the ``folder_contents`` view instead of overriding it.
+  The viewlet can be disable via a new option in the control panel configlet (closes `#65`_).
+  [rodfersou, hvelarde]
+
 - Remove dependency on five.grok (closes `#66`_).
   [rodfersou]
 
 - Cross-site file uploads are working again (fixes `#71`_).
   [rodfersou]
-
-- The ``folder_contents`` view is now bounded to the ``cmf.ListFolderContents`` permission;
-  previously, it was incorrectly bound to ``cmf.ModifyPortalContent`` and that was causing problems for users with the Reviewer rol (HT @claytonc).
-  [hvelarde]
 
 - Fix MIME type of images processed in ``jsonimageserializer`` view.
   [hvelarde]
@@ -156,5 +156,6 @@ There's a frood who really knows where his towel is.
 .. _`#34`: https://github.com/collective/collective.upload/issues/34
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
 .. _`#46`: https://github.com/collective/collective.upload/issues/46
+.. _`#65`: https://github.com/collective/collective.upload/issues/65
 .. _`#66`: https://github.com/collective/collective.upload/issues/66
 .. _`#71`: https://github.com/collective/collective.upload/issues/71

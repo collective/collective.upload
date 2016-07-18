@@ -2,8 +2,6 @@
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.testing import INTEGRATION_TESTING
 from plone import api
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 from zope.component import getMultiAdapter
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
@@ -19,11 +17,9 @@ class JSVariablesViewTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         alsoProvides(self.request, IUploadBrowserLayer)
-
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.portal.invokeFactory('Folder', 'test-folder')
-        setRoles(self.portal, TEST_USER_ID, ['Member'])
-        self.folder = self.portal['test-folder']
+        with api.env.adopt_roles(['Manager']):
+            self.folder = api.content.create(
+                container=self.portal, type='Folder', id='test-folder')
 
     def test_jsvariables_view_is_present(self):
         view = queryMultiAdapter((self.folder, self.request), name='jsvariables')
@@ -46,15 +42,13 @@ class APITestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         alsoProvides(self.request, IUploadBrowserLayer)
-
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.portal.invokeFactory('Folder', 'test-folder')
-        setRoles(self.portal, TEST_USER_ID, ['Member'])
-        self.folder = self.portal['test-folder']
+        with api.env.adopt_roles(['Manager']):
+            self.folder = api.content.create(
+                container=self.portal, type='Folder', id='test-folder')
 
     def test_api_view_is_present(self):
         view = queryMultiAdapter((self.folder, self.request), name='api')
-        self.assertTrue(view is not None)
+        self.assertIsNotNone(view)
 
     def test_dumps(self):
         view = getMultiAdapter((self.folder, self.request), name='api')
@@ -87,11 +81,9 @@ class JSONImageConverterTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         alsoProvides(self.request, IUploadBrowserLayer)
-
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.portal.invokeFactory('Folder', 'test-folder')
-        setRoles(self.portal, TEST_USER_ID, ['Member'])
-        self.folder = self.portal['test-folder']
+        with api.env.adopt_roles(['Manager']):
+            self.folder = api.content.create(
+                container=self.portal, type='Folder', id='test-folder')
 
     def test_encoding(self):
         import json
@@ -114,15 +106,13 @@ class JSONImageConverterTestCase(unittest.TestCase):
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
         url = 'http://old.plone.org/logo.png'
         self.request['url'] = url
-
-        self.assertEqual(view.render(), None)
+        self.assertIsNone(view.render())
 
     def test_server_respond_not200(self):
         # TODO: Change this test after the non200 code implementation
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
         url = 'http://plone.org/logo2.png'
         self.request['url'] = url
-
         view.render()
         self.assertEqual(self.request.response.status, 500)
 
@@ -131,5 +121,4 @@ class JSONImageConverterTestCase(unittest.TestCase):
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
         url = 'http://notanexistingurl.org/fake.png'
         self.request['url'] = url
-
-        self.assertEqual(view.render(), None)
+        self.assertIsNone(view.render())

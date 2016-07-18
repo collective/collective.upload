@@ -1,0 +1,5 @@
+<tal:define define="checkPermission nocall: context/portal_membership/checkPermission"
+  condition="view/enabled">
+  <tal:uploader metal:use-macro="here/@@media_uploader/macros/file_uploader">
+  </tal:uploader>
+</tal:define>

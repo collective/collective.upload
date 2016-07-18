@@ -152,4 +152,24 @@ class To4TestCase(BaseUpgradeTestCase):
     def test_registered_steps(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertGreaterEqual(int(version), int(self.to_version))
-        self.assertEqual(self._get_registered_steps, 2)
+        self.assertEqual(self._get_registered_steps, 3)
+
+    def test_add_show_widget_field(self):
+        # check if the upgrade step is registered
+        title = u'Add Show widget field to registry'
+        step = self._get_upgrade_step_by_title(title)
+        assert step is not None
+
+        # simulate state on previous version
+        from collective.upload.interfaces import IUploadSettings
+        from plone.registry.interfaces import IRegistry
+        from zope.component import getUtility
+        registry = getUtility(IRegistry)
+        record = IUploadSettings.__identifier__ + '.show_widget'
+        del registry.records[record]
+        assert record not in registry
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertIn(record, registry)
+        self.assertTrue(registry[record])

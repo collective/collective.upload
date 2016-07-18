@@ -46,15 +46,6 @@
         layer=".interfaces.IUploadBrowserLayer"
         />
 
-    <browser:page
-        for="Products.CMFCore.interfaces.IFolderish"
-        class="plone.app.content.browser.foldercontents.FolderContentsView"
-        name="folder_contents"
-        template="templates/folder_contents.pt"
-        permission="cmf.ListFolderContents"
-        layer="collective.upload.interfaces.IUploadBrowserLayer"
-        />
-
     <!-- Menu item -->
     <adapter
         for="* collective.upload.interfaces.IUploadBrowserLayer"

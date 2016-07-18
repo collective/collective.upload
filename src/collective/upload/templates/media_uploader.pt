@@ -15,12 +15,12 @@
     <body tal:define="errors options/state/getErrors">
         <metal:main fill-slot="main">
         <tal:protect
-            tal:condition="python: not checkPermission('List folder contents', here)"
+            tal:condition="python: not checkPermission('Add portal content', here)"
             tal:replace="here/raiseUnauthorized" />
             <metal:main_macro define-macro="main">
             <metal:uploader define-macro="file_uploader">
             <tal:protect
-                tal:condition="python: checkPermission('List folder contents', here)">
+                tal:condition="python: checkPermission('Add portal content', here)">
             <div>
                 <form id="fileupload" action="." tal:attributes="action string:${context/absolute_url}/media_uploader" method="POST" enctype="multipart/form-data">
                     <div class="row">

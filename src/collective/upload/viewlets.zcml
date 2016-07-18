@@ -15,4 +15,13 @@
         layer=".interfaces.IUploadBrowserLayer"
         />
 
+    <browser:viewlet
+        name="collective.upload.widget"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.WidgetViewlet"
+        template="viewlets/contents.pt"
+        permission="cmf.AddPortalContent"
+        layer="collective.upload.interfaces.IUploadBrowserLayer"
+        />
+
 </configure>
