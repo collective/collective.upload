@@ -6,7 +6,6 @@
     i18n_domain="collective.upload">
 
     <browser:viewlet
-        for="Products.CMFCore.interfaces.IFolderish"
         name="collective.upload.tmpls"
         manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
         class=".viewlets.Tmpls"
@@ -17,11 +16,12 @@
 
     <browser:viewlet
         name="collective.upload.widget"
+        for="Products.CMFCore.interfaces.IFolderish"
         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
         class=".viewlets.WidgetViewlet"
         template="viewlets/contents.pt"
         permission="cmf.AddPortalContent"
-        layer="collective.upload.interfaces.IUploadBrowserLayer"
+        layer=".interfaces.IUploadBrowserLayer"
         />
 
 </configure>
