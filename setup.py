@@ -41,7 +41,7 @@ setup(name='collective.upload',
       zip_safe=False,
       install_requires=[
           'Acquisition',
-          'plone.api',
+          'plone.api >=1.4.11',
           'plone.app.content',
           'plone.app.contentmenu',
           'plone.app.jquery',
