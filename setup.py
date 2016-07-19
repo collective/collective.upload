@@ -3,7 +3,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '1.2b1'
+version = '1.2b2.dev0'
 description = "File upload widget with multiple file selection, drag&drop \
 support, progress bars, client-side image resizing and preview images."
 long_description = (
