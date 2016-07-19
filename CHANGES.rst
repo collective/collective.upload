@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.1b3 (unreleased)
+1.2b1 (2016-07-19)
 ^^^^^^^^^^^^^^^^^^
 
 - Use a viewlet to display the upload widget on the ``folder_contents`` view instead of overriding it.
