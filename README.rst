@@ -10,8 +10,7 @@ Life, the Universe, and Everything
 File upload widget with multiple file selection, drag&drop support, progress
 bars, client-side image resizing and preview images.
 
-``collective.upload`` is smoothly integrated with Plone's UI and works with
-any folderish content type based on Archetypes or Dexterity.
+This package is smoothly integrated with Plone's UI and works with any folderish content type based on Archetypes or Dexterity.
 
 Mostly Harmless
 ---------------
@@ -52,8 +51,49 @@ Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
 Check the box next to ``collective.upload`` and click the 'Activate' button.
 
-.. Note::
-    You may have to empty your browser cache and save your resource registries in order to see the effects of the product installation.
+Usage
+^^^^^
+
+The upload widget can be accessed selecting the 'Multiple files' option in the 'Add new…' menu.
+
+.. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/modal.png
+    :align: center
+    :height: 620px
+    :width: 768px
+
+    The upload widget in a modal window.
+
+Select as many files as you want to upload using by the 'Add files or images…' button or the drag and drop feature
+(you can even do the later among diferent browser windows).
+A preview of all images will be shown.
+You can set the title, description and rights for any file or image in advance.
+Start the upload individually or in a batch by pressing the 'Start' button.
+You will see a bar indicating the progress of the upload.
+You can cancel the upload at any time and you can also delete any file or image already uploaded into the site.
+
+The upload widget can be also used in the context of the folder contents view of any folderish object.
+
+.. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/foldercontents.png
+    :align: center
+    :height: 930px
+    :width: 768px
+
+    The upload widget in the folder contents view.
+
+You can configure some aspects of the upload widget using the Upload configlet on Site Setup.
+
+.. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/controlpanel.png
+    :align: center
+    :height: 740px
+    :width: 768px
+
+    The Upload control panel configlet.
+
+You can disable the display of the upload widget in the folder contents view
+(the widget will be always accessible via the 'Add new…'' menu regardless this setting).
+You can set which files extensions are allowed to be uploaded using the widget.
+You can also set the maximum file size and maximum dimensions for images
+(images will be automatically resized client-side if they are bigger than these settings).
 
 Features
 ^^^^^^^^
