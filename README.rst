@@ -36,13 +36,22 @@ Installation
 
 To enable this product in a buildout-based installation:
 
-#. Edit your buildout.cfg and add ``collective.upload`` to the list of eggs to
-   install::
+#. Edit your buildout.cfg and add ``collective.upload`` to the list of eggs to install:
+
+.. code-block:: ini
 
     [buildout]
     ...
     eggs =
         collective.upload
+
+If you are using Plone 4.2 you need to add the following also:
+
+.. code-block:: ini
+
+    [versions]
+    plone.app.jquery = 1.7.2
+    plone.app.jquerytools = 1.5.7
 
 After updating the configuration you need to run ''bin/buildout'', which will
 take care of updating your system.

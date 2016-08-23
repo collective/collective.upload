@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from collective.upload import config
 from collective.upload.config import PROJECTNAME
+from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.interfaces import IUploadSettings
 from collective.upload.testing import INTEGRATION_TESTING
+from plone import api
 from plone.app.testing import logout
 from plone.registry.interfaces import IRegistry
-from zope.component import getMultiAdapter
 from zope.component import getUtility
+from zope.interface import alsoProvides
 
 import unittest
 
@@ -20,20 +22,21 @@ class ControlPanelTestCase(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
+        self.request = self.layer['request']
+        alsoProvides(self.request, IUploadBrowserLayer)
         self.controlpanel = self.portal['portal_controlpanel']
 
     def test_controlpanel_has_view(self):
-        view = getMultiAdapter((self.portal, self.portal.REQUEST),
-                               name='upload-settings')
+        context, request = self.portal, self.request
+        view = api.content.get_view('upload-settings', context, request)
         view = view.__of__(self.portal)
         self.assertTrue(view())
 
     def test_controlpanel_view_is_protected(self):
         from AccessControl import Unauthorized
         logout()
-        self.assertRaises(Unauthorized,
-                          self.portal.restrictedTraverse,
-                          '@@upload-settings')
+        with self.assertRaises(Unauthorized):
+            self.portal.restrictedTraverse('@@upload-settings')
 
     def test_controlpanel_installed(self):
         actions = [a.getAction(self)['id']

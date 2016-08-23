@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from collective.upload.behaviors import IMultipleUpload
+from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.testing import INTEGRATION_TESTING
 from plone import api
 from plone.app.testing import logout
@@ -21,11 +21,10 @@ class TmplsViewletTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
+        alsoProvides(self.request, IUploadBrowserLayer)
         with api.env.adopt_roles(['Manager']):
             self.folder = api.content.create(
                 container=self.portal, type='Folder', id='test-folder')
-        # HACK: our Folder object "has" the behavior just for testing purposes
-        alsoProvides(self.folder, IMultipleUpload)
 
     def test_manager_viewlet_is_present_in_folder(self):
         context, request = self.folder, self.request
@@ -80,6 +79,7 @@ class WidgetViewletTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
+        alsoProvides(self.request, IUploadBrowserLayer)
         with api.env.adopt_roles(['Manager']):
             self.folder = api.content.create(
                 container=self.portal, type='Folder', id='test-folder')
