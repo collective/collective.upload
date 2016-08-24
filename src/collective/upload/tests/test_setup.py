@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from collective.upload.config import PROJECTNAME
 from collective.upload.testing import INTEGRATION_TESTING
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 from plone.browserlayer.utils import registered_layers
 
 import unittest
@@ -36,7 +33,7 @@ class InstallTest(unittest.TestCase):
 
     def test_browserlayer_installed(self):
         layers = [l.getName() for l in registered_layers()]
-        self.assertTrue('IUploadBrowserLayer' in layers)
+        self.assertIn('IUploadBrowserLayer', layers)
 
 
 class UninstallTest(unittest.TestCase):
@@ -45,7 +42,6 @@ class UninstallTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.qi = self.portal['portal_quickinstaller']
 
     def test_uninstalled(self):
@@ -55,4 +51,4 @@ class UninstallTest(unittest.TestCase):
     def test_browserlayer_uninstalled(self):
         self.qi.uninstallProducts(products=[PROJECTNAME])
         layers = [l.getName() for l in registered_layers()]
-        self.assertFalse('IUploadBrowserLayer' in layers)
+        self.assertNotIn('IUploadBrowserLayer', layers)

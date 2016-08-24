@@ -23,7 +23,7 @@ class JSVariablesViewTestCase(unittest.TestCase):
 
     def test_jsvariables_view_is_present(self):
         view = queryMultiAdapter((self.folder, self.request), name='jsvariables')
-        self.assertTrue(view is not None)
+        self.assertIsNotNone(view)
 
     def test_registry_config(self):
         view = getMultiAdapter((self.folder, self.request), name='jsvariables')

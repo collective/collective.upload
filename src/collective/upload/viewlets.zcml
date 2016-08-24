@@ -1,27 +1,24 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:five="http://namespaces.zope.org/five"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n_domain="collective.upload">
+    xmlns:browser="http://namespaces.zope.org/browser">
 
-    <browser:viewlet
-        name="collective.upload.tmpls"
-        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-        class=".viewlets.Tmpls"
-        permission="cmf.AddPortalContent"
-        template="viewlets/tmpls.pt"
-        layer=".interfaces.IUploadBrowserLayer"
-        />
+  <browser:viewlet
+      name="collective.upload.tmpls"
+      manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+      class=".viewlets.Tmpls"
+      permission="cmf.AddPortalContent"
+      template="viewlets/tmpls.pt"
+      layer=".interfaces.IUploadBrowserLayer"
+      />
 
-    <browser:viewlet
-        name="collective.upload.widget"
-        for="Products.CMFCore.interfaces.IFolderish"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
-        class=".viewlets.WidgetViewlet"
-        template="viewlets/contents.pt"
-        permission="cmf.AddPortalContent"
-        layer=".interfaces.IUploadBrowserLayer"
-        />
+  <browser:viewlet
+      name="collective.upload.widget"
+      for="Products.CMFCore.interfaces.IFolderish"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+      class=".viewlets.WidgetViewlet"
+      template="viewlets/contents.pt"
+      permission="cmf.AddPortalContent"
+      layer=".interfaces.IUploadBrowserLayer"
+      />
 
 </configure>

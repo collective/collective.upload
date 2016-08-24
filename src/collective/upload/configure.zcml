@@ -13,13 +13,13 @@
 
   <permission id="collective.upload.Setup" title="collective.upload: Setup" />
 
-    <permission
-        id="collective.upload.UploadFiles"
-        title="collective.upload: Upload Files"
-        />
+  <permission
+      id="collective.upload.UploadFiles"
+      title="collective.upload: Upload Files"
+      />
 
-    <include file="browser.zcml" />
-    <include file="viewlets.zcml" />
-    <include file="profiles.zcml" />
+  <include file="browser.zcml" />
+  <include file="viewlets.zcml" />
+  <include file="profiles.zcml" />
 
 </configure>
