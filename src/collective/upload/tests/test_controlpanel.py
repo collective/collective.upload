@@ -49,6 +49,14 @@ class ControlPanelTestCase(unittest.TestCase):
                    for a in self.controlpanel.listActions()]
         self.assertNotIn('upload', actions)
 
+    def test_controlpanel_permissions(self):
+        roles = ['Manager', 'Site Administrator']
+        for r in roles:
+            with api.env.adopt_roles([r]):
+                configlets = self.controlpanel.enumConfiglets(group='Products')
+                configlets = [a['id'] for a in configlets]
+                self.assertIn('upload', configlets, 'not listed: ' + r)
+
 
 class RegistryTestCase(unittest.TestCase):
 
