@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.2b2 (unreleased)
+1.3b1 (2016-08-24)
 ^^^^^^^^^^^^^^^^^^
 
 - The ``IMultipleUpload`` behavior declaration has been removed as it's useless;
