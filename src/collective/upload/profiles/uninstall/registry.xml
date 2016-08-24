@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<registry>
+ <records interface="collective.upload.interfaces.IUploadSettings" remove="true" />
+ <!-- BBB: compatibility with Plone 4.2 (plone.app.registry <1.2) -->
+ <record name="collective.upload.interfaces.IUploadSettings.show_widget" delete="true" />
+ <record name="collective.upload.interfaces.IUploadSettings.upload_extensions" delete="true"/>
+ <record name="collective.upload.interfaces.IUploadSettings.max_file_size" delete="true"/>
+ <record name="collective.upload.interfaces.IUploadSettings.resize_max_width" delete="true"/>
+ <record name="collective.upload.interfaces.IUploadSettings.resize_max_height" delete="true"/>
+</registry>

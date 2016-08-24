@@ -6,14 +6,16 @@ cache:
   - eggs
   - parts/node
 env:
+- PLONE_VERSION=4.2 TEST_EGGS=buildout:test-eggs=Pillow VERSIONS="versions:plone.app.jquery=1.7.2 versions:plone.app.jquerytools=1.5.7"
 - PLONE_VERSION=4.3
-- PLONE_VERSION=4.3 DEXTERITY_ONLY=true
+- PLONE_VERSION=4.3 TEST_EGGS=buildout:test-eggs=plone.app.contenttypes
 matrix:
   fast_finish: true
 install:
+- sed -ie "s#test-4.3#test-$PLONE_VERSION#" buildout.cfg
 - python bootstrap.py --setuptools-version=20.9.0
-- bin/buildout annotate
-- bin/buildout
+- bin/buildout $TEST_EGGS $VERSIONS annotate
+- bin/buildout $TEST_EGGS $VERSIONS
 script:
 - bin/code-analysis
 - bin/test

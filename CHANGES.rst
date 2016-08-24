@@ -6,7 +6,11 @@ There's a frood who really knows where his towel is.
 1.2b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Registry records are now correctly removed when uninstalling the package.
+  [hvelarde]
+
+- Package is compatible with Plone 4.2 again.
+  [hvelarde]
 
 
 1.2b1 (2016-07-19)
