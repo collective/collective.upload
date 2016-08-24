@@ -12,8 +12,7 @@ from zope.interface import alsoProvides
 
 import unittest
 
-
-BASE_REGISTRY = 'collective.upload.controlpanel.IuploadSettings.%s'
+BASE_REGISTRY = 'collective.upload.controlpanel.IUploadSettings.'
 
 
 class ControlPanelTestCase(unittest.TestCase):
@@ -89,11 +88,11 @@ class RegistryTestCase(unittest.TestCase):
         qi.uninstallProducts(products=[config.PROJECTNAME])
 
         records = [
-            BASE_REGISTRY % 'show_widget',
-            BASE_REGISTRY % 'upload_extensions',
-            BASE_REGISTRY % 'max_file_size',
-            BASE_REGISTRY % 'resize_max_width',
-            BASE_REGISTRY % 'resize_max_height',
+            BASE_REGISTRY + 'show_widget',
+            BASE_REGISTRY + 'upload_extensions',
+            BASE_REGISTRY + 'max_file_size',
+            BASE_REGISTRY + 'resize_max_width',
+            BASE_REGISTRY + 'resize_max_height',
         ]
 
         for r in records:
