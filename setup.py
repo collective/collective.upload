@@ -3,7 +3,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '1.3b1'
+version = '1.4b1.dev0'
 description = 'File upload widget for Plone with multiple file selection.'
 long_description = (
     open('README.rst').read() + '\n' +
