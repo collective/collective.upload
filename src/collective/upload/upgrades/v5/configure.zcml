@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.upload">
+
+  <genericsetup:upgradeSteps
+      source="4"
+      destination="5"
+      profile="collective.upload:default">
+
+    <genericsetup:upgradeStep
+        title="Remove IMultipleUpload behavior"
+        description="The behavior is useless; remove it from any Dexterity-based content types."
+        handler=".remove_useless_behavior"
+        />
+
+  </genericsetup:upgradeSteps>
+
+</configure>

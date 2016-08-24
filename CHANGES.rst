@@ -6,6 +6,10 @@ There's a frood who really knows where his towel is.
 1.2b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- The ``IMultipleUpload`` behavior declaration has been removed as it's useless;
+  the class will be also removed on next release.
+  [hvelarde]
+
 - Registry records are now correctly removed when uninstalling the package.
   [hvelarde]
 

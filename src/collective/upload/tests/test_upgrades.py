@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collective.upload.testing import DEXTERITY_ONLY
 from collective.upload.testing import INTEGRATION_TESTING
 from collective.upload.upgrades.v3 import REMOVE_CSS
 from collective.upload.upgrades.v3 import REMOVE_JS
@@ -173,3 +174,35 @@ class To4TestCase(BaseUpgradeTestCase):
         self._do_upgrade_step(step)
         self.assertIn(record, registry)
         self.assertTrue(registry[record])
+
+
+class To5TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'4', u'5')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 1)
+
+    @unittest.skipIf(
+        not DEXTERITY_ONLY, 'Test only with Dexterity-based content types')
+    def test_remove_useless_behavior(self):
+        # check if the upgrade step is registered
+        title = u'Remove IMultipleUpload behavior'
+        step = self._get_upgrade_step_by_title(title)
+        assert step is not None
+
+        # simulate state on previous version
+        from collective.upload.upgrades.v5 import UPLOAD_BEHAVIOR
+        portal_types = api.portal.get_tool('portal_types')
+        folder_type = portal_types['Folder']
+        behaviors = list(folder_type.behaviors)
+        behaviors.append(UPLOAD_BEHAVIOR)
+        folder_type.behaviors = tuple(behaviors)
+        assert UPLOAD_BEHAVIOR in folder_type.behaviors
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertNotIn(UPLOAD_BEHAVIOR, folder_type.behaviors)
