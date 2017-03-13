@@ -2,6 +2,7 @@
 from collective.upload.logger import logger
 from plone import api
 
+
 UPLOAD_BEHAVIOR = 'collective.upload.behaviors.IMultipleUpload'
 
 

@@ -12,6 +12,7 @@ from zope.interface import alsoProvides
 
 import unittest
 
+
 BASE_REGISTRY = 'collective.upload.controlpanel.IUploadSettings.'
 
 
