@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Avoid page template exception with five.pt.
+  [rodfersou]
 
 
 9.18.0b1 (2017-04-17)

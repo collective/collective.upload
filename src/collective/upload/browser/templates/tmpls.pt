@@ -41,14 +41,14 @@
         <td class="preview">
           <span>
             {% if (file.thumbnail_url) { %}
-              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnail_url%}"></a>
+              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
             {% } %}
           </span>
         </td>
         <td class="name">
           <p>
             {% if (file.url) { %}
-              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnail_url?'data-gallery':''%}>{%=file.name%}</a>
+              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}">{%=file.name%}</a>
             {% } else { %}
               <span>{%=file.name%}</span>
             {% } %}
