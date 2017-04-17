@@ -12,7 +12,9 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 
+import os
 import pkg_resources
+import shutil
 
 
 try:
@@ -25,6 +27,15 @@ else:
     DEXTERITY_ONLY = True
 
 
+IMAGES = [
+    '640px-Mandel_zoom_00_mandelbrot_set.jpg',
+    '640px-Mandel_zoom_04_seehorse_tail.jpg',
+    '640px-Mandel_zoom_06_double_hook.jpg',
+    '640px-Mandel_zoom_07_satellite.jpg',
+    '640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg'
+]
+
+
 class Fixture(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
@@ -35,6 +46,11 @@ class Fixture(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'collective.upload:default')
+
+        current_dir = os.path.abspath(os.path.dirname(__file__))
+        for img in IMAGES:
+            img_path = os.path.join(current_dir, 'tests', img)
+            shutil.copy2(img_path, '/tmp')
 
 FIXTURE = Fixture()
 

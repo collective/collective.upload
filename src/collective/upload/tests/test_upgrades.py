@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collective.upload.interfaces import IUploadSettings
 from collective.upload.testing import DEXTERITY_ONLY
 from collective.upload.testing import INTEGRATION_TESTING
 from collective.upload.upgrades.v3 import REMOVE_CSS
@@ -136,7 +137,7 @@ class To3TestCase(BaseUpgradeTestCase):
 
         # simulate state on previous version
         css_tool = api.portal.get_tool('portal_css')
-        main_css = '++resource++collective.upload/main.css'
+        main_css = '++resource++collective.upload/upload.css'
         css_tool.unregisterResource(main_css)
         self.assertNotIn(main_css, css_tool.getResourceIds())
 
@@ -206,3 +207,66 @@ class To5TestCase(BaseUpgradeTestCase):
         # run the upgrade step to validate the update
         self._do_upgrade_step(step)
         self.assertNotIn(UPLOAD_BEHAVIOR, folder_type.behaviors)
+
+
+class To6TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'5', u'6')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 6)
+
+    def test_unregister_old_resources(self):
+        # check if the upgrade step is registered
+        title = u'Unregister old static files'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        from collective.upload.upgrades.v6 import CSS_TO_UNREGISTER
+        from collective.upload.upgrades.v6 import JS_TO_UNREGISTER
+        css_tool = api.portal.get_tool('portal_css')
+        for css in CSS_TO_UNREGISTER:
+            css_tool.registerResource(css)
+        resource_list = css_tool.getResourceIds()
+        for css in CSS_TO_UNREGISTER:
+            self.assertIn(css, resource_list)
+        js_tool = api.portal.get_tool('portal_javascripts')
+        for js in JS_TO_UNREGISTER:
+            js_tool.registerResource(js)
+        resource_list = js_tool.getResourceIds()
+        for js in JS_TO_UNREGISTER:
+            self.assertIn(js, resource_list)
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        resource_list = css_tool.getResourceIds()
+        for css in CSS_TO_UNREGISTER:
+            self.assertNotIn(css, resource_list)
+        resource_list = js_tool.getResourceIds()
+        for js in JS_TO_UNREGISTER:
+            self.assertNotIn(js, resource_list)
+
+    def test_fix_extensions_separator(self):
+        # check if the upgrade step is registered
+        title = u'Fix extensions separator'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        extensions = u'gif, jpg, png'
+        record = dict(interface=IUploadSettings, name='upload_extensions', value=extensions)
+        api.portal.set_registry_record(**record)
+        record = dict(interface=IUploadSettings, name='upload_extensions')
+        upload_extensions = api.portal.get_registry_record(**record)
+        self.assertEqual(upload_extensions, extensions)
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        expected = u'gif|jpg|png'
+        record = dict(interface=IUploadSettings, name='upload_extensions')
+        upload_extensions = api.portal.get_registry_record(**record)
+        self.assertEqual(upload_extensions, expected)

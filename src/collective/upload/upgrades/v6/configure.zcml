@@ -1,0 +1,52 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.upload">
+
+  <genericsetup:upgradeSteps
+      source="5"
+      destination="6"
+      profile="collective.upload:default">
+
+    <genericsetup:upgradeStep
+        title="Unregister old static files"
+        description="Unregister old static files to upgrade jquery.fileupload."
+        handler=".unregister_old_resources"
+        />
+
+    <genericsetup:upgradeDepends
+        title="Register new CSS"
+        import_profile="collective.upload:default"
+        import_steps="cssregistry"
+        run_deps="false"
+        />
+
+    <genericsetup:upgradeDepends
+        title="Register new JS"
+        import_profile="collective.upload:default"
+        import_steps="jsregistry"
+        run_deps="false"
+        />
+
+    <genericsetup:upgradeStep
+        title="Cook CSS resources"
+        description="There were changes in the CSS files, so we need to cook the resources."
+        handler="..cook_css_resources"
+        />
+
+    <genericsetup:upgradeStep
+        title="Cook JS resources"
+        description="There were changes in the JS files, so we need to cook the resources."
+        handler="..cook_javascript_resources"
+        />
+
+    <genericsetup:upgradeStep
+        title="Fix extensions separator"
+        description="Fix extensions separator."
+        handler=".fix_extensions_separator"
+        />
+
+  </genericsetup:upgradeSteps>
+
+</configure>

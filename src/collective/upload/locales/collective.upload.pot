@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-07-18 16:19+0000\n"
+"POT-Creation-Date: 2017-04-17 16:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,16 +14,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: collective/upload/menu.py:36
+#: collective/upload/browser/menu.py:36
 msgid "A form to upload multiple files."
 msgstr ""
 
-#: collective/upload/behaviors.zcml:12
-msgid "Add a new action in the add new menu, allowing the multiple upload of files or images"
-msgstr ""
-
-#: collective/upload/templates/media_uploader.pt:31
-msgid "Add files or images&hellip;"
+#: collective/upload/browser/templates/media_uploader.pt:46
+msgid "Add files&hellip;"
 msgstr ""
 
 #: collective/upload/interfaces.py:31
@@ -34,8 +30,32 @@ msgstr ""
 msgid "An implementation of the jQuery File Upload Plugin for Plone."
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:35
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Cancel"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:51
 msgid "Cancel upload"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Description"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Error"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "File is too large"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "File is too small"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "File type not allowed"
 msgstr ""
 
 #: collective/upload/controlpanel.py:12
@@ -46,28 +66,44 @@ msgstr ""
 msgid "If selected, the upload widget will be shown in the context of the folder contents view also. The widget will be always accessible via the \"Add new…\" menu regardless this value."
 msgstr ""
 
-#: collective/upload/interfaces.py:41
+#: collective/upload/interfaces.py:40
 msgid "Max file size"
 msgstr ""
 
-#: collective/upload/menu.py:37
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Maximum number of files exceeded"
+msgstr ""
+
+#: collective/upload/browser/menu.py:37
 msgid "Multiple Files"
 msgstr ""
 
-#: collective/upload/behaviors.zcml:12
-msgid "Multiple file and image upload"
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Processing…"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Rights"
 msgstr ""
 
 #: collective/upload/interfaces.py:21
 msgid "Show upload widget in folder contents view?"
 msgstr ""
 
-#: collective/upload/templates/media_uploader.pt:38
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Start"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:55
 msgid "Start upload"
 msgstr ""
 
-#: collective/upload/browser.zcml:61
+#: collective/upload/browser/configure.zcml:71
 msgid "The 'add' menu - allows the user to add new content items in the context"
+msgstr ""
+
+#: collective/upload/browser/templates/media_uploader.pt:12
+msgid "Title"
 msgstr ""
 
 #: collective/upload/profiles.zcml:21
@@ -79,14 +115,9 @@ msgstr ""
 msgid "Upload Settings"
 msgstr ""
 
-#. Default: "List the file extensions allowed for upload, without dot, comma separated"
+#. Default: "List the file extensions allowed for upload, without dots and separated by \"|\""
 #: collective/upload/interfaces.py:32
 msgid "allowed_extensions_key"
-msgstr ""
-
-#. Default: "Cancel"
-#: collective/upload/browser.py:188
-msgid "cancel"
 msgstr ""
 
 #: collective/upload/profiles.zcml:13
@@ -97,45 +128,25 @@ msgstr ""
 msgid "collective.upload uninstall"
 msgstr ""
 
-#. Default: "Delete"
-#: collective/upload/browser.py:186
-msgid "delete"
-msgstr ""
-
-#. Default: "Description"
-#: collective/upload/browser.py:189
-msgid "description"
-msgstr ""
-
-#. Default: "Error"
-#: collective/upload/browser.py:190
-msgid "error"
-msgstr ""
-
 #. Default: "The maximum allowed file size in bytes. Please note that intermediate web servers may put limits on this value; ask your Systems Administrator in case of doubt."
-#: collective/upload/interfaces.py:42
+#: collective/upload/interfaces.py:41
 msgid "max_file_size_key"
 msgstr ""
 
-#: collective/upload/interfaces.py:61
+#: collective/upload/interfaces.py:60
 msgid "maximum height"
 msgstr ""
 
-#: collective/upload/interfaces.py:52
+#: collective/upload/interfaces.py:51
 msgid "maximum width"
 msgstr ""
 
 #. Default: "The maximum height for uploaded images."
-#: collective/upload/interfaces.py:62
+#: collective/upload/interfaces.py:61
 msgid "resize_max_height_key"
 msgstr ""
 
 #. Default: "The maximum width for uploaded images."
-#: collective/upload/interfaces.py:53
+#: collective/upload/interfaces.py:52
 msgid "resize_max_width_key"
-msgstr ""
-
-#. Default: "Start"
-#: collective/upload/browser.py:187
-msgid "start"
 msgstr ""

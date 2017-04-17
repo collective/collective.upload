@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collective.upload.browser.views import SerializeImageError
 from collective.upload.interfaces import IUploadBrowserLayer
 from collective.upload.testing import INTEGRATION_TESTING
 from plone import api
@@ -7,31 +8,6 @@ from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
 import unittest
-
-
-class JSVariablesViewTestCase(unittest.TestCase):
-
-    layer = INTEGRATION_TESTING
-
-    def setUp(self):
-        self.portal = self.layer['portal']
-        self.request = self.layer['request']
-        alsoProvides(self.request, IUploadBrowserLayer)
-        with api.env.adopt_roles(['Manager']):
-            self.folder = api.content.create(
-                container=self.portal, type='Folder', id='test-folder')
-
-    def test_jsvariables_view_is_present(self):
-        view = queryMultiAdapter((self.folder, self.request), name='jsvariables')
-        self.assertIsNotNone(view)
-
-    def test_registry_config(self):
-        view = getMultiAdapter((self.folder, self.request), name='jsvariables')
-
-        registry_config = view.registry_config()
-        expected = "{'max_file_size': 10485760, 'resize_max_width': 3872, " \
-                   "'extensions': 'gif|jpeg|jpg|png', 'resize_max_height': 3872}"
-        self.assertEqual(registry_config, expected)
 
 
 class APITestCase(unittest.TestCase):
@@ -113,12 +89,13 @@ class JSONImageConverterTestCase(unittest.TestCase):
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
         url = 'http://plone.org/logo2.png'
         self.request['url'] = url
-        view.render()
-        self.assertEqual(self.request.response.status, 500)
+        with self.assertRaises(SerializeImageError):
+            view.render()
 
     def test_server_non_existing_url(self):
         # TODO: Change this test after the non200 code implementation
         view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
         url = 'http://notanexistingurl.org/fake.png'
         self.request['url'] = url
-        self.assertIsNone(view.render())
+        with self.assertRaises(SerializeImageError):
+            view.render()

@@ -31,8 +31,7 @@ class IUploadSettings(Interface):
         title=_(u'Allowed Extensions'),
         description=_(
             u'allowed_extensions_key',
-            default=u'List the file extensions allowed for upload, without '
-                    u'dot, comma separated'),
+            default=u'List the file extensions allowed for upload, without dots and separated by "|"'),
         required=False,
         default=config.UPLOAD_EXTENSIONS,
     )

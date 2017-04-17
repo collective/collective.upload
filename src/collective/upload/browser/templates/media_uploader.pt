@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  lang="en"
+  i18n:domain="collective.upload">
+  <body>
+    <metal:uploader define-macro="file_uploader"
+      tal:define="checkPermission nocall: context/portal_membership/checkPermission">
+      <tal:protect tal:condition="python: checkPermission('Add portal content', here)">
+        <form class="fileupload" method="POST" enctype="multipart/form-data"
+          tal:attributes="action string:${context/absolute_url}/media_uploader;
+                          data-extensions view/settings/upload_extensions;
+                          data-max-file-size view/settings/max_file_size;
+                          data-resize-max-width view/settings/resize_max_width;
+                          data-resize-max-height view/settings/resize_max_height"
+          data-translations-cancel="Cancel"
+          data-translations-description="Description"
+          data-translations-error="Error"
+          data-translations-processing="Processing&hellip;"
+          data-translations-rights="Rights"
+          data-translations-start="Start"
+          data-translations-title="Title"
+          data-translations-max-number-of-files="Maximum number of files exceeded"
+          data-translations-accept-file-types="File type not allowed"
+          data-translations-max-file-size="File is too large"
+          data-translations-min-file-size="File is too small"
+          i18n:attributes="data-translations-cancel;
+                           data-translations-description;
+                           data-translations-error;
+                           data-translations-processing;
+                           data-translations-rights;
+                           data-translations-start;
+                           data-translations-title;
+                           data-translations-max-number-of-files;
+                           data-translations-accept-file-types;
+                           data-translations-max-file-size;
+                           data-translations-min-file-size">
+          <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+          <div class="row fileupload-buttonbar">
+            <div class="col-lg-7">
+              <!-- The fileinput-button span is used to style the file input field as button -->
+              <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span i18n:translate="">Add files&hellip;</span>
+                <input type="file" name="files[]" multiple>
+              </span>
+              <button type="reset" class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span i18n:translate="">Cancel upload</span>
+              </button>
+              <button type="submit" class="btn btn-primary start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span i18n:translate="">Start upload</span>
+              </button>
+              <!-- The global file processing state -->
+              <span class="fileupload-process"></span>
+            </div>
+            <!-- The global progress state -->
+            <div class="col-lg-5 fileupload-progress fade">
+              <!-- The global progress bar -->
+              <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+              </div>
+              <!-- The extended global progress state -->
+              <div class="progress-extended">&nbsp;</div>
+            </div>
+          </div>
+          <!-- The table listing the files available for upload/download -->
+          <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+        </form>
+      </tal:protect>
+    </metal:uploader>
+  </body>
+</html>

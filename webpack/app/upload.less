@@ -1,0 +1,87 @@
+@import '../node_modules/blueimp-file-upload/css/jquery.fileupload.css';
+@import '../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css';
+
+@import '../node_modules/bootstrap/less/variables.less';
+@import '../node_modules/bootstrap/less/mixins.less';
+@import '../node_modules/bootstrap/less/tables.less';
+@import '../node_modules/bootstrap/less/buttons.less';
+@import '../node_modules/bootstrap/less/progress-bars.less';
+
+#fileupload {
+  .fileupload-buttonbar {
+    .start,
+    .cancel {
+      float: right;
+
+      margin-left: 5px;
+    }
+  }
+  .template-upload {
+    display: flex;
+    .preview,
+    .name,
+    .details {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+    }
+    .preview {
+      min-width: 80px;
+    }
+    .name {
+      flex-direction: column;
+
+      flex-grow: 2;
+    }
+    .name input {
+      width: 100%;
+    }
+    .details {
+      flex-direction: column;
+
+      flex-grow: 1;
+    }
+    .details > * {
+      float: left;
+    }
+    .size,
+    .size + div,
+    .size + div .progress,
+    .actions {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    .actions {
+      display: flex;
+    }
+    .actions .btn {
+      flex: 1 auto;
+    }
+    .actions .cancel {
+      margin-left: 5px;
+    }
+  }
+  .template-download {
+    display: flex;
+    .preview,
+    .name,
+    .details {
+      display: flex;
+
+      align-items: center;
+    }
+    .preview a {
+      border: none;
+    }
+    .preview img {
+      max-width: 80px;
+    }
+    .name {
+      flex-grow: 1;
+    }
+    .name p {
+      margin-bottom: 0;
+    }
+  }
+}

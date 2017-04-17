@@ -87,12 +87,12 @@ class WidgetViewletTest(unittest.TestCase):
     def test_viewlet_is_present_in_foldercontents(self):
         view = api.content.get_view(
             name=u'folder_contents', context=self.folder, request=self.request)
-        self.assertIn('<form id="fileupload"', view())
+        self.assertIn('<form class="fileupload"', view())
 
     def test_viewlet_is_disabled_in_default_view(self):
         view = api.content.get_view(
             name=u'folderListing', context=self.folder, request=self.request)
-        self.assertNotIn('<form id="fileupload"', view())
+        self.assertNotIn('<form class="fileupload"', view())
 
     def test_anonymous_viewlet_is_not_present(self):
         context, request = self.folder, self.request

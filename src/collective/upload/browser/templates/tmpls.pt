@@ -1,0 +1,66 @@
+<tal:x-tmpl condition="view/enabled">
+  <!-- The template to display files available for upload -->
+  <script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+      <tr class="template-upload fade">
+        <td class="preview">
+          <span></span>
+        </td>
+        <td class="name">
+          <input name="filename[]" type="hidden" value="{%=file.name%}" required="required"/>
+          <input placeholder="{%=o.options.i18n('title')%}" name="title[]" type="text" value="{%=file.name%}" required="required"/>
+          <textarea placeholder="{%=o.options.i18n('description')%}" name="description[]" cols="10" rows="3"></textarea>
+          <input placeholder="{%=o.options.i18n('rights')%}" class="rights" name="rights[]" type="text" value="{%=file.rights%}" />
+          <strong class="error text-danger"></strong>
+        </td>
+        <td class="details">
+          <p class="size">{%=o.options.i18n('processing')%}</p>
+          <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+          <div class="actions">
+            {% if (!i && !o.options.autoUpload) { %}
+              <button class="btn btn-primary start" disabled>
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>{%=o.options.i18n('start')%}</span>
+              </button>
+            {% } %}
+            {% if (!i) { %}
+              <button class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>{%=o.options.i18n('cancel')%}</span>
+              </button>
+            {% } %}
+          </div>
+        </td>
+      </tr>
+    {% } %}
+  </script>
+  <!-- The template to display files available for download -->
+  <script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+      <tr class="template-download fade">
+        <td class="preview">
+          <span>
+            {% if (file.thumbnail_url) { %}
+              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnail_url%}"></a>
+            {% } %}
+          </span>
+        </td>
+        <td class="name">
+          <p>
+            {% if (file.url) { %}
+              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnail_url?'data-gallery':''%}>{%=file.name%}</a>
+            {% } else { %}
+              <span>{%=file.name%}</span>
+            {% } %}
+          </p>
+          {% if (file.error) { %}
+            <div><span class="label label-danger">{%=o.options.i18n('error')%}</span> {%=file.error%}</div>
+          {% } %}
+        </td>
+        <td class="details">
+          <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+      </tr>
+    {% } %}
+  </script>
+</tal:x-tmpl>

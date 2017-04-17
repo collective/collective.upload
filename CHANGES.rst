@@ -6,7 +6,11 @@ There's a frood who really knows where his towel is.
 1.4b1 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Update jQuery File Upload Plugin to version 9.18.0 (closes `#56`_).
+  [rodfersou]
+
+- Drop support for Plone 4.2.
+  [rodfersou]
 
 
 1.3b1 (2016-08-24)
@@ -176,6 +180,7 @@ There's a frood who really knows where his towel is.
 .. _`#34`: https://github.com/collective/collective.upload/issues/34
 .. _`#35`: https://github.com/collective/collective.upload/issues/35
 .. _`#46`: https://github.com/collective/collective.upload/issues/46
+.. _`#56`: https://github.com/collective/collective.upload/issues/56
 .. _`#65`: https://github.com/collective/collective.upload/issues/65
 .. _`#66`: https://github.com/collective/collective.upload/issues/66
 .. _`#71`: https://github.com/collective/collective.upload/issues/71

@@ -7,49 +7,60 @@
   <browser:page
       name="upload-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".controlpanel.UploadSettingsControlPanel"
+      class="..controlpanel.UploadSettingsControlPanel"
       permission="collective.upload.Setup"
-      layer=".interfaces.IUploadBrowserLayer"
+      layer="..interfaces.IUploadBrowserLayer"
       />
 
   <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
       name="media_uploader"
-      class=".browser.MediaUploader"
+      class=".views.MediaUploader"
       permission="collective.upload.UploadFiles"
       template="templates/media_uploader.pt"
-      layer=".interfaces.IUploadBrowserLayer"
+      layer="..interfaces.IUploadBrowserLayer"
       />
 
   <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
       name="api"
-      class=".browser.JSONView"
+      class=".views.JSONView"
       permission="cmf.AddPortalContent"
-      layer=".interfaces.IUploadBrowserLayer"
-      />
-
-  <browser:page
-      for="Products.CMFCore.interfaces.IFolderish"
-      name="jsvariables"
-      class=".browser.JSVariables"
-      permission="zope.Public"
-      layer=".interfaces.IUploadBrowserLayer"
+      layer="..interfaces.IUploadBrowserLayer"
       />
 
   <browser:page
       for="Products.CMFCore.interfaces.IFolderish"
       name="jsonimageserializer"
-      class=".browser.JSONImageConverter"
+      class=".views.JSONImageConverter"
       permission="zope.Public"
-      layer=".interfaces.IUploadBrowserLayer"
+      layer="..interfaces.IUploadBrowserLayer"
+      />
+
+  <browser:viewlet
+      name="collective.upload.tmpls"
+      manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+      class=".viewlets.Tmpls"
+      permission="cmf.AddPortalContent"
+      template="templates/tmpls.pt"
+      layer="..interfaces.IUploadBrowserLayer"
+      />
+
+  <browser:viewlet
+      name="collective.upload.widget"
+      for="Products.CMFCore.interfaces.IFolderish"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+      class=".viewlets.WidgetViewlet"
+      template="templates/contents.pt"
+      permission="cmf.AddPortalContent"
+      layer="..interfaces.IUploadBrowserLayer"
       />
 
   <!-- Menu item -->
   <adapter
       for="* collective.upload.interfaces.IUploadBrowserLayer"
       name="plone.contentmenu.factories"
-      factory="collective.upload.menu.FactoriesSubMenuItem"
+      factory=".menu.FactoriesSubMenuItem"
       provides="plone.app.contentmenu.interfaces.IContentMenuItem"
       />
 

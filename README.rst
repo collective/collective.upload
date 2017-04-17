@@ -7,8 +7,7 @@ collective.upload
 Life, the Universe, and Everything
 ----------------------------------
 
-File upload widget with multiple file selection, drag&drop support, progress
-bars, client-side image resizing and preview images.
+File upload widget with multiple file selection, drag&drop support, progress bars, client-side image resizing and preview images.
 
 This package is smoothly integrated with Plone's UI and works with any folderish content type based on Archetypes or Dexterity.
 
@@ -45,16 +44,11 @@ To enable this product in a buildout-based installation:
     eggs =
         collective.upload
 
-If you are using Plone 4.2 you need to add the following also:
-
-.. code-block:: ini
-
     [versions]
-    plone.app.jquery = 1.7.2
-    plone.app.jquerytools = 1.5.7
+    ...
+    plone.app.jquery = 1.8.3
 
-After updating the configuration you need to run ''bin/buildout'', which will
-take care of updating your system.
+After updating the configuration you need to run ''bin/buildout'', which will take care of updating your system.
 
 Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
@@ -67,12 +61,12 @@ The upload widget can be accessed selecting the 'Multiple files' option in the '
 
 .. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/modal.png
     :align: center
-    :height: 620px
-    :width: 768px
+    :height: 768px
+    :width: 1024px
 
     The upload widget in a modal window.
 
-Select as many files as you want to upload using by the 'Add files or images…' button or the drag and drop feature
+Select as many files as you want to upload using by the 'Add files…' button or the drag and drop feature
 (you can even do the later among diferent browser windows).
 A preview of all images will be shown.
 You can set the title, description and rights for any file or image in advance.
@@ -84,8 +78,8 @@ The upload widget can be also used in the context of the folder contents view of
 
 .. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/foldercontents.png
     :align: center
-    :height: 930px
-    :width: 768px
+    :height: 768px
+    :width: 1024px
 
     The upload widget in the folder contents view.
 
@@ -93,7 +87,7 @@ You can configure some aspects of the upload widget using the Upload configlet o
 
 .. figure:: https://raw.githubusercontent.com/collective/collective.upload/master/docs/controlpanel.png
     :align: center
-    :height: 740px
+    :height: 1024px
     :width: 768px
 
     The Upload control panel configlet.
@@ -116,19 +110,19 @@ Features
 - **Preview images**: A preview of image files can be displayed before uploading with browsers supporting the required JS APIs
 - **No browser plugins required**: The implementation is based on open standards like HTML5 and JavaScript and requires no additional browser plugins
 - **Graceful fallback for legacy browsers**: Uploads files via XMLHttpRequests if supported and uses iframes as fallback for legacy browsers
-- **Cross-site file uploads**: Supports uploading files to a different domain with cross-site XMLHttpRequests or iframe redirects
+- **Drag and drop uploads from another web page**: Supports uploading files dragged from one page into another (tested with Firefox and Chrome)
 
 Desktop browsers support
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+- Google Chrome
 - Apple Safari 4.0+
-- Google Chrome 7.0+
-- Microsoft Internet Explorer 6.0+
 - Mozilla Firefox 3.0+
-- Opera 10.0+
+- Opera 11.0+
+- Microsoft Internet Explorer 6.0+
 
-For a detailed overview of the features supported by each browser version,
-please have a look at the `Extended browser support information`_.
+Mobile browsers are also supported.
+Check `Browser support <https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support>`_ for details on features supported by each browser.
 
 Future features
 ^^^^^^^^^^^^^^^
@@ -148,59 +142,11 @@ We want to implement these features at some point in the future:
 - Asynchronous Module Definition (`AMD`_) support
 - Widget for "allowed extensions" option
 
-Developer's notes
-^^^^^^^^^^^^^^^^^
-
-In the folder "static" you are going to find the JavaScript used in this
-project; here a list with the file name and function:
-
-applications.js
-  The main file; here you will find 2 important things: plugin initialization
-  and inheritance of basic UI code with custom templates (e.g. every new file
-  dropped in the file upload widget is going to generate a new row, here is
-  the code for that).
-
-`canvas-to-blob.min.js`_
-  Converts canvas elements into Blob objects, is a polyfill for the standard
-  HTML canvas.toBlob method.
-
-`load-image.min.js`_
-  Load Image is a function to load images provided as File or Blob objects or
-  via URL.
-
-jquery.fileupload.js
-  The most basic version of the File Upload plugin, with no UI.
-
-jquery.fileupload-fp.js
-  Extends the basic fileupload widget with image processing functionality.
-
-jquery.fileupload-ui.js
-  Extends the FP version, adds complete user interface interaction.
-
-jquery.iframe-transport.js
-  Used for cross-site iframe transport uploads a way of degradation for the
-  XHR upload.
-
-cors/jquery.xdr-transport.js
-  jQuery XDomainRequest Transport plugin; enables cross-domain AJAX requests
-  (GET and POST only) (not really used, its just there if you need to
-  implement that kind of functionality).
-
-vendor/jquery.ui.widget.js
-  jQuery UI widget factory; very lightweight, flexible base for building
-  complex, statefull plugins with a consistent API. It is designed for general
-  consumption by developers who want to create object-oriented components
-  without reinventing common infrastructure.
-
-vendor/jquery.getimagedata.min.js
-  It enables pixel level access to images from different origins. It works by sending a JSONP request with the URL of the image to the server. The server then converts the image into base64 encoded data URL and sends the image back as a JSON object. (what this script does, can be done with CORS)
-
 To-do list
 ^^^^^^^^^^
 
 * Check if constraints are in place before adding the menu item.
 
-.. _`Extended browser support information`: https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support
 .. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
 .. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
 .. _`AMD`: https://github.com/amdjs/amdjs-api/wiki/AMD

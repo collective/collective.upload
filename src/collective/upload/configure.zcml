@@ -11,15 +11,17 @@
   <include package="Products.CMFCore" file="permissions.zcml" />
   <include package="plone.namedfile" />
 
-  <permission id="collective.upload.Setup" title="collective.upload: Setup" />
+  <permission
+      id="collective.upload.Setup"
+      title="collective.upload: Setup"
+      />
 
   <permission
       id="collective.upload.UploadFiles"
       title="collective.upload: Upload Files"
       />
 
-  <include file="browser.zcml" />
-  <include file="viewlets.zcml" />
+  <include package=".browser" />
   <include file="profiles.zcml" />
 
 </configure>

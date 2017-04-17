@@ -1,0 +1,4 @@
+<tal:enabled condition="view/enabled">
+  <tal:uploader metal:use-macro="here/@@media_uploader/macros/file_uploader">
+  </tal:uploader>
+</tal:enabled>
