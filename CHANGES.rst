@@ -3,8 +3,8 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-1.4b1 (unreleased)
-^^^^^^^^^^^^^^^^^^
+9.18.0b1 (2017-04-17)
+^^^^^^^^^^^^^^^^^^^^^
 
 - Update jQuery File Upload Plugin to version 9.18.0 (closes `#56`_).
   [rodfersou]
