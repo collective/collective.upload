@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
+- Fix css to fileupload class instead of fileupload id.
+  [rodfersou]
+
 - Avoid page template exception with five.pt.
   [rodfersou]
 
