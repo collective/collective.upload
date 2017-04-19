@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
+- Reload page after close overlay (fixes `#16`_).
+  [rodfersou]
+
 - Review image drag and drop from other web page (now keeping the image name).
   [rodfersou]
 
@@ -193,6 +196,7 @@ There's a frood who really knows where his towel is.
 
 - Initial release.
 
+.. _`#16`: https://github.com/collective/collective.upload/issues/16
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
 .. _`#34`: https://github.com/collective/collective.upload/issues/34
 .. _`#35`: https://github.com/collective/collective.upload/issues/35

@@ -63,8 +63,6 @@ Cancel first file
     Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
 
-    Goto Homepage
-
     Page Should Not Contain  @{images}[0]
     Page Should Contain  @{images}[1]
 
@@ -74,8 +72,6 @@ Cancel all files
 
     Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
-
-    Goto Homepage
 
     : FOR  ${image}  IN  @{images}
     \  Page Should Not Contain  ${image}

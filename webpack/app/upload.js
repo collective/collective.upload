@@ -42,7 +42,8 @@ class Upload {
     $('#plone-contentmenu-factories #multiple-files').prepOverlay({
       subtype: 'ajax',
       config: {
-        onLoad: $.proxy(this.init_fileupload, this)
+        onLoad: $.proxy(this.init_fileupload, this),
+        onBeforeClose: this.before_close
       }
     });
     $(document).on('drop dragover', (e) => {
@@ -164,6 +165,14 @@ class Upload {
         img.src = data.data;
       }
     });
+  }
+
+  /**
+   * Reload page when close overlay
+   * @param {e} event - jQuery event variable
+   */
+  before_close(e) {
+    location.reload();
   }
 }
 
