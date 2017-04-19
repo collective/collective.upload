@@ -16,34 +16,49 @@ import 'blueimp-file-upload/js/jquery.fileupload-ui.js';
 
 
 class Upload {
+  /**
+   * Create file upload object and bind events
+   * @constructor
+   */
   constructor() {
     this.refresh();
     this.bind_events();
     if (this.$el.length > 0) {
-      this.start_upload();
+      this.init_fileupload();
     }
   }
 
+  /**
+   * Refresh elements (needed when open modal)
+   */
   refresh() {
     this.$el = $('.fileupload');
   }
 
+  /**
+   * Bind events
+   */
   bind_events() {
     //overlay
     $('#plone-contentmenu-factories #multiple-files').prepOverlay({
       subtype: 'ajax',
       config: {
-        onLoad: $.proxy(this.start_upload, this)
+        onLoad: $.proxy(this.init_fileupload, this)
       }
     });
-    $(document).bind('drop dragover', (e) => {
+    $(document).on('drop dragover', (e) => {
       // Prevent the default browser drop action:
       e.preventDefault();
     });
-    $(document).bind('drop', this.drop_image);
+    $(document).on('drop', this.cross_site_drop);
+    $(document).on('click', '.fileupload-buttonbar button.cancel', this.cancel_all);
+    $(document).on('click', '.template-upload button.cancel', this.cancel_one);
   }
 
-  start_upload() {
+  /**
+   * Initiate fileupload plugin
+   */
+  init_fileupload() {
     // Overlay requires to refresh element object
     this.refresh();
     let options = this.$el.prop('dataset');
@@ -89,7 +104,29 @@ class Upload {
     });
   }
 
-  drop_image(e) {
+  /**
+   * Cancell all files added
+   * This callback is needed as workaround for old bootstrap version conflict
+   * @param {e} event - jQuery event variable
+   */
+  cancel_all(e) {
+    $('.template-upload').remove();
+  }
+
+  /**
+   * Cancell one file added
+   * This callback is needed as workaround for old bootstrap version conflict
+   * @param {e} event - jQuery event variable
+   */
+  cancel_one(e) {
+    $(e.target).parents('.template-upload').remove();
+  }
+
+  /**
+   * Drop image from other website page
+   * @param {e} event - jQuery event variable
+   */
+  cross_site_drop(e) {
     // Google Chrome
     let url = $(e.originalEvent.dataTransfer.getData('text/html')).filter('img').attr('src');
     // Firefox
@@ -114,7 +151,7 @@ class Upload {
         if (canvas.getContext && canvas.toBlob) {
           canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
           canvas.toBlob((blob) => {
-            $('#fileupload').fileupload('add', {files: [blob]});
+            $('.fileupload').fileupload('add', {files: [blob]});
           }, "image/jpeg");
         }
       }

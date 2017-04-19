@@ -42,16 +42,13 @@
             <div class="col-lg-7">
               <!-- The fileinput-button span is used to style the file input field as button -->
               <span class="btn btn-success fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
                 <span i18n:translate="">Add files&hellip;</span>
                 <input type="file" name="files[]" multiple>
               </span>
               <button type="reset" class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
                 <span i18n:translate="">Cancel upload</span>
               </button>
               <button type="submit" class="btn btn-primary start">
-                <i class="glyphicon glyphicon-upload"></i>
                 <span i18n:translate="">Start upload</span>
               </button>
               <!-- The global file processing state -->

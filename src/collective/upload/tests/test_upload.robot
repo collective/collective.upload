@@ -15,11 +15,28 @@ ${close_button_selector} =  div.close a
 
 *** Test cases ***
 
+Test Cancel First
+    Enable Autologin as  Site Administrator
+    Goto Homepage
+
+    Add files
+    Cancel first file
+
+
+Test Cancel All
+    Enable Autologin as  Site Administrator
+    Goto Homepage
+
+    Add files
+    Cancel all files
+
+
 Test Upload
     Enable Autologin as  Site Administrator
     Goto Homepage
 
-    Upload
+    Add files
+    Start upload
 
 *** Keywords ***
 
@@ -28,7 +45,7 @@ Click Add Multiple Files
     Click Link  css=a#multiple-files
     wait until page contains  Add files…
 
-Upload
+Add files
     Click Add Multiple Files
 
     # For some reason this code warm up the upload and avoid errors
@@ -39,6 +56,31 @@ Upload
     \  Choose File  css=input[type=file]  /tmp/${image}
     \  Page Should Contain Element  css=input[type=text][value="${image}"]
 
+Cancel first file
+    Click Button  css=.template-upload:first-child .cancel
+    Click Button  css=.fileupload-buttonbar .start
+
+    Click Link  css=${close_button_selector}
+    Wait Until Page Does Not Contain  Add files…
+
+    Goto Homepage
+
+    Page Should Not Contain  @{images}[0]
+    Page Should Contain  @{images}[1]
+
+Cancel all files
+    Click Button  css=.fileupload-buttonbar .cancel
+    Click Button  css=.fileupload-buttonbar .start
+
+    Click Link  css=${close_button_selector}
+    Wait Until Page Does Not Contain  Add files…
+
+    Goto Homepage
+
+    : FOR  ${image}  IN  @{images}
+    \  Page Should Not Contain  ${image}
+
+Start upload
     Click Button  css=.fileupload-buttonbar .start
 
     Click Link  css=${close_button_selector}

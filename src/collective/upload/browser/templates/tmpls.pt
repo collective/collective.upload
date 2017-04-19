@@ -19,13 +19,11 @@
           <div class="actions">
             {% if (!i && !o.options.autoUpload) { %}
               <button class="btn btn-primary start" disabled>
-                <i class="glyphicon glyphicon-upload"></i>
                 <span>{%=o.options.i18n('start')%}</span>
               </button>
             {% } %}
             {% if (!i) { %}
               <button class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
                 <span>{%=o.options.i18n('cancel')%}</span>
               </button>
             {% } %}

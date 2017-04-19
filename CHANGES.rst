@@ -6,6 +6,10 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
+- Attach aditional handlers for events associated with the "Cancel" buttons;
+  this is needed to work around canceling uploads when an old version of ``collective.js.bootstrap`` is installed (fixes `#85`_).
+  [rodfersou]
+
 - Fix css to fileupload class instead of fileupload id.
   [rodfersou]
 
@@ -194,3 +198,4 @@ There's a frood who really knows where his towel is.
 .. _`#65`: https://github.com/collective/collective.upload/issues/65
 .. _`#66`: https://github.com/collective/collective.upload/issues/66
 .. _`#71`: https://github.com/collective/collective.upload/issues/71
+.. _`#85`: https://github.com/collective/collective.upload/issues/85
