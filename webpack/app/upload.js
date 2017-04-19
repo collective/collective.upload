@@ -1,7 +1,6 @@
 import './upload.less';
 import './upload-icon.png';
 
-import 'get-image-data/jquery.getimagedata.js';
 import 'blueimp-tmpl/js/tmpl.js';
 import 'blueimp-load-image/js/index.js';
 import 'blueimp-canvas-to-blob/js/canvas-to-blob.js';
@@ -50,7 +49,7 @@ class Upload {
       // Prevent the default browser drop action:
       e.preventDefault();
     });
-    $(document).on('drop', this.cross_site_drop);
+    $(document).on('drop', $.proxy(this.cross_site_drop, this));
     $(document).on('click', '.fileupload-buttonbar button.cancel', this.cancel_all);
     $(document).on('click', '.template-upload button.cancel', this.cancel_one);
   }
@@ -141,26 +140,35 @@ class Upload {
     parser.href = location.href;
     parser.pathname = parser.pathname.replace(/\/folder_contents*|\/view*/, '');
     parser.pathname = parser.pathname + '/@@jsonimageserializer';
-    $.getImageData({
-      url: url,
-      server: parser.href,
-      success: (img) => {
-        let canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        if (canvas.getContext && canvas.toBlob) {
-          canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-          canvas.toBlob((blob) => {
-            $('.fileupload').fileupload('add', {files: [blob]});
-          }, "image/jpeg");
-        }
+    $.ajax({
+      url: parser.href,
+      data: {url: url},
+      context: this,
+      success: (data) => {
+        let img = document.createElement('img');
+        img.name = data.name;
+        img.onload = $.proxy((e) => {
+          let canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          if (canvas.getContext && canvas.toBlob) {
+            canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+            canvas.toBlob(function(that, name) {
+              return (blob) => {
+                blob.name = name;
+                that.$el.fileupload('add', {files: [blob]});
+              };
+            }(this, img.name), 'image/jpeg');
+          }
+        }, this);
+        img.src = data.data;
       }
     });
   }
 }
 
 
-$(function () {
+$(() => {
   new Upload();
 });
 

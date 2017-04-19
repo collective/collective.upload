@@ -5,11 +5,7 @@
   "scripts": {
     "dev": "webpack",
     "build": "webpack -p",
-    "watch": "webpack -p --watch",
-    "install": "napa"
-  },
-  "napa": {
-    "get-image-data": "betamax/getImageData"
+    "watch": "webpack -p --watch"
   },
   "repository": {},
   "license": "GPLv2",
@@ -25,7 +21,6 @@
     "image-webpack-loader": "^3.1.0",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
-    "napa": "^2.3.0",
     "postcss": "^5.2.11",
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^1.2.2",

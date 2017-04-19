@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
+- Review image drag and drop from other web page (now keeping the image name).
+  [rodfersou]
+
 - Attach aditional handlers for events associated with the "Cancel" buttons;
   this is needed to work around canceling uploads when an old version of ``collective.js.bootstrap`` is installed (fixes `#85`_).
   [rodfersou]

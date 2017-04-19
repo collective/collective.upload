@@ -22,6 +22,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 import base64
 import cStringIO
 import json
+import os
 import requests
 import urllib2
 
@@ -254,19 +255,10 @@ class JSONImageConverter(BrowserView):
 
         # Construct the response
         data = json.dumps({
-            'width': width,
-            'height': height,
+            'name': os.path.basename(url),
             'data': data_uri_prefix + return_image,
-            'mimetype': mimetype,
         })
 
-        # If a callback has been specified
-        if 'callback' in query:
-            callback = query['callback']
-
-            # Add the callback to the end for cross-domain JSON
-            data = callback + '(' + data + ');'
-
-            # Return the JSON
-            self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
-            return data
+        # Return the JSON
+        self.request.response.setHeader('Content-Type', 'application/json; charset=utf-8')
+        return data

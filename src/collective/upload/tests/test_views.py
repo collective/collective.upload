@@ -68,21 +68,10 @@ class JSONImageConverterTestCase(unittest.TestCase):
             name='jsonimageserializer', context=context, request=request)
         url = 'http://old.plone.org/logo.png'
         self.request['url'] = url
-        self.request['callback'] = '?'
 
-        rendered = view.render()
-        image = json.loads(rendered[2:-2])  # get JSON data
-        self.assertEqual(image['mimetype'], 'png')
+        image = json.loads(view.render())  # get JSON data
+        self.assertEqual(image['name'], 'logo.png')
         self.assertTrue(image['data'].startswith('data:image/png;base64,'))
-        self.assertEqual(image['width'], 215)
-        self.assertEqual(image['height'], 56)
-
-    def test_nocallback(self):
-        # TODO: Change this test after the nocallback error implementation
-        view = getMultiAdapter((self.folder, self.request), name='jsonimageserializer')
-        url = 'http://old.plone.org/logo.png'
-        self.request['url'] = url
-        self.assertIsNone(view.render())
 
     def test_server_respond_not200(self):
         # TODO: Change this test after the non200 code implementation
