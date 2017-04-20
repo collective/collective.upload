@@ -161,6 +161,9 @@ class Upload {
    * @param {e} event - jQuery event variable
    */
   cross_site_drop(e) {
+    if (typeof(e.originalEvent.dataTransfer) == 'undefined') {
+      return;
+    }
     // Google Chrome
     let url = $(e.originalEvent.dataTransfer.getData('text/html')).filter('img').attr('src');
     // Firefox

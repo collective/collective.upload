@@ -6,7 +6,8 @@ There's a frood who really knows where his towel is.
 9.18.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Avoid drag and drop conflicts with other libraries.
+  [rodfersou]
 
 
 9.18.0rc1 (2017-04-20)
