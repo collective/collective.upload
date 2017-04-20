@@ -28,6 +28,7 @@ else:
 
 
 IMAGES = [
+    'Belem.jpg',
     '640px-Mandel_zoom_00_mandelbrot_set.jpg',
     '640px-Mandel_zoom_04_seehorse_tail.jpg',
     '640px-Mandel_zoom_06_double_hook.jpg',

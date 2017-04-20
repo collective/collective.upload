@@ -12,6 +12,8 @@ Test Teardown  Close all browsers
 ${cancel_button_selector} =  button.cancel
 ${close_button_selector} =  div.close a
 @{images} =  640px-Mandel_zoom_00_mandelbrot_set.jpg  640px-Mandel_zoom_04_seehorse_tail.jpg  640px-Mandel_zoom_06_double_hook.jpg  640px-Mandel_zoom_07_satellite.jpg  640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg
+${exif_description} =  Belém (Brazil)
+${exif_rights} =  Daniel Zanini H.
 
 *** Test cases ***
 
@@ -38,6 +40,29 @@ Test Upload
     Add files
     Start upload
 
+
+Test EXIF
+    Enable Autologin as  Site Administrator
+    Goto Homepage
+
+    Click Add Multiple Files
+
+    # For some reason this code warm up the upload and avoid errors
+    Choose File  css=input[type=file]  /tmp/Belem.jpg
+    Sleep  1s  Wait for image to load
+
+    Choose File  css=input[type=file]  /tmp/Belem.jpg
+    Page Should Contain Element  css=input[type=text][value="Belem.jpg"]
+
+    Click Button  css=.fileupload-buttonbar .start
+    Click Link  css=${close_button_selector}
+    Wait Until Page Does Not Contain  Add files…
+
+    Page Should Contain  Belem.jpg
+    Click Link  Belem.jpg
+    Page Should Contain  ${exif_description}
+    Page Should Contain  ${exif_rights}
+
 *** Keywords ***
 
 Click Add Multiple Files
@@ -58,6 +83,8 @@ Add files
 
 Cancel first file
     Click Button  css=.template-upload:first-child .cancel
+    # use size of first image as trigger
+    Wait Until Page Does Not Contain  28.69 KB
     Click Button  css=.fileupload-buttonbar .start
 
     Click Link  css=${close_button_selector}
@@ -68,6 +95,8 @@ Cancel first file
 
 Cancel all files
     Click Button  css=.fileupload-buttonbar .cancel
+    # use size of last image as trigger
+    Wait Until Page Does Not Contain  90.11 KB
     Click Button  css=.fileupload-buttonbar .start
 
     Click Link  css=${close_button_selector}

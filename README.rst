@@ -102,6 +102,7 @@ Features
 ^^^^^^^^
 
 - Support for Archetypes and Dexterity-based content types
+- Support for Exif metadata: uploading an image with Exif metadata will pre-populate ``description`` and ``rights`` fields
 - **Multiple file upload**: Allows to select multiple files at once and upload them simultaneously
 - **Drag & Drop support**: Allows to upload files by dragging them from your desktop or filemanager and dropping them on your browser window
 - **Upload progress bar**: Shows a progress bar indicating the upload progress for individual files and for all uploads combined

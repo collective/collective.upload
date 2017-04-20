@@ -6,6 +6,10 @@ There's a frood who really knows where his towel is.
 9.18.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^
 
+- Add support for basic Exif metadata handling;
+  ``ImageDescription`` and ``Artist`` Exif fields are now used to pre-populate ``description`` and ``rights`` fields on Image content type (closes `#6`_).
+  [rodfersou]
+
 - Reload page after close overlay (fixes `#16`_).
   [rodfersou]
 
@@ -196,6 +200,7 @@ There's a frood who really knows where his towel is.
 
 - Initial release.
 
+.. _`#6`: https://github.com/collective/collective.upload/issues/6
 .. _`#16`: https://github.com/collective/collective.upload/issues/16
 .. _`#24`: https://github.com/collective/collective.upload/issues/24
 .. _`#34`: https://github.com/collective/collective.upload/issues/34

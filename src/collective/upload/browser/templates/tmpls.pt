@@ -8,8 +8,8 @@
         </td>
         <td class="name">
           <input name="filename[]" type="hidden" value="{%=file.name%}" required="required"/>
-          <input placeholder="{%=o.options.i18n('title')%}" name="title[]" type="text" value="{%=file.name%}" required="required"/>
-          <textarea placeholder="{%=o.options.i18n('description')%}" name="description[]" cols="10" rows="3"></textarea>
+          <input placeholder="{%=o.options.i18n('title')%}" class="title" name="title[]" type="text" value="{%=file.name%}" required="required"/>
+          <textarea placeholder="{%=o.options.i18n('description')%}" class="description" name="description[]" cols="10" rows="3"></textarea>
           <input placeholder="{%=o.options.i18n('rights')%}" class="rights" name="rights[]" type="text" value="{%=file.rights%}" />
           <strong class="error text-danger"></strong>
         </td>
@@ -39,14 +39,14 @@
         <td class="preview">
           <span>
             {% if (file.thumbnail_url) { %}
-              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+              <a href="{%=file.url%}/view" title="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
             {% } %}
           </span>
         </td>
         <td class="name">
           <p>
             {% if (file.url) { %}
-              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}">{%=file.name%}</a>
+              <a href="{%=file.url%}/view" title="{%=file.name%}">{%=file.name%}</a>
             {% } else { %}
               <span>{%=file.name%}</span>
             {% } %}

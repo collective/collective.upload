@@ -25,6 +25,10 @@ class Upload {
     if (this.$el.length > 0) {
       this.init_fileupload();
     }
+
+    this.exif = {};
+    this.exif.ImageDescription = 0x010E;
+    this.exif.Artist = 0x013B;
   }
 
   /**
@@ -101,7 +105,37 @@ class Upload {
         }
       ],
       messages: translations
-    });
+    }).on('fileuploadprocessdone', $.proxy(this.extract_metadata, this));
+  }
+
+  /**
+   * Decode UTF8 string to Unicode
+   * http://stackoverflow.com/a/13691499
+   * @param {s} string - String to decode
+   */
+  decode_utf8(s) {
+    return decodeURIComponent(escape(s));
+  }
+
+  /**
+   * Extract image metadata using EXIF
+   * @param {e} event - jQuery event variable
+   * @param {data} data - Image data
+   */
+  extract_metadata(e, data) {
+    if (typeof(data.exif) === 'undefined') {
+      return;
+    }
+    let description = data.exif[this.exif.ImageDescription];
+    if (typeof(description) !== 'undefined') {
+      description = this.decode_utf8(description);
+      $('.description', data.context[0]).val(description);
+    }
+    let artist = data.exif[this.exif.Artist];
+    if (typeof(artist) !== 'undefined') {
+      artist = this.decode_utf8(artist);
+      $('.rights', data.context[0]).val(artist);
+    }
   }
 
   /**
