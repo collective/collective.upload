@@ -3,8 +3,8 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-9.18.0b2 (unreleased)
-^^^^^^^^^^^^^^^^^^^^^
+9.18.0rc1 (2017-04-20)
+^^^^^^^^^^^^^^^^^^^^^^
 
 - Add support for basic Exif metadata handling;
   ``ImageDescription`` and ``Artist`` Exif fields are now used to pre-populate ``description`` and ``rights`` fields on Image content type (closes `#6`_).
