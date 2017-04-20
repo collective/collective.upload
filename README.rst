@@ -68,8 +68,9 @@ The upload widget can be accessed selecting the 'Multiple files' option in the '
 
 Select as many files as you want to upload using by the 'Add files…' button or the drag and drop feature
 (you can even do the later among diferent browser windows).
-A preview of all images will be shown.
 You can set the title, description and rights for any file or image in advance.
+If images have Exif metadata it will be used to pre-populate description and rights.
+A preview of all images, audios and videos will be shown.
 Start the upload individually or in a batch by pressing the 'Start' button.
 You will see a bar indicating the progress of the upload.
 You can cancel the upload at any time and you can also delete any file or image already uploaded into the site.
@@ -102,14 +103,14 @@ Features
 ^^^^^^^^
 
 - Support for Archetypes and Dexterity-based content types
-- Support for Exif metadata: uploading an image with Exif metadata will pre-populate ``description`` and ``rights`` fields
+- **No browser plugins required**: The implementation is based on open standards like HTML5 and JavaScript and requires no additional browser plugins
 - **Multiple file upload**: Allows to select multiple files at once and upload them simultaneously
 - **Drag & Drop support**: Allows to upload files by dragging them from your desktop or filemanager and dropping them on your browser window
+- **Support for Exif metadata**: Uploading images with Exif metadata will pre-populate description and rights
+- **Preview for images, audios and videos**: A preview of image, video and audio files is displayed before uploading with browsers supporting the required JS APIs
+- **Client-side image resizing**: Images can be automatically resized on client-side with browsers supporting the required JS APIs
 - **Upload progress bar**: Shows a progress bar indicating the upload progress for individual files and for all uploads combined
 - **Cancelable uploads**: Individual file uploads can be canceled to stop the upload progress
-- **Client-side image resizing**: Images can be automatically resized on client-side with browsers supporting the required JS APIs
-- **Preview images**: A preview of image files can be displayed before uploading with browsers supporting the required JS APIs
-- **No browser plugins required**: The implementation is based on open standards like HTML5 and JavaScript and requires no additional browser plugins
 - **Graceful fallback for legacy browsers**: Uploads files via XMLHttpRequests if supported and uses iframes as fallback for legacy browsers
 - **Drag and drop uploads from another web page**: Supports uploading files dragged from one page into another (tested with Firefox and Chrome)
 
@@ -125,32 +126,15 @@ Desktop browsers support
 Mobile browsers are also supported.
 Check `Browser support <https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support>`_ for details on features supported by each browser.
 
-Future features
-^^^^^^^^^^^^^^^
+Santa's wish list
+^^^^^^^^^^^^^^^^^
 
 We want to implement these features at some point in the future:
 
-- Refactoring of widget's UI
-- **Resumable uploads**: Aborted uploads can be resumed with browsers
-  supporting the Blob API
-- **Chunked uploads**: Large files can be uploaded in smaller chunks with
-  browsers supporting the Blob API
-- **HTML file upload form fallback**: Shows a standard HTML file upload form
-  if JavaScript is disabled
-- Enable/disable automatic uploads
-- Server side image resizing
-- Server side file type constraint
-- Asynchronous Module Definition (`AMD`_) support
-- Widget for "allowed extensions" option
-
-To-do list
-^^^^^^^^^^
-
-* Check if constraints are in place before adding the menu item.
-
-.. _`canvas-to-blob.min.js`: https://github.com/blueimp/JavaScript-Canvas-to-Blob
-.. _`load-image.min.js`: https://github.com/blueimp/JavaScript-Load-Image
-.. _`AMD`: https://github.com/amdjs/amdjs-api/wiki/AMD
+- [ ] Check if constraints are in place before adding the menu item
+- [ ] Resumable uploads: Aborted uploads can be resumed with browsers supporting the Blob API
+- [ ] Chunked uploads: Large files can be uploaded in smaller chunks with browsers supporting the Blob API
+- [ ] HTML file upload form fallback: Shows a standard HTML file upload form if JavaScript is disabled
 
 Not entirely unlike
 -------------------
