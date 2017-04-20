@@ -19,14 +19,14 @@ There's a frood who really knows where his towel is.
 - Reload page after close overlay (fixes `#16`_).
   [rodfersou]
 
-- Review image drag and drop from other web page (now keeping the image name).
+- Cross-site file uploads was refactored and now keeps image name.
   [rodfersou]
 
 - Attach aditional handlers for events associated with the "Cancel" buttons;
   this is needed to work around canceling uploads when an old version of ``collective.js.bootstrap`` is installed (fixes `#85`_).
   [rodfersou]
 
-- Fix css to fileupload class instead of fileupload id.
+- Fix CSS to fileupload class instead of fileupload id; this allows multiple plugin instances.
   [rodfersou]
 
 - Avoid page template exception with five.pt.
