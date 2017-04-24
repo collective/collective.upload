@@ -21,9 +21,9 @@ class Upload {
    */
   constructor() {
     this.refresh();
-    this.bind_events();
+    this.bindEvents();
     if (this.$el.length > 0) {
-      this.init_fileupload();
+      this.initFileUpload();
     }
 
     this.exif = {};
@@ -35,38 +35,39 @@ class Upload {
    * Refresh elements (needed when open modal)
    */
   refresh() {
-    this.$el = $('.fileupload');
+    // if overlay is open at /folder_contents page, pick the overlay fileuploader
+    this.$el = $('.fileupload').last();
   }
 
   /**
    * Bind events
    */
-  bind_events() {
+  bindEvents() {
     //overlay
     $('#plone-contentmenu-factories #multiple-files').prepOverlay({
       subtype: 'ajax',
       config: {
-        onLoad: $.proxy(this.init_fileupload, this),
-        onBeforeClose: this.before_close
+        onLoad: $.proxy(this.initFileUpload, this),
+        onBeforeClose: this.reloadPage
       }
     });
     $(document).on('drop dragover', (e) => {
       // Prevent the default browser drop action:
       e.preventDefault();
     });
-    $(document).on('drop', $.proxy(this.cross_site_drop, this));
-    $(document).on('click', '.fileupload-buttonbar button.cancel', this.cancel_all);
-    $(document).on('click', '.template-upload button.cancel', this.cancel_one);
+    $(document).on('drop', $.proxy(this.crossSiteDrop, this));
+    $(document).on('click', '.template-upload button.cancel', $.proxy(this.cancelOne, this));
+    $(document).on('click', '.fileupload-buttonbar button.cancel', $.proxy(this.cancelAll, this));
   }
 
   /**
    * Initiate fileupload plugin
    */
-  init_fileupload() {
+  initFileUpload() {
     // Overlay requires to refresh element object
     this.refresh();
     let options = this.$el.prop('dataset');
-    let files_re = new RegExp('(\\.|\/)('+options.extensions+')$', 'i');
+    let filesRE = new RegExp('(\\.|\/)('+options.extensions+')$', 'i');
 
     // Map tranlations options to object
     let translations = {};
@@ -88,11 +89,11 @@ class Upload {
       // send Blob objects via XHR requests:
       disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
       maxFileSize: options.maxFileSize,
-      acceptFileTypes: files_re,
+      acceptFileTypes: filesRE,
       process: [
         {
           action: 'load',
-          fileTypes: files_re,
+          fileTypes: filesRE,
           maxFileSize: options.maxFileSize
         },
         {
@@ -105,7 +106,13 @@ class Upload {
         }
       ],
       messages: translations
-    }).on('fileuploadprocessdone', $.proxy(this.extract_metadata, this));
+    }).on(
+      'fileuploadprocessdone', $.proxy(this.extractMetadata, this)
+    ).on(
+      'fileuploadprogress', $.proxy(this.finishUpload, this)
+    ).on(
+      'fileuploadprogressall', $.proxy(this.finishAllUpload, this)
+    );
   }
 
   /**
@@ -113,7 +120,7 @@ class Upload {
    * http://stackoverflow.com/a/13691499
    * @param {s} string - String to decode
    */
-  decode_utf8(s) {
+  decodeUTF8(s) {
     return decodeURIComponent(escape(s));
   }
 
@@ -122,20 +129,31 @@ class Upload {
    * @param {e} event - jQuery event variable
    * @param {data} data - Image data
    */
-  extract_metadata(e, data) {
-    if (typeof(data.exif) === 'undefined') {
+  extractMetadata(e, data) {
+    if (typeof data.exif === 'undefined') {
       return;
     }
     let description = data.exif[this.exif.ImageDescription];
-    if (typeof(description) !== 'undefined') {
-      description = this.decode_utf8(description);
+    if (typeof description !== 'undefined') {
+      description = this.decodeUTF8(description);
       $('.description', data.context[0]).val(description);
     }
     let artist = data.exif[this.exif.Artist];
-    if (typeof(artist) !== 'undefined') {
-      artist = this.decode_utf8(artist);
+    if (typeof artist !== 'undefined') {
+      artist = this.decodeUTF8(artist);
       $('.rights', data.context[0]).val(artist);
     }
+  }
+
+  /**
+   * Check if using Bootstrap 2
+   * http://stackoverflow.com/a/14768682
+   * This method is needed as workaround for old bootstrap version conflict
+   */
+  hasBootstrap2() {
+    let hasBootstrap = (typeof $().modal == 'function');
+    let hasBootstrap3 = (typeof $().emulateTransitionEnd === 'function');
+    return (hasBootstrap && !hasBootstrap3);
   }
 
   /**
@@ -143,7 +161,11 @@ class Upload {
    * This callback is needed as workaround for old bootstrap version conflict
    * @param {e} event - jQuery event variable
    */
-  cancel_all(e) {
+  cancelAll(e) {
+    this.reloadPage();
+    if (!this.hasBootstrap2()) {
+      return;
+    }
     $('.template-upload').remove();
   }
 
@@ -152,25 +174,88 @@ class Upload {
    * This callback is needed as workaround for old bootstrap version conflict
    * @param {e} event - jQuery event variable
    */
-  cancel_one(e) {
+  cancelOne(e) {
+    this.reloadPage();
+    if (!this.hasBootstrap2()) {
+      return;
+    }
     $(e.target).parents('.template-upload').remove();
+  }
+
+  /**
+   * Method copied from jquery.fileupload implementation
+   * This callback is needed as workaround for old bootstrap version conflict
+   * @param {bytes} bytes - Size of file in bytes
+   */
+  formatFileSize(bytes) {
+    if (typeof bytes !== 'number') {
+      return '';
+    }
+    if (bytes >= 1000000000) {
+      return (bytes / 1000000000).toFixed(2) + ' GB';
+    }
+    if (bytes >= 1000000) {
+      return (bytes / 1000000).toFixed(2) + ' MB';
+    }
+    return (bytes / 1000).toFixed(2) + ' KB';
+  }
+
+  /**
+   * Called when finish one file upload
+   * This callback is needed as workaround for old bootstrap version conflict
+   * @param {e} event - jQuery event variable
+   * @param {data} data - Progress data
+   */
+  finishUpload(e, data) {
+    if (!this.hasBootstrap2()) {
+      return;
+    }
+    let progress = parseInt(data.loaded / data.total * 100, 10);
+    if (progress !== 100) {
+      return;
+    }
+    // render template
+    let $html = $(data.downloadTemplate({
+      files: data.files,
+      formatFileSize: this.formatFileSize,
+      options: data
+    }));
+    // update html
+    data.context.replaceWith($html);
+    // render preview
+    $html.find('.preview').each(function (index, elm) {
+      $(elm).append(data.files[index].preview);
+    });
+  }
+
+  /**
+   * Called when finish all uploads
+   * @param {e} event - jQuery event variable
+   * @param {data} data - Progress data
+   */
+  finishAllUpload(e, data) {
+    let progress = parseInt(data.loaded / data.total * 100, 10);
+    if (progress !== 100) {
+      return;
+    }
+    this.reloadPage();
   }
 
   /**
    * Drop image from other website page
    * @param {e} event - jQuery event variable
    */
-  cross_site_drop(e) {
-    if (typeof(e.originalEvent.dataTransfer) == 'undefined') {
+  crossSiteDrop(e) {
+    if (typeof e.originalEvent.dataTransfer === 'undefined') {
       return;
     }
     // Google Chrome
     let url = $(e.originalEvent.dataTransfer.getData('text/html')).filter('img').attr('src');
     // Firefox
-    if (typeof(url) === 'undefined') {
+    if (typeof url === 'undefined') {
       url = e.originalEvent.dataTransfer.getData('text/x-moz-url').split('\n')[0];
     }
-    if (typeof(url) === 'undefined') {
+    if (typeof url === 'undefined') {
       return;
     }
     // JavaScript URL parser: https://gist.github.com/jlong/2428561
@@ -203,13 +288,16 @@ class Upload {
       }
     });
   }
-
-  /**
-   * Reload page when close overlay
-   * @param {e} event - jQuery event variable
-   */
-  before_close(e) {
-    location.reload();
+  /**       
+   * Reload page when close overlay     
+   * @param {e} event - jQuery event variable       
+   */       
+  reloadPage(e) {       
+    // reload page if all uploads finish
+    let $uploads = $('.template-upload', this.$el);
+    if ($uploads.length === 0 || $('.progress', $uploads).attr('aria-valuenow') === '100') {
+      location.reload();
+    }
   }
 }
 

@@ -6,6 +6,19 @@ There's a frood who really knows where his towel is.
 9.18.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^^
 
+- Add a check to add aditional handlers just for Bootstrap 2.
+  [rodfersou]
+
+- Fix upload behavior when there is two fileuploads at page (overlay at /folder_contents folder).
+  [rodfersou]
+
+- Review reload page to happen when all uploads are finished or cancelled.
+  [rodfersou]
+
+- Attach aditional handlers for events associated with the "Upload" buttons;
+  this is needed to work around uploads when an old version of ``collective.js.bootstrap`` is installed.
+  [rodfersou]
+
 - Avoid drag and drop conflicts with other libraries.
   [rodfersou]
 

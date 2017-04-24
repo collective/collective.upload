@@ -10,7 +10,6 @@ Test Teardown  Close all browsers
 *** Variables ***
 
 ${cancel_button_selector} =  button.cancel
-${close_button_selector} =  div.close a
 @{images} =  640px-Mandel_zoom_00_mandelbrot_set.jpg  640px-Mandel_zoom_04_seehorse_tail.jpg  640px-Mandel_zoom_06_double_hook.jpg  640px-Mandel_zoom_07_satellite.jpg  640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg
 ${exif_description} =  Belém (Brazil)
 ${exif_rights} =  Daniel Zanini H.
@@ -55,7 +54,6 @@ Test EXIF
     Page Should Contain Element  css=input[type=text][value="Belem.jpg"]
 
     Click Button  css=.fileupload-buttonbar .start
-    Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
 
     Page Should Contain  Belem.jpg
@@ -87,7 +85,6 @@ Cancel first file
     Wait Until Page Does Not Contain  28.69 KB
     Click Button  css=.fileupload-buttonbar .start
 
-    Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
 
     Page Should Not Contain  @{images}[0]
@@ -97,9 +94,7 @@ Cancel all files
     Click Button  css=.fileupload-buttonbar .cancel
     # use size of last image as trigger
     Wait Until Page Does Not Contain  90.11 KB
-    Click Button  css=.fileupload-buttonbar .start
 
-    Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
 
     : FOR  ${image}  IN  @{images}
@@ -108,7 +103,6 @@ Cancel all files
 Start upload
     Click Button  css=.fileupload-buttonbar .start
 
-    Click Link  css=${close_button_selector}
     Wait Until Page Does Not Contain  Add files…
 
     Goto Homepage
