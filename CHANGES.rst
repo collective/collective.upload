@@ -3,7 +3,7 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-9.18.0rc2 (unreleased)
+9.18.0rc2 (2017-04-24)
 ^^^^^^^^^^^^^^^^^^^^^^
 
 - Add a check to add aditional handlers just for Bootstrap 2.
