@@ -9,6 +9,7 @@ Test Teardown  Close all browsers
 
 *** Variables ***
 
+@{upload_overlay_selector}  css=form.fileupload
 ${cancel_button_selector} =  button.cancel
 @{images} =  640px-Mandel_zoom_00_mandelbrot_set.jpg  640px-Mandel_zoom_04_seehorse_tail.jpg  640px-Mandel_zoom_06_double_hook.jpg  640px-Mandel_zoom_07_satellite.jpg  640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg
 ${exif_description} =  Belém (Brazil)
@@ -20,24 +21,27 @@ Test Cancel First
     Enable Autologin as  Site Administrator
     Goto Homepage
 
-    Add files
-    Cancel first file
+    Add Files  @{images}
+    Cancel First File
 
 
 Test Cancel All
     Enable Autologin as  Site Administrator
     Goto Homepage
 
-    Add files
-    Cancel all files
+    Add Files  @{images}
+    Cancel All Files
 
 
 Test Upload
     Enable Autologin as  Site Administrator
     Goto Homepage
 
-    Add files
-    Start upload
+    Add Files  @{images}
+    Start Upload
+
+    : FOR  ${image}  IN  @{images}
+    \  Page Should Contain  ${image}
 
 
 Test EXIF
@@ -46,15 +50,15 @@ Test EXIF
 
     Click Add Multiple Files
 
-    # For some reason this code warm up the upload and avoid errors
-    Choose File  css=input[type=file]  /tmp/Belem.jpg
-    Sleep  1s  Wait for image to load
+    # need to slow down Selenium here to avoid errors on images
+    ${speed} =  Set Selenium Speed  2 seconds
 
     Choose File  css=input[type=file]  /tmp/Belem.jpg
     Page Should Contain Element  css=input[type=text][value="Belem.jpg"]
 
-    Click Button  css=.fileupload-buttonbar .start
-    Wait Until Page Does Not Contain  Add files…
+    Set Selenium Speed  ${speed}
+
+    Start Upload
 
     Page Should Contain  Belem.jpg
     Click Link  Belem.jpg
@@ -66,20 +70,24 @@ Test EXIF
 Click Add Multiple Files
     Open Add New Menu
     Click Link  css=a#multiple-files
-    wait until page contains  Add files…
+    Wait Until Page Contains Element  @{upload_overlay_selector}
 
-Add files
+Add Files
+    [Arguments]  @{files}
+
     Click Add Multiple Files
 
-    # For some reason this code warm up the upload and avoid errors
-    Choose File  css=input[type=file]  /tmp/640px-Mandel_zoom_00_mandelbrot_set.jpg
-    Sleep  1s  Wait for image to load
+    # need to slow down Selenium here to avoid errors on images
+    ${speed} =  Set Selenium Speed  2 seconds
 
-    : FOR  ${image}  IN  @{images}
-    \  Choose File  css=input[type=file]  /tmp/${image}
-    \  Page Should Contain Element  css=input[type=text][value="${image}"]
+    : FOR  ${file}  IN  @{files}
+    \  Choose File  css=input[type=file]  /tmp/${file}
+    \  Sleep  1s  Wait for file to load
+    \  Page Should Contain Element  css=input[type=text][value="${file}"]
 
-Cancel first file
+    Set Selenium Speed  ${speed}
+
+Cancel First File
     Click Button  css=.template-upload:first-child .cancel
     # use size of first image as trigger
     Wait Until Page Does Not Contain  28.69 KB
@@ -90,7 +98,7 @@ Cancel first file
     Page Should Not Contain  @{images}[0]
     Page Should Contain  @{images}[1]
 
-Cancel all files
+Cancel All Files
     Click Button  css=.fileupload-buttonbar .cancel
     # use size of last image as trigger
     Wait Until Page Does Not Contain  90.11 KB
@@ -100,12 +108,6 @@ Cancel all files
     : FOR  ${image}  IN  @{images}
     \  Page Should Not Contain  ${image}
 
-Start upload
+Start Upload
     Click Button  css=.fileupload-buttonbar .start
-
-    Wait Until Page Does Not Contain  Add files…
-
-    Goto Homepage
-
-    : FOR  ${image}  IN  @{images}
-    \  Page Should Contain  ${image}
+    Wait Until Page Does Not Contain Element  @{upload_overlay_selector}
