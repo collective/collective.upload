@@ -115,7 +115,7 @@ class MediaUploader(BrowserView):
                 id=id_name,
                 title=detail['title'],
                 description=detail['description'],
-                rights=detail['rights']
+                rights=detail['rights'],
             )
 
             # Set data

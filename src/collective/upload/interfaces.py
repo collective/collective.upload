@@ -22,8 +22,7 @@ class IUploadSettings(Interface):
         description=_(
             u'If selected, the upload widget will be shown in the context of '
             u'the folder contents view also. The widget will be always '
-            u'accessible via the "Add new…" menu regardless this value.'
-        ),
+            u'accessible via the "Add new…" menu regardless this value.'),
         default=True,
     )
 

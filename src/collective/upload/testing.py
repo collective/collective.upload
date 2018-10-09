@@ -33,7 +33,7 @@ IMAGES = [
     '640px-Mandel_zoom_04_seehorse_tail.jpg',
     '640px-Mandel_zoom_06_double_hook.jpg',
     '640px-Mandel_zoom_07_satellite.jpg',
-    '640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg'
+    '640px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg',
 ]
 
 
