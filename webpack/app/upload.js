@@ -1,6 +1,3 @@
-import './upload.less';
-import './upload-icon.png';
-
 import 'blueimp-tmpl/js/tmpl.js';
 import 'blueimp-load-image/js/index.js';
 import 'blueimp-canvas-to-blob/js/canvas-to-blob.js';
@@ -307,4 +304,6 @@ $(() => {
 });
 
 
-module.exports = Upload;
+export default {
+  Upload,
+}

@@ -1,11 +1,13 @@
 # -*- coding:utf-8 -*-
 from collective.upload import _
-from collective.upload.config import ICON
 from plone.app.contentmenu.interfaces import IFactoriesSubMenuItem
 from plone.app.contentmenu.menu import FactoriesMenu as BaseMenu
 from plone.app.contentmenu.menu import FactoriesSubMenuItem as BaseMenuItem
 from zope.component import getMultiAdapter
 from zope.interface import implementer
+
+
+ICON = '++resource++collective.upload/img/upload-icon.png'
 
 
 @implementer(IFactoriesSubMenuItem)

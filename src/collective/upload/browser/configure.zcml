@@ -75,4 +75,13 @@
       directory="static"
       />
 
+  <browser:viewlet
+      name="collective.upload.resources"
+      manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+      class=".ResourcesViewlet"
+      template="static/resources.pt"
+      permission="zope2.Public"
+      layer="collective.upload.interfaces.IUploadBrowserLayer"
+      />
+
 </configure>

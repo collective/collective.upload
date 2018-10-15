@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.upload">
+
+  <genericsetup:upgradeSteps
+      source="6"
+      destination="7"
+      profile="collective.upload:default">
+
+    <genericsetup:upgradeDepends
+        title="Fix configlet icon"
+        import_profile="collective.upload:default"
+        import_steps="controlpanel"
+        run_deps="false"
+        />
+
+    <genericsetup:upgradeStep
+        title="Deprecate resource registries"
+        description="Remove static resources from registries; use a viewlet instead."
+        handler=".deprecate_resource_registries"
+        />
+
+    <genericsetup:upgradeStep
+        title="Cook CSS resources"
+        description="There were changes in the CSS files, so we need to cook the resources."
+        handler="..cook_css_resources"
+        />
+
+    <genericsetup:upgradeStep
+        title="Cook JS resources"
+        description="There were changes in the JS files, so we need to cook the resources."
+        handler="..cook_javascript_resources"
+        />
+
+  </genericsetup:upgradeSteps>
+
+</configure>

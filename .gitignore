@@ -19,3 +19,4 @@ node_modules/
 parts/
 src/collective.*
 var/
+src/collective/upload/browser/static/*

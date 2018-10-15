@@ -6,7 +6,10 @@ There's a frood who really knows where his towel is.
 9.18.0rc3 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Deprecate resource registries;
+  instead, we now use a viewlet in ``plone.htmlhead`` to load JavaScript code.
+  This simplifies maintainance of the add-on.
+  [rodfersou]
 
 
 9.18.0rc2 (2017-04-24)

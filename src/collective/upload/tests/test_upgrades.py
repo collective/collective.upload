@@ -129,22 +129,6 @@ class To3TestCase(BaseUpgradeTestCase):
         self.assertNotIn(REMOVE_CSS, css_tool.getResourceIds())
         self.assertNotIn(REMOVE_JS, js_tool.getResourceIds())
 
-    def test_add_main_css(self):
-        # check if the upgrade step is registered
-        title = u'Add main.css into registry'
-        step = self._get_upgrade_step_by_title(title)
-        self.assertIsNotNone(step)
-
-        # simulate state on previous version
-        css_tool = api.portal.get_tool('portal_css')
-        main_css = '++resource++collective.upload/upload.css'
-        css_tool.unregisterResource(main_css)
-        self.assertNotIn(main_css, css_tool.getResourceIds())
-
-        # run the upgrade step to validate the update
-        self._do_upgrade_step(step)
-        self.assertIn(main_css, css_tool.getResourceIds())
-
 
 class To4TestCase(BaseUpgradeTestCase):
 
@@ -270,3 +254,35 @@ class To6TestCase(BaseUpgradeTestCase):
         record = dict(interface=IUploadSettings, name='upload_extensions')
         upload_extensions = api.portal.get_registry_record(**record)
         self.assertEqual(upload_extensions, expected)
+
+
+class To7TestCase(BaseUpgradeTestCase):
+
+    def setUp(self):
+        BaseUpgradeTestCase.setUp(self, u'6', u'7')
+
+    def test_registered_steps(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self._get_registered_steps, 4)
+
+    def test_deprecate_resource_registries(self):
+        title = u'Deprecate resource registries'
+        step = self._get_upgrade_step_by_title(title)
+        self.assertIsNotNone(step)
+
+        # simulate state on previous version
+        from collective.upload.upgrades.v7 import JS
+        js_tool = api.portal.get_tool('portal_javascripts')
+        js_tool.registerResource(id=JS)
+        self.assertIn(JS, js_tool.getResourceIds())
+
+        from collective.upload.upgrades.v7 import CSS
+        css_tool = api.portal.get_tool('portal_css')
+        css_tool.registerResource(id=CSS)
+        self.assertIn(CSS, css_tool.getResourceIds())
+
+        # run the upgrade step to validate the update
+        self._do_upgrade_step(step)
+        self.assertNotIn(JS, js_tool.getResourceIds())
+        self.assertNotIn(CSS, css_tool.getResourceIds())

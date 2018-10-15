@@ -1,11 +1,12 @@
-@import '../node_modules/blueimp-file-upload/css/jquery.fileupload.css';
-@import '../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css';
+@import url(~blueimp-file-upload/css/jquery.fileupload.css);
+@import url(~blueimp-file-upload/css/jquery.fileupload-ui.css);
 
-@import '../node_modules/bootstrap/less/variables.less';
-@import '../node_modules/bootstrap/less/mixins.less';
-@import '../node_modules/bootstrap/less/tables.less';
-@import '../node_modules/bootstrap/less/buttons.less';
-@import '../node_modules/bootstrap/less/progress-bars.less';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/tables';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/buttons';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/progress-bars';
+
 
 #content .fileupload-buttonbar {
   margin-bottom: 0;

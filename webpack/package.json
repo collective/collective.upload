@@ -1,30 +1,32 @@
 {
-  "name": "collective.upload",
-  "version": "1.0.0",
+  "name": "upload",
+  "version": "9.18.3",
   "main": "app/upload.js",
   "scripts": {
-    "dev": "webpack",
-    "build": "webpack -p",
-    "watch": "webpack -p --watch"
+    "build": "./node_modules/.bin/webpack -p",
+    "debug": "NODE_ENV=debug ./node_modules/.bin/webpack --watch",
+    "watch": "./node_modules/.bin/webpack -p --watch",
+    "test": "NODE_ENV=testing ./node_modules/.bin/karma start --single-run"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 3 versions"
+            ]
+          }
+        }
+      ]
+    ]
   },
   "repository": {},
-  "license": "GPLv2",
-  "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.22.0",
+  "license": "GPL-2.0",
+  "dependencies": {
     "blueimp-file-upload": "^9.18.0",
-    "bootstrap": "^3.3.7",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^2.0.0-beta",
-    "file-loader": "^0.9.0",
-    "image-webpack-loader": "^3.1.0",
-    "less": "^2.7.2",
-    "less-loader": "^2.2.3",
-    "postcss": "^5.2.11",
-    "postcss-cssnext": "^2.9.0",
-    "postcss-loader": "^1.2.2",
-    "style-loader": "^0.13.1",
-    "svg-url-loader": "^2.0.1"
+    "bootstrap-sass": "^3.3.7",
+    "sc-recipe-staticresources": "simplesconsultoria/sc.recipe.staticresources#1.1b5"
   }
 }

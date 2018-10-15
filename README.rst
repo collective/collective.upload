@@ -136,6 +136,48 @@ We want to implement these features at some point in the future:
 - [ ] Chunked uploads: Large files can be uploaded in smaller chunks with browsers supporting the Blob API
 - [ ] HTML file upload form fallback: Shows a standard HTML file upload form if JavaScript is disabled
 
+Look Ma! No Resource Registries
+-------------------------------
+
+This add-on uses a very opinionated approach on how to handle static resources in Plone.
+We just deprecated resource registries in favor of a simpler approach: a viewlet in ``plone.htmlhead``.
+This simplifies maintainance and avoids bundling of unrelated resources.
+
+Development
+-----------
+
+We use `webpack <https://webpack.js.org/>`_ to process static resources on this package.
+`webpack`_ processes SCSS and JS files, minifies the resulting CSS and JS, and optimizes all images.
+
+To contribute, you should start the instance in one shell and start webpack watcher on another with the following command:
+
+.. code-block:: console
+
+    $ bin/watch-upload
+
+Then go to ``webpack/app`` folder and edit SCSS and JS files;
+`webpack`_ watcher will automatically create the final resources in the right place.
+
+There are also other commands added to handle more complex scenarios.
+The following command will set the buildout node installation in the system PATH,
+this way you can use `webpack`_ as described on their documentation.
+
+.. code-block:: console
+
+    $ bin/env-upload
+
+The following command generates JS and CSS without the minify step (it can be used to check the code being generated in a human readable way).
+
+.. code-block:: console
+
+    $ bin/debug-upload
+
+The following command rebuilds static files and exit (insted of keep watching the changes):
+
+.. code-block:: console
+
+    $ bin/build-upload
+
 Not entirely unlike
 -------------------
 
