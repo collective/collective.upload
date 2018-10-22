@@ -1,6 +1,6 @@
 {
   "name": "upload",
-  "version": "9.18.3",
+  "version": "9.24.0",
   "main": "app/upload.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack -p",
@@ -25,7 +25,7 @@
   "repository": {},
   "license": "GPL-2.0",
   "dependencies": {
-    "blueimp-file-upload": "^9.18.0",
+    "blueimp-file-upload": "^9.24.0",
     "bootstrap-sass": "^3.3.7",
     "sc-recipe-staticresources": "simplesconsultoria/sc.recipe.staticresources#1.1b5"
   }

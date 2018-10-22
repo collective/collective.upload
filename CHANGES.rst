@@ -3,8 +3,11 @@ Changelog
 
 There's a frood who really knows where his towel is.
 
-9.18.0rc3 (unreleased)
+9.24.0rc3 (unreleased)
 ^^^^^^^^^^^^^^^^^^^^^^
+
+- Update File Upload plugin to version 9.24.0.
+  [rodfersou]
 
 - Deprecate resource registries;
   instead, we now use a viewlet in ``plone.htmlhead`` to load JavaScript code.
