@@ -6,7 +6,9 @@
     "build": "./node_modules/.bin/webpack -p",
     "debug": "NODE_ENV=debug ./node_modules/.bin/webpack --watch",
     "watch": "./node_modules/.bin/webpack -p --watch",
-    "test": "NODE_ENV=testing ./node_modules/.bin/karma start --single-run"
+    "test": "NODE_ENV=testing ./node_modules/.bin/karma start --single-run",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "babel": {
     "presets": [
@@ -27,6 +29,8 @@
   "dependencies": {
     "blueimp-file-upload": "^9.24.0",
     "bootstrap-sass": "^3.3.7",
-    "sc-recipe-staticresources": "simplesconsultoria/sc.recipe.staticresources#1.1b5"
-  }
+    "sc-recipe-staticresources": "simplesconsultoria/sc.recipe.staticresources#1.1b5",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
